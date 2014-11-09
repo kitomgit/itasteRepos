@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="100dp"
+    android:layout_height="112dp"
+    android:background="#FFFFF0"
+    android:orientation="horizontal" >
+
+    <!-- 图片 -->
+
+    <com.loopj.android.image.SmartImageView
+        android:id="@+id/badge"
+        style="@style/map_icon_image_style"
+        android:contentDescription="@string/_fac_logo"
+        android:src="@drawable/ic_launcher" />
+    <!-- 数据显示列 -->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="110dp"
+        
+        android:layout_marginLeft="5dp"
+        android:orientation="vertical" >
+        
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        
+        android:orientation="horizontal" >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:singleLine="true"
+            android:textColor="#ff7f7f7f"
+            android:textSize="@dimen/textsize"
+            android:text="@string/_name"/>
+        <TextView
+            android:id="@+id/fac_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:singleLine="true"
+            android:textColor="#ff000000"
+            android:textSize="@dimen/textsize"
+            android:textStyle="bold" />
+		</LinearLayout>
+		 <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        
+        android:orientation="horizontal" >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:singleLine="true"
+            android:textColor="#ff7f7f7f"
+            android:textSize="@dimen/textsize"
+            android:text="@string/_address"/>
+        <TextView
+            android:id="@+id/fac_address"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:singleLine="true"
+            android:textColor="#000000"
+            android:textSize="@dimen/textsize" />
+        </LinearLayout>
+		
+          <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        
+        android:orientation="horizontal" >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:singleLine="true"
+            android:textColor="#ff7f7f7f"
+            android:textSize="@dimen/textsize"
+            android:text="@string/_area"/>
+        <TextView
+            android:id="@+id/fac_area"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:singleLine="true"
+            android:textColor="#000000"
+            android:textSize="@dimen/textsize" />
+		</LinearLayout>	
+		
+		 <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        
+        android:orientation="horizontal" >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:singleLine="true"
+            android:textColor="#ff7f7f7f"
+            android:textSize="@dimen/textsize"
+            android:text="@string/_sushe_area"/>
+        <TextView
+            android:id="@+id/fac_sushe_area"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:singleLine="true"
+            android:textColor="#000000"
+            android:textSize="@dimen/textsize" />
+		</LinearLayout>
+		
+		  <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        
+        android:orientation="horizontal" >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:singleLine="true"
+            android:textColor="#ff7f7f7f"
+            android:textSize="@dimen/textsize"
+            android:text="@string/_price"/>
+        <TextView
+            android:id="@+id/fac_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:singleLine="true"
+            android:textColor="#000000"
+            android:textSize="@dimen/textsize" />
+		</LinearLayout>
+		
+		   <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        
+        android:orientation="horizontal" >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:singleLine="true"
+            android:textColor="#ff7f7f7f"
+            android:textSize="@dimen/textsize"
+            android:text="@string/_height"/>
+        <TextView
+            android:id="@+id/fac_height"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:singleLine="true"
+            android:textColor="#000000"
+            android:textSize="@dimen/textsize" />
+			</LinearLayout>
+			 <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        
+        android:orientation="horizontal" >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:singleLine="true"
+            android:textColor="#ff7f7f7f"
+            android:textSize="@dimen/textsize"
+            android:text="@string/_struct"/>
+        <TextView
+            android:id="@+id/fac_struct"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:singleLine="true"
+            android:textColor="#000000"
+            android:textSize="@dimen/textsize" />
+		</LinearLayout>
+		
+		 <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        
+        android:orientation="horizontal" >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:singleLine="true"
+            android:textColor="#ff7f7f7f"
+            android:textSize="@dimen/textsize"
+            android:text="@string/_peidian"/>	 
+        <TextView
+            android:id="@+id/fac_peidian"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:singleLine="true"
+            android:textColor="#000000"
+            android:textSize="@dimen/textsize" />
+		</LinearLayout>
+		
+		  <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        
+        android:orientation="horizontal" >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:singleLine="true"
+            android:textColor="#ff7f7f7f"
+            android:textSize="@dimen/textsize"
+            android:text="@string/_desc"/>
+        <TextView
+            android:id="@+id/fac_desc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:singleLine="true"
+            android:textColor="#000000"
+            android:textSize="@dimen/textsize" />
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

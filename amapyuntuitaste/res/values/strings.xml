@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">傻瓜地图</string>
+    <string name="action_settings">设置</string>
+    <string name="hello_world">欢迎!</string>
+    <string name="_keyword">关键字</string>
+    <string name="_search">搜索</string>
+    <string name="gpsfollow">追随</string>
+    <string name="gpslocate">定位</string>
+    <string name="gpsrotate">旋转</string>
+    <string name="_fac_logo">logo</string>
+    <string name="_name">名称：</string>
+    <string name="_address">地址：</string>
+    <string name="_area">面积：</string>
+    <string name="_sushe_area">宿舍：</string>
+    <string name="_price">价格：</string>
+    <string name="_height">楼高：</string>
+    <string name="_struct">结构：</string>
+    <string name="_peidian">配电：</string>
+    <string name="_desc">描述：</string>
+    <string name="_height_search">高级搜索</string>
+    <string name="_voice_search">语音搜索</string>
+    <string name="_map">地图</string>
+    <string name="_list">列表</string>
+    <string name="title_activity_lbsfac_list">LBSFacListActivity</string>
+    <string name="_left_menu_icon">左侧菜单图标</string>
+
+</resources>
