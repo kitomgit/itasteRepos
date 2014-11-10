@@ -1,85 +1,81 @@
 package com.itaste.yuntu;
 
+import java.util.ArrayList;
+import java.util.List;
 
-import android.app.TabActivity;
-import android.content.Intent;
 import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.widget.ListView;
-import android.widget.RelativeLayout;
-import android.widget.TabHost;
-import android.widget.TabWidget;
-import android.widget.TextView;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.view.ViewPager;
 
-import com.itaste.yuntu.adapter.LeftSlideMenuListViewAdapter;
-import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
+import com.amap.api.maps.SupportMapFragment;
 
-@SuppressWarnings("deprecation")
-public class MainActivity extends TabActivity {
+//FragmentActivity页面 
 
-	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_main);
-		initTabHost();
-		initSlideMenu();
-	}
-	
-	//初始化侧边菜单
-	private void initSlideMenu() {
-		// configure the SlidingMenu
-				SlidingMenu menu = new SlidingMenu(this);
-				menu.setMode(SlidingMenu.LEFT);
-				// 设置触摸屏幕的模式
-				menu.setTouchModeAbove(SlidingMenu.TOUCHMODE_FULLSCREEN);
-				menu.setShadowWidthRes(R.dimen.shadow_width);
-				menu.setShadowDrawable(R.drawable.shadow);
+public class MainActivity extends FragmentActivity {
 
-				// 设置滑动菜单视图的宽度
-				menu.setBehindOffsetRes(R.dimen.slidingmenu_offset);
-				// 设置渐入渐出效果的值
-				menu.setFadeDegree(0.35f);
-				menu.showSecondaryMenu(true);
-				/**
-				 * SLIDING_WINDOW will include the Title/ActionBar in the content
-				 * section of the SlidingMenu, while SLIDING_CONTENT does not.
-				 */
-				menu.attachToActivity(this, SlidingMenu.SLIDING_CONTENT);
-				
-				//设置侧滑菜单
-				View view= LayoutInflater.from(this).inflate(R.layout.left_menu_panel, null);
-				ListView lvListView = (ListView) view.findViewById(R.id.left_menu_lv);
-				//设置数据数据源和单击协议事件
-				LeftSlideMenuListViewAdapter adapter =LeftSlideMenuListViewAdapter.getInstance(this);
-				lvListView.setAdapter(adapter);
-				lvListView.setOnItemClickListener(adapter);
-				
-				//为侧滑菜单设置布局
-				menu.setMenu(view);
-	}
-	/**
-	 * 初始化tab搜索选项卡
-	 */
-	private void initTabHost() {
-		final TabHost tabHost =getTabHost();
-		// 添加列表tab和地图tab
-		tabHost.setup();
-		
-		 View tab1 = (View) LayoutInflater.from(this).inflate(R.layout.tabmini, null);  
-	        TextView text0 = (TextView) tab1.findViewById(R.id.tab_label);  
-	        text0.setText(getString(R.string._map)); 
-	        View tab2 = (View) LayoutInflater.from(this).inflate(R.layout.tabmini, null);  
-	        TextView text1 = (TextView) tab2.findViewById(R.id.tab_label);  
-	        text1.setText(getString(R.string._list)); 
-	        
-		tabHost.addTab(tabHost.newTabSpec("tab1")
-				.setIndicator(tab1)
-				.setContent(new Intent(this, LBSFacMapActivity.class)));
-		tabHost.addTab(tabHost.newTabSpec("tab2")
-				.setIndicator(tab2)
-				.setContent(new Intent(this,LBSFacListActivity.class)));
-	}
+    /** 页面list **/
+    List<Fragment> fragmentList = new ArrayList<Fragment>();
+    /** 页面title list **/
+    List<String>   titleList    = new ArrayList<String>();
 
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        
+        ViewPager vp = (ViewPager)findViewById(R.id.viewPager);
+        fragmentList.add(LBSFacMapFragment.newInstance());
+        fragmentList.add(new ViewPagerFragment1("页面1"));
+        fragmentList.add(new ViewPagerFragment1("页面2"));
+        fragmentList.add(new ViewPagerFragment1("页面3"));
+        titleList.add("地图");
+        titleList.add("title 1 ");
+        titleList.add("title 2 ");
+        titleList.add("title 3 ");
+        vp.setAdapter(new myPagerAdapter(getSupportFragmentManager(), fragmentList, titleList));
+    }
 
+    /**
+     * 定义适配器
+     * 
+     * @author gxwu@lewatek.com 2012-11-15
+     */
+    class myPagerAdapter extends FragmentPagerAdapter {
+
+        private List<Fragment> fragmentList;
+        private List<String>   titleList;
+
+        public myPagerAdapter(FragmentManager fm, List<Fragment> fragmentList, List<String> titleList){
+            super(fm);
+            this.fragmentList = fragmentList;
+            this.titleList = titleList;
+        }
+
+        /**
+         * 得到每个页面
+         */
+        @Override
+        public Fragment getItem(int arg0) {
+            return (fragmentList == null || fragmentList.size() == 0) ? null : fragmentList.get(arg0);
+        }
+
+        /**
+         * 每个页面的title
+         */
+        @Override
+        public CharSequence getPageTitle(int position) {
+            return (titleList.size() > position) ? titleList.get(position) : "";
+        }
+
+        /**
+         * 页面的总个数
+         */
+        @Override
+        public int getCount() {
+            return fragmentList == null ? 0 : fragmentList.size();
+        }
+    }
 }
