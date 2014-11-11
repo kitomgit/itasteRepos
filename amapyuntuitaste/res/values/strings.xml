@@ -18,6 +18,7 @@
     <string name="_height">楼高：</string>
     <string name="_struct">结构：</string>
     <string name="_peidian">配电：</string>
+    <string name="_mobile">电话：</string>
     <string name="_desc">描述：</string>
     <string name="_height_search">高级搜索</string>
     <string name="_voice_search">语音搜索</string>
@@ -25,5 +26,7 @@
     <string name="_list">列表</string>
     <string name="title_activity_lbsfac_list">LBSFacListActivity</string>
     <string name="_left_menu_icon">左侧菜单图标</string>
+    <string name="_maptab">maptab</string>
+    <string name="_listtab">listtab</string>
 
 </resources>

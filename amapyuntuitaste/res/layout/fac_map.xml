@@ -21,7 +21,7 @@
         android:layout_gravity="top|left"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="10dp"
-        style="@style/translucent"
+        style="@style/transluocent"
         android:orientation="horizontal" >
 
         <RadioButton

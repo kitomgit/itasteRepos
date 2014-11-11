@@ -40,6 +40,7 @@ public class FacInfoModel{
  private String fac_desc;//描述
  private String _createtime;//创建时间
  private String _updatetime;//修改时间
+ private String fac_mobile;//电话
  private List<DtoImage> _image = new ArrayList<DtoImage>();//图片信息
 public int get_id() {
 	return _id;
@@ -144,6 +145,13 @@ public String getUpdatetime() {
 }
 public void setUpdatetime(String _updatetime) {
 	this._updatetime = _updatetime;
+}
+
+public String getFac_mobile() {
+	return fac_mobile;
+}
+public void setFac_mobile(String fac_mobile) {
+	this.fac_mobile = fac_mobile;
 }
 public List<DtoImage> getImage() {
 	return _image;

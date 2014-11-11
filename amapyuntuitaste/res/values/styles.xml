@@ -1,14 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:android="http://schemas.android.com/apk/res/android">
 
     <!--
         Base application theme, dependent on API level. This theme is replaced
-        by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
+        by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
     -->
     <style name="AppBaseTheme" parent="android:Theme.Light">
         <!--
             Theme customizations available in newer API levels can go in
             res/values-vXX/styles.xml, while customizations related to
-            backward-compatibility can go here.
+            backward-compatibility can go here.
         -->
     </style>
 
@@ -19,18 +20,49 @@
 
     <style name="map_icon_image_style">
         <item name="android:layout_marginRight">5dp</item>
-        <item name="android:layout_width">36dp</item>
-        <item name="android:layout_height">36dp</item>
+        <item name="android:layout_width">40dp</item>
+        <item name="android:layout_height">40dp</item>
         <item name="android:layout_marginLeft">3dp</item>
         <item name="android:layout_marginTop">2dp</item>
     </style>
-    
-    
-	<style name="translucent" parent="android:style/Theme.Translucent">
-	<item name="android:windowBackground">@color/transparent</item>
-	<item name="android:windowNoTitle">true</item>
-	<item name="android:backgroundDimEnabled">true</item>
-	<!--true背景灰色 false背景白色 -->
+
+    <style name="transluocent" parent="android:style/Theme.Translucent">
+        <item name="android:windowBackground">@color/transparent</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:backgroundDimEnabled">true</item>
+        <!-- true背景灰色 false背景白色 -->
+    </style>
+
+    <style name="LoginFormContainer">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:padding">16dp</item>
+    </style>
+
+  
+	<style name="dialogStyle"> 
+		<item name="android:windowBackground">@android:color/transparent</item> 
+		<item name="android:windowFrame">@null</item> 
+		<item name="android:windowNoTitle">true</item> 
+		<item name="android:windowIsFloating">true</item> 
+		<item name="android:windowIsTranslucent">true</item> 
+		<item name="android:windowContentOverlay">@null</item> 
+		<item name="android:windowAnimationStyle">@android:style/Animation.Dialog</item> 
+		<item name="android:backgroundDimEnabled">true</item> 
+	</style> 
+	<style name="textwhite">
+	    <item name="android:textColor">#FFFFFF</item>
+	    <item name="android:textStyle">bold</item>
+	    <item name="android:textSize">14sp</item>
 	</style>
-    
+	<style name="listViewItem" parent="textwhite">
+	    <item name="android:background">@drawable/list_view_item</item>
+	    <item name="android:textColor">#FFFFFF</item>
+	    <item name="android:textStyle">bold</item>
+	    <item name="android:textSize">14sp</item>
+	    <item name="android:gravity">fill_vertical</item>
+	    <item name="android:orientation">horizontal</item>
+	    
+	</style>
+
 </resources>

@@ -1,25 +1,18 @@
 package com.itaste.yuntu;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-
-import org.apache.http.Header;
-
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.location.Location;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.RadioGroup;
 import android.widget.RadioGroup.OnCheckedChangeListener;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.TypeReference;
 import com.amap.api.location.AMapLocation;
 import com.amap.api.location.AMapLocationListener;
 import com.amap.api.location.LocationManagerProxy;
@@ -39,24 +32,20 @@ import com.amap.api.maps.model.LatLngBounds;
 import com.amap.api.maps.model.LatLngBounds.Builder;
 import com.amap.api.maps.model.Marker;
 import com.amap.api.maps.model.MarkerOptions;
-import com.itaste.yuntu.model.AMapDTO;
 import com.itaste.yuntu.model.DtoImage;
 import com.itaste.yuntu.model.FacInfoModel;
-import com.itaste.yuntu.util.LBSCloudSearch;
-import com.loopj.android.http.AsyncHttpResponseHandler;
+import com.itaste.yuntu.util.ItasteApplication;
 import com.loopj.android.image.SmartImageView;
 
 
-public class LBSFacMapActivity  extends FragmentActivity 
-implements LocationSource, AMapLocationListener,OnCheckedChangeListener, OnMarkerClickListener, OnInfoWindowClickListener, InfoWindowAdapter, OnClickListener
+public class LBSFacMapActivity  extends Activity 
+implements LocationSource, AMapLocationListener,OnCheckedChangeListener, OnMarkerClickListener, OnInfoWindowClickListener, InfoWindowAdapter
 {
 	    private AMap aMap;
 	    private MapView mapView;
 	    private OnLocationChangedListener mListener;
 	    private LocationManagerProxy mAMapLocationManager;
 	    private RadioGroup mGPSModeGroup;//地图定位模式切换
-		private LatLng latlng = new LatLng(36.061, 103.834);
-	    private Button searchBtn;
 	  
 	 
 	    @Override
@@ -76,6 +65,8 @@ implements LocationSource, AMapLocationListener,OnCheckedChangeListener, OnMarke
 	            aMap = mapView.getMap();
 	            setUpMap();
 	        }
+	        //将当前activity加入到application中
+	        ItasteApplication.getInstance().facMapActivity = this;
 	    }
 	 
 	    private void setUpMap() {
@@ -196,42 +187,18 @@ implements LocationSource, AMapLocationListener,OnCheckedChangeListener, OnMarke
 	  		}
 	  	}
 	  		
-	    //点击搜索按钮
-	  	public void search(){
-	  		HashMap<String, String> filterParams = new HashMap<String, String>();
-	  		filterParams.put("city", "全国");
-	  		filterParams.put("keywords", "");
-	  		filterParams.put("filter", "fac_area:200");
-			LBSCloudSearch.request(LBSCloudSearch.SEARCH_TYPE_LOCAL, filterParams,new AsyncHttpResponseHandler(){
-				 @Override
-				public void onSuccess(int arg0, Header[] arg1, byte[] data) {
-					String dataStr = new String(data);
-					dataStr = dataStr.replaceAll("\"_", "\"");
-					 AMapDTO<FacInfoModel>  dto = JSON.parseObject(dataStr, new TypeReference<AMapDTO<FacInfoModel>>(){});
-					
-					List<FacInfoModel> facInfos = dto.getDatas();
-					Toast.makeText(
-							LBSFacMapActivity.this
-							,"符合条件数据:"+dto.getCount()+"个"
-							,Toast.LENGTH_LONG).show();
-					
-					addMarkersToMap(facInfos);
-				}
-				 @Override
-				public void onFailure(int arg0, Header[] arg1, byte[] arg2,
-					Throwable arg3) {
-					Toast.makeText(LBSFacMapActivity.this, "读取数据失败，请重试", Toast.LENGTH_LONG).show();
-					
-				}
-			 });
-	  	}
+	   
 	  		
+
+
 
 		/**
 		 * 在地图上添加marker
 		 */
-		private void addMarkersToMap(List<FacInfoModel> facInfos) {
-			
+		public void addMarkersToMap() {
+			//从地图上删除所有的Marker，Overlay，Polyline 等覆盖物。
+			List<FacInfoModel> facInfos = ItasteApplication.getInstance().dto.getDatas();
+			aMap.clear();
 			//gif标注图标
 			ArrayList<BitmapDescriptor> giflist = new ArrayList<BitmapDescriptor>();
 			giflist.add(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE));
@@ -327,12 +294,6 @@ implements LocationSource, AMapLocationListener,OnCheckedChangeListener, OnMarke
 			return false;
 		}
 
-
-		@Override
-		public void onClick(View v) {
-		search();
-			
-		}
 		@Override
 		public void onStatusChanged(String provider, int status, Bundle extras) {
 			// TODO Auto-generated method stub
