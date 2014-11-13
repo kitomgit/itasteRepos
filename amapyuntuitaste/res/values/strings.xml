@@ -31,5 +31,9 @@
     <string name="exit_confirm">确定退出</string>
     <string name="button_ok">确定</string>
     <string name="button_cancel">取消</string>
+    <string name="_choose">选择</string>
+    <string name="_region">区域：</string>
+    <string name="_query">查询</string>
+    <string name="_cancel">取消</string>
 
 </resources>

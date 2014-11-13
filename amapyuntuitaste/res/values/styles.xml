@@ -65,6 +65,12 @@
 	    <item name="android:unselectedAlpha">0.3</item>
 	    <item name="android:layout_marginTop">5dp</item>
 	    <item name="android:paddingLeft">2dp</item>
+	</style>
+	<style name="lightgreybtn">
+	    <item name="android:background">@drawable/btn_light_gray</item>
+	    <item name="android:gravity">center</item>
+	    <item name="android:textColor">@android:color/white</item>
+	    <item name="android:textSize">12sp</item>
 	    
 	</style>
 

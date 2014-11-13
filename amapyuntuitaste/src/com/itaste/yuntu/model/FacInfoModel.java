@@ -41,6 +41,7 @@ public class FacInfoModel{
  private String _createtime;//创建时间
  private String _updatetime;//修改时间
  private String fac_mobile;//电话
+ private String fac_region;//区域
  private List<DtoImage> _image = new ArrayList<DtoImage>();//图片信息
 public int get_id() {
 	return _id;
@@ -162,4 +163,11 @@ public void setImage(List<DtoImage> _image) {
 public DtoImage getFistImage() {
 	return _image.get(0);
 }
+public String getFac_region() {
+	return fac_region;
+}
+public void setFac_region(String fac_region) {
+	this.fac_region = fac_region;
+}
+
 }
