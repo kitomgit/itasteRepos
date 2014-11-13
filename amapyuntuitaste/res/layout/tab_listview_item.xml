@@ -1,0 +1,138 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="170dp" 
+    android:layout_marginTop="5dp"
+    android:orientation="horizontal"
+    >
+    <!--     android:descendantFocusability="blocksDescendants" -->
+   <LinearLayout 
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent" 
+    android:orientation="vertical"
+    android:id="@+id/tmplinelayout"
+    >
+    <com.loopj.android.image.SmartImageView
+        android:id="@+id/facimagefirst"
+        android:layout_width="50dp"
+    	android:layout_height="50dp" 
+        android:contentDescription="@string/_fac_logo"
+        
+        android:src="@drawable/ic_launcher" />
+    </LinearLayout>
+<LinearLayout 
+    android:layout_width="match_parent"
+    android:layout_height="170dp" 
+    android:background="@drawable/coffe_bg"
+    android:orientation="vertical"
+    android:layout_gravity="center_vertical"
+    android:id="@+id/tmplinelayout"
+    >
+    <!-- 地址 -->
+   <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+       	style="@style/listViewItem"
+        >
+
+        <TextView
+            android:id="@+id/addresstext"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="2dp"
+            android:layout_gravity="center_vertical"
+            style="@style/textwhite"
+            android:text="@string/_address"
+            />
+        <TextView
+            android:id="@+id/addressvalue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            style="@style/textwhite"
+            android:layout_marginLeft="5dp"
+            />
+        
+   </LinearLayout>
+    <!-- 面积 -->
+   <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        style="@style/listViewItem"
+        >
+
+        <TextView
+            android:id="@+id/areatext"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="2dp"
+            android:layout_gravity="center_vertical"
+            style="@style/textwhite"
+            android:text="@string/_area"
+            />
+        <TextView
+            android:id="@+id/areavalue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            style="@style/textwhite"
+            android:layout_marginLeft="5dp"
+            />
+        
+   </LinearLayout>
+    <!-- 价格-->
+
+   <LinearLayout
+       style="@style/listViewItem"
+       android:layout_width="match_parent"
+       android:layout_height="35dp"
+        >
+
+        <TextView
+            android:id="@+id/pricetext"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="2dp"
+            android:layout_gravity="center_vertical"
+            style="@style/textwhite"
+            android:text="@string/_price"
+            />
+        <TextView
+            android:id="@+id/pricevalue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            style="@style/textwhite"
+            android:layout_marginLeft="5dp"
+            />
+        
+   </LinearLayout>
+    <!-- 电话 -->
+   <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        style="@style/listViewItem"
+        >
+
+        <TextView
+            android:id="@+id/phonetext"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="2dp"
+            android:layout_gravity="center_vertical"
+            style="@style/textwhite"
+            android:text="@string/_mobile"
+            />
+        <TextView
+            android:id="@+id/phonevalue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            style="@style/textwhite"
+            android:layout_marginLeft="5dp"
+            />
+        
+   </LinearLayout>
+        
+</LinearLayout>
+
+</LinearLayout>

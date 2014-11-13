@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="region">
+        <item>区域</item>
+        <item>长安中心区</item>
+        <item>街口</item>
+        <item>乌沙</item>
+        <item>咸西</item>
+        <item>宵边</item>
+        <item>镇政府</item>
+        <item>上沙</item>
+        <item>锦厦</item>
+        <item>厦边</item>
+        <item>涌头</item>
+        <item>上角</item>
+    </string-array>
+<!--     500平米以下500-1000平米1000-1500平米1500-2500平米2500-4000平米4000-6000平米6000-10000平米10000平米以上 -->
+    <string-array name="area">
+        <item>面积</item>
+        <item>200平米以下</item>
+        <item>200-500平米</item>
+        <item>500-800平米</item>
+        <item>800-1000平米</item>
+        <item>1000-1500平米</item>
+        <item>1500-2000平米</item>
+        <item>2000-2500平米</item>
+        <item>2500-3000平米</item>
+        <item>3000-3500平米</item>
+        <item>3500-4000平米</item>
+        <item>4000-6000平米</item>
+        <item>6000-8000平米</item>
+        <item>8000-10000平米</item>
+        <item>10000平米以上</item>
+       
+    </string-array>
+    
+    <string-array name="price">
+        <item>价格</item>
+        <item>10元以下</item>
+        <item>10-12元</item>
+        <item>12-13元</item>
+        <item>13-15元</item>
+        <item>15-16元</item>
+        <item>16-18元</item>
+        <item>18-20元</item>
+        <item>20-23元</item>
+        <item>23-25元</item>
+        <item>25元以上</item>
+    </string-array>
+    
+<!--     标准厂房简易厂房钢结构其他 -->
+    <string-array name="struct">
+        <item>结构</item>
+        <item>简易</item>
+        <item>钢结构</item>
+        <item>无尘车间</item>
+       	<item>其他 </item>	
+    </string-array>
+    
+    <string-array name="floor">
+        <item>楼层</item>
+        <item>独栋</item>
+        <item>分租</item>
+        <item>1楼</item>
+        <item>2楼</item>
+        <item>3楼</item>
+        <item>4楼</item>
+        <item>5楼</item>
+        <item>6楼</item>
+        <item>7楼</item>
+    </string-array>
+    
+    <string-array name="peidian">
+		<item>配电</item>        
+		<item>按需</item>        
+		<item>220kv</item>        
+		<item>315kv</item>        
+		<item>450kv</item>        
+    </string-array>
+    
+    <string-array name="nearby">
+        <item>附近</item>
+        <item>1000米</item>
+        <item>3000米</item>
+        <item>5000米</item>
+    </string-array>
+</resources>
