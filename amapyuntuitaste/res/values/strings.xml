@@ -28,5 +28,8 @@
     <string name="_left_menu_icon">左侧菜单图标</string>
     <string name="_maptab">maptab</string>
     <string name="_listtab">listtab</string>
+    <string name="exit_confirm">确定退出</string>
+    <string name="button_ok">确定</string>
+    <string name="button_cancel">取消</string>
 
 </resources>

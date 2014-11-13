@@ -13,7 +13,8 @@
         android:id="@+id/faclv"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/left_bg"
+        android:background="@drawable/coffe_bg"
+        android:alpha="0.8"
         >
     </ListView>
 

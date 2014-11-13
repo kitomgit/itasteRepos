@@ -56,12 +56,15 @@
 	    <item name="android:textSize">14sp</item>
 	</style>
 	<style name="listViewItem" parent="textwhite">
-	    <item name="android:background">@drawable/list_view_item</item>
+	    <item name="android:background">@drawable/list_view_bg</item>
 	    <item name="android:textColor">#FFFFFF</item>
 	    <item name="android:textStyle">bold</item>
 	    <item name="android:textSize">14sp</item>
 	    <item name="android:gravity">fill_vertical</item>
 	    <item name="android:orientation">horizontal</item>
+	    <item name="android:unselectedAlpha">0.3</item>
+	    <item name="android:layout_marginTop">5dp</item>
+	    <item name="android:paddingLeft">2dp</item>
 	    
 	</style>
 

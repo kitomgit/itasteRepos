@@ -94,6 +94,10 @@ implements LocationSource, AMapLocationListener,OnCheckedChangeListener, OnMarke
 	    protected void onResume() {
 	        super.onResume();
 	        mapView.onResume();
+	        //如果有搜索数据，刷新地图标记
+	        if(ItasteApplication.getInstance().getValidateDto().getDatas().size()>0){
+	        	addMarkersToMap();
+	        }
 	    }
 	 
 	    /**
@@ -197,7 +201,7 @@ implements LocationSource, AMapLocationListener,OnCheckedChangeListener, OnMarke
 		 */
 		public void addMarkersToMap() {
 			//从地图上删除所有的Marker，Overlay，Polyline 等覆盖物。
-			List<FacInfoModel> facInfos = ItasteApplication.getInstance().dto.getDatas();
+			List<FacInfoModel> facInfos = ItasteApplication.getInstance().getValidateDto().getDatas();
 			aMap.clear();
 			//gif标注图标
 			ArrayList<BitmapDescriptor> giflist = new ArrayList<BitmapDescriptor>();

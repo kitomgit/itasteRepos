@@ -2,7 +2,7 @@
 <selector
   xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:state_selected="true"
-        android:drawable="@drawable/tab_selected_01"/>
+        android:drawable="@drawable/tab_top_btn_blue"/>
     <item android:state_selected="false"
-        android:drawable="@drawable/tab_normal_01"/>
+        android:drawable="@drawable/list_view_bg"/>
 </selector>

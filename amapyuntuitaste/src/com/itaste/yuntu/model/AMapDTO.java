@@ -60,6 +60,16 @@ public List<T> getDatas() {
 public void setDatas(List<T> datas) {
 	this.datas = datas;
 }
-
+public  void  copy(AMapDTO<T> dto){
+	
+	if(dto!=null){
+		this.count = dto.count;
+		this.info = dto.info;
+		this.status = dto.status;
+		this.datas.clear();
+		this.datas.addAll(dto.getDatas());	
+	}
+	
+}
 
 }

@@ -2,7 +2,19 @@ package com.itaste.yuntu.util;
 
 import java.util.HashMap;
 
+import org.apache.http.Header;
+
+import android.content.Context;
 import android.util.Log;
+import android.widget.BaseAdapter;
+import android.widget.Toast;
+
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.TypeReference;
+import com.itaste.yuntu.MainActivity;
+import com.itaste.yuntu.R;
+import com.itaste.yuntu.model.AMapDTO;
+import com.itaste.yuntu.model.FacInfoModel;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
@@ -75,5 +87,53 @@ public class LBSCloudSearch {
 		
 		IsBusy = false;
 	}
-	
+	 //点击搜索按钮
+  	public static void search(final Context context){
+  		final ItasteApplication application = ItasteApplication.getInstance();
+  		HashMap<String, String> filterParams = application.filterParams;
+  		filterParams.put("city", "全国");
+  		filterParams.put("keywords", "");
+  		filterParams.put("filter", "fac_area:200");
+  		
+		LBSCloudSearch.request(LBSCloudSearch.SEARCH_TYPE_LOCAL, filterParams,new AsyncHttpResponseHandler(){
+			 @Override
+			public void onSuccess(int arg0, Header[] arg1, byte[] data) {
+				String dataStr = new String(data);
+				dataStr = dataStr.replaceAll("\"_", "\"");
+				 AMapDTO<FacInfoModel>  dto = JSON.parseObject(dataStr, new TypeReference<AMapDTO<FacInfoModel>>(){});
+				 application.getValidateDto().copy(dto);//对象copy
+				Toast.makeText(
+						context
+						,"符合条件数据:"+dto.getCount()+"个"
+						,Toast.LENGTH_LONG).show();
+				
+					refreshActiveView();
+				
+				//addMarkersToMap(facInfos);
+			}
+			 
+			  private void refreshActiveView() {
+			  		int count =application.getValidateDto().getCount();
+					if(application.currentactivateView.equals(context.getString(R.string._maptab))){
+						if(count>0){
+							application.facMapActivity.addMarkersToMap();
+						}
+			  		}else if(application.currentactivateView.equals(context.getString(R.string._listtab))){
+						BaseAdapter listAdapter = application.listAdapter;
+						if(listAdapter!=null){
+							listAdapter.notifyDataSetChanged();
+						}
+			  		}
+					if(count==0){
+						Toast.makeText(context, "无符合条件数据，请重新帅选！", Toast.LENGTH_LONG).show();
+					}
+				}
+			@Override
+			public void onFailure(int arg0, Header[] arg1, byte[] arg2,
+				Throwable arg3) {
+				Toast.makeText(context, "读取数据失败，请重试", Toast.LENGTH_LONG).show();
+				
+			}
+		 });
+  	}
 }

@@ -1,34 +1,26 @@
 package com.itaste.yuntu;
 
 
-import java.util.HashMap;
-import java.util.List;
-
-import org.apache.http.Header;
-
 import android.annotation.SuppressLint;
+import android.app.AlertDialog;
 import android.app.TabActivity;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TabHost;
-import android.widget.TextView;
-import android.widget.Toast;
 import android.widget.TabHost.OnTabChangeListener;
+import android.widget.TextView;
 
-import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.TypeReference;
 import com.itaste.yuntu.adapter.LeftSlideMenuListViewAdapter;
-import com.itaste.yuntu.model.AMapDTO;
-import com.itaste.yuntu.model.FacInfoModel;
 import com.itaste.yuntu.util.ItasteApplication;
 import com.itaste.yuntu.util.LBSCloudSearch;
 import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
-import com.loopj.android.http.AsyncHttpResponseHandler;
 
 @SuppressLint("NewApi")
 @SuppressWarnings("deprecation")
@@ -70,7 +62,7 @@ public class MainActivity extends TabActivity implements OnClickListener,OnTabCh
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		if(data!=null){
 			Bundle bundle = data.getExtras();
-			search();
+			LBSCloudSearch.search(this);
 		}
 	}
 	
@@ -139,43 +131,7 @@ public class MainActivity extends TabActivity implements OnClickListener,OnTabCh
 		//面板切换时触发
 		tabHost.setOnTabChangedListener(this);
 	}
-	 //点击搜索按钮
-  	public void search(){
-  		HashMap<String, String> filterParams = new HashMap<String, String>();
-  		filterParams.put("city", "全国");
-  		filterParams.put("keywords", "");
-  		filterParams.put("filter", "fac_area:200");
-		LBSCloudSearch.request(LBSCloudSearch.SEARCH_TYPE_LOCAL, filterParams,new AsyncHttpResponseHandler(){
-			 @Override
-			public void onSuccess(int arg0, Header[] arg1, byte[] data) {
-				String dataStr = new String(data);
-				dataStr = dataStr.replaceAll("\"_", "\"");
-				 AMapDTO<FacInfoModel>  dto = JSON.parseObject(dataStr, new TypeReference<AMapDTO<FacInfoModel>>(){});
-				 ItasteApplication.getInstance().dto = dto;
-				
-				Toast.makeText(
-						MainActivity.this
-						,"符合条件数据:"+dto.getCount()+"个"
-						,Toast.LENGTH_LONG).show();
-				//刷新试图
-				refreshActiveView();
-				//addMarkersToMap(facInfos);
-			}
-			 
-			  private void refreshActiveView() {
-			  		ItasteApplication application = ItasteApplication.getInstance();
-					if(application.currentactivateView.equals(getString(R.string._maptab))){
-						application.facMapActivity.addMarkersToMap();
-			  		}
-				}
-			@Override
-			public void onFailure(int arg0, Header[] arg1, byte[] arg2,
-				Throwable arg3) {
-				Toast.makeText(MainActivity.this, "读取数据失败，请重试", Toast.LENGTH_LONG).show();
-				
-			}
-		 });
-  	}
+	
   	
   	
   	 
@@ -185,6 +141,40 @@ public class MainActivity extends TabActivity implements OnClickListener,OnTabCh
 		ItasteApplication.getInstance().currentactivateView = tabId;
 	}
   	 
+	/*
+	 * 添加对back按钮的处理，点击提示退出
+	 * (non-Javadoc)
+	 * @see android.app.Activity#dispatchKeyEvent(android.view.KeyEvent)
+	 */
+	@Override
+	public boolean dispatchKeyEvent(KeyEvent event) {
+		if (event.getKeyCode() == KeyEvent.KEYCODE_BACK
+				&& event.getAction() != 1) {
+			exit();
+			return true;
+		}
 
+		return super.dispatchKeyEvent(event);
+	}
+	/*
+	 * 退出应用程序
+	 */
+	private void exit() {
+		AlertDialog alertDialog = new AlertDialog.Builder(MainActivity.this)
+				.setIcon(R.drawable.ic_launcher)
+				.setTitle("提示")
+				.setMessage(R.string.exit_confirm)
+				.setPositiveButton(R.string.button_ok,
+						new DialogInterface.OnClickListener() {
+
+							public void onClick(DialogInterface dialog,
+									int whichButton) {
+								finish();
+								android.os.Process
+										.killProcess(android.os.Process.myPid());
+							}
+						}).setNegativeButton(R.string.button_cancel, null).create();
+			alertDialog.show();
+	}
 
 }
