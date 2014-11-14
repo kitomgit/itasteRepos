@@ -4,13 +4,16 @@ import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.Map;
 
+import android.app.Application;
+import android.widget.BaseAdapter;
+
+import com.amap.api.location.AMapLocation;
+import com.amap.api.maps.model.LatLng;
 import com.itaste.yuntu.LBSFacListActivity;
 import com.itaste.yuntu.LBSFacMapActivity;
 import com.itaste.yuntu.R;
 import com.itaste.yuntu.model.AMapDTO;
 import com.itaste.yuntu.model.FacInfoModel;
-import android.app.Application;
-import android.widget.BaseAdapter;
 /**
  * 存放系统的地图查询条件和查询结果
  * @author tom
@@ -36,6 +39,9 @@ public class ItasteApplication extends  Application{
 	public BaseAdapter listAdapter;
 	
 	public boolean istosearch;
+	
+	//当前位置信息
+	public AMapLocation currentLocation;
 	
 	public static ItasteApplication instance;
 	
@@ -113,4 +119,8 @@ public class ItasteApplication extends  Application{
 	  }
 		filterParams.put(FILTERKEY, filter);
 	}
+	public LatLng getCurrentLocation(){
+		return currentLocation!=null? new LatLng(currentLocation.getLatitude(), currentLocation.getLongitude()):null;
+	}
+	
 }

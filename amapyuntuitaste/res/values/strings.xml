@@ -35,5 +35,6 @@
     <string name="_region">区域：</string>
     <string name="_query">查询</string>
     <string name="_cancel">取消</string>
+    <string name="_mylocation">我的位置</string>
 
 </resources>

@@ -162,14 +162,16 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int left_bg=0x7f020004;
         public static final int light_gray_btn=0x7f020005;
         public static final int list_view_bg=0x7f020006;
-        public static final int shadow=0x7f020007;
-        public static final int tab_bg=0x7f020008;
-        public static final int tab_normal_01=0x7f020009;
-        public static final int tab_selected_01=0x7f02000a;
-        public static final int tab_top_btn=0x7f02000b;
-        public static final int tab_top_btn_blue=0x7f02000c;
-        public static final int tab_top_btn_gray=0x7f02000d;
-        public static final int tabmini=0x7f02000e;
+        public static final int location_marker=0x7f020007;
+        public static final int shadow=0x7f020008;
+        public static final int start=0x7f020009;
+        public static final int tab_bg=0x7f02000a;
+        public static final int tab_normal_01=0x7f02000b;
+        public static final int tab_selected_01=0x7f02000c;
+        public static final int tab_top_btn=0x7f02000d;
+        public static final int tab_top_btn_blue=0x7f02000e;
+        public static final int tab_top_btn_gray=0x7f02000f;
+        public static final int tabmini=0x7f020010;
     }
     public static final class id {
         public static final int ItemImage=0x7f040026;
@@ -268,6 +270,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int _map=0x7f080015;
         public static final int _maptab=0x7f080019;
         public static final int _mobile=0x7f080011;
+        public static final int _mylocation=0x7f080022;
         public static final int _name=0x7f080009;
         public static final int _peidian=0x7f080010;
         public static final int _price=0x7f08000d;
@@ -277,29 +280,29 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int _struct=0x7f08000f;
         public static final int _sushe_area=0x7f08000c;
         public static final int _voice_search=0x7f080014;
-        public static final int action_forgot_password=0x7f080027;
+        public static final int action_forgot_password=0x7f080028;
         public static final int action_settings=0x7f080001;
-        public static final int action_sign_in_register=0x7f080025;
-        public static final int action_sign_in_short=0x7f080026;
+        public static final int action_sign_in_register=0x7f080026;
+        public static final int action_sign_in_short=0x7f080027;
         public static final int app_name=0x7f080000;
         public static final int button_cancel=0x7f08001d;
         public static final int button_ok=0x7f08001c;
-        public static final int error_field_required=0x7f08002c;
-        public static final int error_incorrect_password=0x7f08002b;
-        public static final int error_invalid_email=0x7f080029;
-        public static final int error_invalid_password=0x7f08002a;
+        public static final int error_field_required=0x7f08002d;
+        public static final int error_incorrect_password=0x7f08002c;
+        public static final int error_invalid_email=0x7f08002a;
+        public static final int error_invalid_password=0x7f08002b;
         public static final int exit_confirm=0x7f08001b;
         public static final int gpsfollow=0x7f080005;
         public static final int gpslocate=0x7f080006;
         public static final int gpsrotate=0x7f080007;
         public static final int hello_world=0x7f080002;
-        public static final int login_progress_signing_in=0x7f080028;
+        public static final int login_progress_signing_in=0x7f080029;
         /**  Strings related to login 
          */
-        public static final int prompt_email=0x7f080023;
-        public static final int prompt_password=0x7f080024;
+        public static final int prompt_email=0x7f080024;
+        public static final int prompt_password=0x7f080025;
         public static final int title_activity_lbsfac_list=0x7f080017;
-        public static final int title_activity_search=0x7f080022;
+        public static final int title_activity_search=0x7f080023;
     }
     public static final class style {
         /** 

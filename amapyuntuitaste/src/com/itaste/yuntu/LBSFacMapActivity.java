@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.graphics.Color;
 import android.location.Location;
 import android.os.Bundle;
 import android.view.View;
@@ -29,6 +30,7 @@ import com.amap.api.maps.model.BitmapDescriptorFactory;
 import com.amap.api.maps.model.CameraPosition;
 import com.amap.api.maps.model.LatLng;
 import com.amap.api.maps.model.LatLngBounds;
+import com.amap.api.maps.model.MyLocationStyle;
 import com.amap.api.maps.model.LatLngBounds.Builder;
 import com.amap.api.maps.model.Marker;
 import com.amap.api.maps.model.MarkerOptions;
@@ -134,6 +136,7 @@ implements LocationSource, AMapLocationListener,OnCheckedChangeListener, OnMarke
 	    public void onLocationChanged(AMapLocation amapLocation) {
 	        if (mListener != null && amapLocation != null) {
 	            if (amapLocation.getAMapException().getErrorCode() == 0) {
+	            	ItasteApplication.getInstance().currentLocation = amapLocation;
 	                mListener.onLocationChanged(amapLocation);// 显示系统小蓝点
 	                aMap.animateCamera(CameraUpdateFactory.newCameraPosition(new CameraPosition(
 	                		new LatLng(amapLocation.getLatitude(),amapLocation.getLongitude()), 18, 0, 30)), 1000, null);
@@ -201,8 +204,11 @@ implements LocationSource, AMapLocationListener,OnCheckedChangeListener, OnMarke
 		 */
 		public void addMarkersToMap() {
 			//从地图上删除所有的Marker，Overlay，Polyline 等覆盖物。
-			List<FacInfoModel> facInfos = ItasteApplication.getInstance().getValidateDto().getDatas();
+			ItasteApplication app = ItasteApplication.getInstance();
+			List<FacInfoModel> facInfos = app.getValidateDto().getDatas();
 			aMap.clear();
+			// 显示用户的当前位置
+	
 			//gif标注图标
 			ArrayList<BitmapDescriptor> giflist = new ArrayList<BitmapDescriptor>();
 			giflist.add(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE));
@@ -232,10 +238,39 @@ implements LocationSource, AMapLocationListener,OnCheckedChangeListener, OnMarke
 			if (addMarker!=null) {
 				addMarker.showInfoWindow();
 			}
+			//添加用当前位置
+			LatLng currentLocation = app.getCurrentLocation();
+			if(currentLocation!=null){
+				 
+		    aMap.addMarker(
+						 new MarkerOptions()
+						.anchor(0.5f, 0.5f)
+						.title(getString(R.string._mylocation))
+						.snippet(app.currentLocation.getAddress())
+						.icon(BitmapDescriptorFactory.fromResource(R.drawable.start))
+						.perspective(true)//设置标记的近大远小效果，在marker初始化时使用。
+						.period(50)
+						.position(currentLocation)
+						);
+				// 自定义系统定位小蓝点
+				MyLocationStyle myLocationStyle = new MyLocationStyle();
+				myLocationStyle.myLocationIcon(BitmapDescriptorFactory
+						.fromResource(R.drawable.location_marker));// 设置小蓝点的图标
+				myLocationStyle.strokeColor(Color.BLUE);// 设置圆形的边框颜色
+				myLocationStyle.radiusFillColor(Color.argb(100, 0, 0, 180));// 设置圆形的填充颜色
+				// myLocationStyle.anchor(int,int)//设置小蓝点的锚点
+				myLocationStyle.strokeWidth(0.1f);// 设置圆形的边框粗细
+				aMap.setMyLocationStyle(myLocationStyle);
+				//地图显示范围包括当前用户位置
+				latLngbuilder.include(currentLocation);
+			}
+			
+			
 			// 设置所有maker显示在当前可视区域地图中
 			aMap.moveCamera(CameraUpdateFactory.newLatLngBounds(latLngbuilder.build(),110));
 		}	
-	  		
+	  	
+		
 	    
 	
 		
