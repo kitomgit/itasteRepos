@@ -51,8 +51,8 @@ public class LBSCloudSearch {
 	 * @param handler		数据回调Handler
 	 * @return
 	 */
-	public static void request(final int searchType,final HashMap<String, String> filterParams,AsyncHttpResponseHandler handler) {
-		if (IsBusy || filterParams == null)return;
+	public static void request(final int searchType,final AsyncHttpResponseHandler handler) {
+		if (IsBusy )return;
 		IsBusy = true;
 		AsyncHttpClient client = new AsyncHttpClient();
 			try {
@@ -76,7 +76,7 @@ public class LBSCloudSearch {
 				//当前搜索类型
 				currSearchType = searchType;
 				//请求参数
-				 RequestParams params = new RequestParams(filterParams); // 绑定参数
+				 RequestParams params = new RequestParams( ItasteApplication.getInstance().filterParams); // 绑定参数
 				 params.put("key", ak);
 				 params.put("tableid", tableid);
 				 client.get(requestURL.toString(),params,handler);
@@ -90,12 +90,11 @@ public class LBSCloudSearch {
 	 //点击搜索按钮
   	public static void search(final Context context){
   		final ItasteApplication application = ItasteApplication.getInstance();
-  		HashMap<String, String> filterParams = application.filterParams;
-  		filterParams.put("city", "全国");
+  		/*filterParams.put("city", "全国");
   		filterParams.put("keywords", "");
-  		filterParams.put("filter", "fac_area:200");
+  		filterParams.put("filter", "fac_area:2000");*/
   		
-		LBSCloudSearch.request(LBSCloudSearch.SEARCH_TYPE_LOCAL, filterParams,new AsyncHttpResponseHandler(){
+		LBSCloudSearch.request(LBSCloudSearch.SEARCH_TYPE_LOCAL,new AsyncHttpResponseHandler(){
 			 @Override
 			public void onSuccess(int arg0, Header[] arg1, byte[] data) {
 				String dataStr = new String(data);

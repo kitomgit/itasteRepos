@@ -42,6 +42,26 @@ public class FacInfoModel{
  private String _updatetime;//修改时间
  private String fac_mobile;//电话
  private String fac_region;//区域
+//field string
+ public final static String _ID="_id";//唯一标示
+ public final static String _LOCATION="_location";//经纬度
+ public final static String _NAME="_name";//名称
+ public final static String _ADDRESS="_address";//地址
+ public final static String FAC_AREA="fac_area";//面积
+ public final static String FAC_STRUCT="fac_struct";//结构
+ public final static String FAC_HEIGHT="fac_height";//高度
+ public final static String FAC_PEIDIAN="fac_height";//配电
+ public final static String FAC_RENT_ORSALE_PRICE="fac_rent_orsale_price";//价格
+ public final static String FAC_SUSHE_AREA="fac_sushe_area";//宿舍面积
+ public final static String FAC_LIFT="fac_lift";//电梯
+ public final static String FAC_FLOOR="fac_floor";//楼层
+ public final static String RENT_SALE_TYPE="rent_sale_type";//租售类型
+ public final static String FAC_DESC="fac_desc";//描述
+ public final static String _CREATETIME="_createtime";//创建时间
+ public final static String _UPDATETIME="_updatetime";//修改时间
+ public final static String FAC_MOBILE="fac_mobile";//电话
+ public final static String FAC_REGION="fac_region";//区域
+ 
  private List<DtoImage> _image = new ArrayList<DtoImage>();//图片信息
 public int get_id() {
 	return _id;
@@ -161,7 +181,7 @@ public void setImage(List<DtoImage> _image) {
 	this._image = _image;
 }
 public DtoImage getFistImage() {
-	return _image.get(0);
+	return _image==null||_image.size()<1?null:_image.get(0);
 }
 public String getFac_region() {
 	return fac_region;

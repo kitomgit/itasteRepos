@@ -49,7 +49,7 @@ public class MainActivity extends TabActivity implements OnClickListener,OnTabCh
 			break;
 		case R.id.searchBtn:
 			//查询窗口
-			startActivityForResult(new Intent(this, SearchActivity.class), R.string._height_search);
+			startActivityForResult(new Intent(this, SearchActivity.class), ItasteApplication.MAIN_REQUEST_SEARCH_CODE);
 			break;
 
 		default:
@@ -60,8 +60,7 @@ public class MainActivity extends TabActivity implements OnClickListener,OnTabCh
 	//查询回归之后
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-		if(data!=null){
-			Bundle bundle = data.getExtras();
+		if(ItasteApplication.MAIN_REQUEST_SEARCH_CODE==requestCode&&resultCode==ItasteApplication.SEARCH_RESULT_CODE){
 			LBSCloudSearch.search(this);
 		}
 	}

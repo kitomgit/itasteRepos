@@ -13,6 +13,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.itaste.yuntu.R;
+import com.itaste.yuntu.model.DtoImage;
 import com.itaste.yuntu.model.FacInfoModel;
 import com.loopj.android.image.SmartImageView;
 
@@ -61,7 +62,10 @@ public class FacListBaseListAdapter extends BaseAdapter  implements OnItemClickL
 		 }else{
 			 contentHolder = (ListCacheViewHolder) lay.getTag();
 		 }
-		 contentHolder.iv.setImageUrl(facinfo.getFistImage().getPreurl());
+		 DtoImage fistImage = facinfo.getFistImage();
+		 if(fistImage!=null){
+			 contentHolder.iv.setImageUrl(fistImage.getPreurl());
+		 }
 		 contentHolder.addressvalue.setText(facinfo.getAddress());
 		 contentHolder.areavalue.setText(facinfo.getFac_area());
 		 contentHolder.pricevalue.setText(facinfo.getFac_rent_orsale_price());

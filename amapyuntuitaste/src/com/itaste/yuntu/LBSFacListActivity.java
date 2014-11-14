@@ -62,9 +62,9 @@ public class LBSFacListActivity extends Activity {
 	}
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-		// TODO Auto-generated method stub
-		super.onActivityResult(requestCode, resultCode, data);
-		LBSCloudSearch.search(this);
+		if(ItasteApplication.List_REQUEST_SEARCH_CODE==requestCode&&resultCode==ItasteApplication.SEARCH_RESULT_CODE){
+			LBSCloudSearch.search(this);
+		}
 	}
 	
 	

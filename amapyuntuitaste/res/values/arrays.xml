@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    
     <string-array name="region">
-        <item>区域</item>
+        <item>不限</item>
         <item>长安中心区</item>
         <item>街口</item>
         <item>乌沙</item>
@@ -16,7 +17,7 @@
     </string-array>
 <!--     500平米以下500-1000平米1000-1500平米1500-2500平米2500-4000平米4000-6000平米6000-10000平米10000平米以上 -->
     <string-array name="area">
-        <item>面积</item>
+        <item>不限</item>
         <item>200平米以下</item>
         <item>200-500平米</item>
         <item>500-800平米</item>
@@ -34,8 +35,9 @@
        
     </string-array>
     
+    
     <string-array name="price">
-        <item>价格</item>
+        <item>不限</item>
         <item>10元以下</item>
         <item>10-12元</item>
         <item>12-13元</item>
@@ -50,15 +52,16 @@
     
 <!--     标准厂房简易厂房钢结构其他 -->
     <string-array name="struct">
+        <item>不限</item>
         <item>结构</item>
         <item>简易</item>
-        <item>钢结构</item>
+        <item>钢构</item>
         <item>无尘车间</item>
        	<item>其他 </item>	
     </string-array>
     
     <string-array name="floor">
-        <item>楼层</item>
+        <item>不限</item>
         <item>独栋</item>
         <item>分租</item>
         <item>1楼</item>
@@ -71,7 +74,7 @@
     </string-array>
     
     <string-array name="peidian">
-		<item>配电</item>        
+        <item>不限</item>
 		<item>按需</item>        
 		<item>220kv</item>        
 		<item>315kv</item>        
