@@ -174,40 +174,41 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int tabmini=0x7f020010;
     }
     public static final class id {
-        public static final int ItemImage=0x7f040026;
-        public static final int ItemText=0x7f040028;
-        public static final int ItemTitle=0x7f040027;
-        public static final int action_settings=0x7f04003d;
-        public static final int addresstext=0x7f040037;
-        public static final int addressvalue=0x7f040038;
+        public static final int ItemImage=0x7f040028;
+        public static final int ItemText=0x7f04002a;
+        public static final int ItemTitle=0x7f040029;
+        public static final int action_settings=0x7f04003f;
+        public static final int addresstext=0x7f040039;
+        public static final int addressvalue=0x7f04003a;
         public static final int area=0x7f04000f;
         public static final int areabtn=0x7f040010;
         public static final int areatext=0x7f04000e;
-        public static final int areavalue=0x7f040039;
-        public static final int badge=0x7f04002a;
+        public static final int areavalue=0x7f04003b;
+        public static final int badge=0x7f04002c;
+        public static final int bgiv=0x7f040020;
         public static final int cancelBtn=0x7f04001f;
-        public static final int fac_address=0x7f04002c;
-        public static final int fac_area=0x7f04002d;
-        public static final int fac_desc=0x7f040033;
-        public static final int fac_height=0x7f040030;
-        public static final int fac_name=0x7f04002b;
-        public static final int fac_peidian=0x7f040032;
-        public static final int fac_price=0x7f04002f;
-        public static final int fac_struct=0x7f040031;
-        public static final int fac_sushe_area=0x7f04002e;
-        public static final int facimagefirst=0x7f040036;
-        public static final int faclv=0x7f040020;
+        public static final int fac_address=0x7f04002e;
+        public static final int fac_area=0x7f04002f;
+        public static final int fac_desc=0x7f040035;
+        public static final int fac_height=0x7f040032;
+        public static final int fac_name=0x7f04002d;
+        public static final int fac_peidian=0x7f040034;
+        public static final int fac_price=0x7f040031;
+        public static final int fac_struct=0x7f040033;
+        public static final int fac_sushe_area=0x7f040030;
+        public static final int facimagefirst=0x7f040037;
+        public static final int faclv=0x7f040022;
         public static final int floor=0x7f040015;
         public static final int floorbtn=0x7f040016;
         public static final int floortext=0x7f040014;
         public static final int fullscreen=0x7f040003;
-        public static final int gps_follow_button=0x7f040024;
-        public static final int gps_locate_button=0x7f040023;
-        public static final int gps_radio_group=0x7f040022;
-        public static final int gps_rotate_button=0x7f040025;
+        public static final int gps_follow_button=0x7f040026;
+        public static final int gps_locate_button=0x7f040025;
+        public static final int gps_radio_group=0x7f040024;
+        public static final int gps_rotate_button=0x7f040027;
         public static final int left=0x7f040000;
-        public static final int left_menu_lv=0x7f040029;
-        public static final int mainmap=0x7f040021;
+        public static final int left_menu_lv=0x7f04002b;
+        public static final int mainmap=0x7f040023;
         public static final int margin=0x7f040002;
         public static final int menuBtn=0x7f040006;
         public static final int peidian=0x7f040018;
@@ -215,11 +216,12 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int peidiantext=0x7f040017;
         public static final int phone=0x7f04001e;
         public static final int phonetext=0x7f04001d;
-        public static final int phonevalue=0x7f04003b;
+        public static final int phonevalue=0x7f04003d;
+        public static final int pregallery=0x7f040021;
         public static final int price=0x7f040012;
         public static final int pricebtn=0x7f040013;
         public static final int pricetext=0x7f040011;
-        public static final int pricevalue=0x7f04003a;
+        public static final int pricevalue=0x7f04003c;
         public static final int region=0x7f04000c;
         public static final int regionbtn=0x7f04000d;
         public static final int regiontext=0x7f04000b;
@@ -227,32 +229,34 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int searchBtn=0x7f040007;
         public static final int search_dialog=0x7f04000a;
         public static final int selected_view=0x7f040004;
-        public static final int slidingmenumain=0x7f040034;
+        public static final int slidingmenumain=0x7f040036;
         public static final int struct=0x7f04001b;
         public static final int structbtn=0x7f04001c;
         public static final int structtext=0x7f04001a;
         public static final int tab1=0x7f040008;
         public static final int tab2=0x7f040009;
-        public static final int tab_label=0x7f04003c;
+        public static final int tab_label=0x7f04003e;
         public static final int tab_nav=0x7f040005;
-        public static final int tmplinelayout=0x7f040035;
+        public static final int tmplinelayout=0x7f040038;
     }
     public static final class layout {
         public static final int activity_main=0x7f030000;
         public static final int activity_search=0x7f030001;
-        public static final int fac_list=0x7f030002;
-        public static final int fac_map=0x7f030003;
-        public static final int left_menu_listviewitem=0x7f030004;
-        public static final int left_menu_panel=0x7f030005;
-        public static final int map_info_window=0x7f030006;
-        public static final int slidingmenumain=0x7f030007;
-        public static final int tab_listview_item=0x7f030008;
-        public static final int tabmini=0x7f030009;
+        public static final int fac_image_gallery=0x7f030002;
+        public static final int fac_list=0x7f030003;
+        public static final int fac_map=0x7f030004;
+        public static final int left_menu_listviewitem=0x7f030005;
+        public static final int left_menu_panel=0x7f030006;
+        public static final int map_info_window=0x7f030007;
+        public static final int slidingmenumain=0x7f030008;
+        public static final int tab_listview_item=0x7f030009;
+        public static final int tabmini=0x7f03000a;
     }
     public static final class menu {
-        public static final int lbsfac_list=0x7f0a0000;
-        public static final int main=0x7f0a0001;
-        public static final int search=0x7f0a0002;
+        public static final int fac_image_gallery=0x7f0a0000;
+        public static final int lbsfac_list=0x7f0a0001;
+        public static final int main=0x7f0a0002;
+        public static final int search=0x7f0a0003;
     }
     public static final class string {
         public static final int _address=0x7f08000a;
@@ -280,29 +284,30 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int _struct=0x7f08000f;
         public static final int _sushe_area=0x7f08000c;
         public static final int _voice_search=0x7f080014;
-        public static final int action_forgot_password=0x7f080028;
+        public static final int action_forgot_password=0x7f080029;
         public static final int action_settings=0x7f080001;
-        public static final int action_sign_in_register=0x7f080026;
-        public static final int action_sign_in_short=0x7f080027;
+        public static final int action_sign_in_register=0x7f080027;
+        public static final int action_sign_in_short=0x7f080028;
         public static final int app_name=0x7f080000;
         public static final int button_cancel=0x7f08001d;
         public static final int button_ok=0x7f08001c;
-        public static final int error_field_required=0x7f08002d;
-        public static final int error_incorrect_password=0x7f08002c;
-        public static final int error_invalid_email=0x7f08002a;
-        public static final int error_invalid_password=0x7f08002b;
+        public static final int error_field_required=0x7f08002e;
+        public static final int error_incorrect_password=0x7f08002d;
+        public static final int error_invalid_email=0x7f08002b;
+        public static final int error_invalid_password=0x7f08002c;
         public static final int exit_confirm=0x7f08001b;
         public static final int gpsfollow=0x7f080005;
         public static final int gpslocate=0x7f080006;
         public static final int gpsrotate=0x7f080007;
         public static final int hello_world=0x7f080002;
-        public static final int login_progress_signing_in=0x7f080029;
+        public static final int login_progress_signing_in=0x7f08002a;
         /**  Strings related to login 
          */
-        public static final int prompt_email=0x7f080024;
-        public static final int prompt_password=0x7f080025;
+        public static final int prompt_email=0x7f080025;
+        public static final int prompt_password=0x7f080026;
+        public static final int title_activity_fac_image_gallery=0x7f080023;
         public static final int title_activity_lbsfac_list=0x7f080017;
-        public static final int title_activity_search=0x7f080023;
+        public static final int title_activity_search=0x7f080024;
     }
     public static final class style {
         /** 

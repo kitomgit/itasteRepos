@@ -4,25 +4,31 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.AlertDialog.Builder;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.text.TextUtils;
+import android.view.View;
 import android.widget.BaseAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
+import android.widget.Toast;
 
-import com.itaste.yuntu.adapter.FacListBaseListAdapter;
+import com.itaste.yuntu.adapter.FacBaseListAdapter;
 import com.itaste.yuntu.util.ItasteApplication;
 import com.itaste.yuntu.util.LBSCloudSearch;
 
 public class LBSFacListActivity extends Activity {
 	private ListView faclv;
+	public final static int CALL_PHONE=1;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.fac_list);
 		faclv = (ListView) this.findViewById(R.id.faclv);
 		ItasteApplication application = ItasteApplication.getInstance();
-		BaseAdapter listAdapter = new FacListBaseListAdapter(this,application.getValidateDto().getDatas());
+		BaseAdapter listAdapter = new FacBaseListAdapter(this,application.getValidateDto().getDatas());
 		faclv.setAdapter(listAdapter);
 		application.listAdapter = listAdapter;
 	}
@@ -66,6 +72,4 @@ public class LBSFacListActivity extends Activity {
 			LBSCloudSearch.search(this);
 		}
 	}
-	
-	
 }

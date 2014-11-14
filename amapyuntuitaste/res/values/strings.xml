@@ -36,5 +36,6 @@
     <string name="_query">查询</string>
     <string name="_cancel">取消</string>
     <string name="_mylocation">我的位置</string>
+    <string name="title_activity_fac_image_gallery">FacImageGallery</string>
 
 </resources>
