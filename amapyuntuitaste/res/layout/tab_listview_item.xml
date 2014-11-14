@@ -3,13 +3,13 @@
     android:layout_height="170dp" 
     android:layout_marginTop="5dp"
     android:orientation="horizontal"
+    android:descendantFocusability="blocksDescendants"
     >
     <!--     android:descendantFocusability="blocksDescendants" -->
    <LinearLayout 
     android:layout_width="wrap_content"
     android:layout_height="match_parent" 
     android:orientation="vertical"
-    android:id="@+id/tmplinelayout"
     >
     <com.loopj.android.image.SmartImageView
         android:id="@+id/facimagefirst"

@@ -3,24 +3,30 @@ package com.itaste.yuntu.adapter;
 import java.util.List;
 
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.View.OnTouchListener;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.BaseAdapter;
-import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.itaste.yuntu.R;
 import com.itaste.yuntu.model.DtoImage;
 import com.itaste.yuntu.model.FacInfoModel;
 import com.loopj.android.image.SmartImageView;
 
-public class FacListBaseListAdapter extends BaseAdapter  implements OnItemClickListener {
+public class FacBaseListAdapter extends BaseAdapter  implements OnItemClickListener {
 	private Context context;
 	private List<FacInfoModel> facinfs;
-	public FacListBaseListAdapter(Context context,List<FacInfoModel> facinfs) {
+	public FacBaseListAdapter(Context context,List<FacInfoModel> facinfs) {
 		this.context = context;
 		this.facinfs = facinfs;
 	}
@@ -58,6 +64,7 @@ public class FacListBaseListAdapter extends BaseAdapter  implements OnItemClickL
 			contentHolder.pricevalue = (TextView) lay.findViewById(R.id.pricevalue);
 			//电话
 			contentHolder.phonevalue = (TextView) lay.findViewById(R.id.phonevalue);
+			
 			lay.setTag(contentHolder);//绑定数据
 		 }else{
 			 contentHolder = (ListCacheViewHolder) lay.getTag();
@@ -70,7 +77,21 @@ public class FacListBaseListAdapter extends BaseAdapter  implements OnItemClickL
 		 contentHolder.areavalue.setText(facinfo.getFac_area());
 		 contentHolder.pricevalue.setText(facinfo.getFac_rent_orsale_price());
 		 contentHolder.phonevalue.setText(facinfo.getFac_mobile());
-		
+		 contentHolder.phonevalue.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View textview) {
+				TextView phonetv = (TextView) textview;
+				String phone = phonetv.getText().toString();
+				if(TextUtils.isEmpty(phone)){
+					phone="114";
+				}
+				Toast.makeText(context,phone,Toast.LENGTH_LONG).show();
+				Intent callphoneIntent= new Intent(Intent.ACTION_CALL,Uri.parse("tel:"+phone));
+				context.startActivity(callphoneIntent);
+			
+			}
+		});
 		return lay;
 	}
 	/**

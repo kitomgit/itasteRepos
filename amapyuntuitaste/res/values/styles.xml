@@ -56,7 +56,7 @@
 	    <item name="android:textSize">14sp</item>
 	</style>
 	<style name="listViewItem" parent="textwhite">
-	    <item name="android:background">@drawable/list_view_bg</item>
+	    <item name="android:background">@drawable/tabmini</item>
 	    <item name="android:textColor">#FFFFFF</item>
 	    <item name="android:textStyle">bold</item>
 	    <item name="android:textSize">14sp</item>
