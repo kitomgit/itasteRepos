@@ -1,11 +1,14 @@
 package com.itaste.yuntu;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Color;
 import android.location.Location;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -14,6 +17,7 @@ import android.widget.RadioGroup.OnCheckedChangeListener;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.alibaba.fastjson.JSON;
 import com.amap.api.location.AMapLocation;
 import com.amap.api.location.AMapLocationListener;
 import com.amap.api.location.LocationManagerProxy;
@@ -21,6 +25,7 @@ import com.amap.api.location.LocationProviderProxy;
 import com.amap.api.maps.AMap;
 import com.amap.api.maps.AMap.InfoWindowAdapter;
 import com.amap.api.maps.AMap.OnInfoWindowClickListener;
+import com.amap.api.maps.AMap.OnMapLongClickListener;
 import com.amap.api.maps.AMap.OnMarkerClickListener;
 import com.amap.api.maps.CameraUpdateFactory;
 import com.amap.api.maps.LocationSource;
@@ -37,17 +42,22 @@ import com.amap.api.maps.model.MarkerOptions;
 import com.itaste.yuntu.model.DtoImage;
 import com.itaste.yuntu.model.FacInfoModel;
 import com.itaste.yuntu.util.ItasteApplication;
+import com.itaste.yuntu.util.LBSCloudUtils;
 import com.loopj.android.image.SmartImageView;
 
 
 public class LBSFacMapActivity  extends Activity 
-implements LocationSource, AMapLocationListener,OnCheckedChangeListener, OnMarkerClickListener, OnInfoWindowClickListener, InfoWindowAdapter
+implements LocationSource, AMapLocationListener,
+OnCheckedChangeListener, OnMarkerClickListener,
+OnInfoWindowClickListener, InfoWindowAdapter,
+OnMapLongClickListener
 {
 	    private AMap aMap;
 	    private MapView mapView;
 	    private OnLocationChangedListener mListener;
 	    private LocationManagerProxy mAMapLocationManager;
 	    private RadioGroup mGPSModeGroup;//地图定位模式切换
+	    private LatLng userClickLatlng;//用户点击的位置坐标
 	  
 	 
 	    @Override
@@ -66,6 +76,7 @@ implements LocationSource, AMapLocationListener,OnCheckedChangeListener, OnMarke
 	        if (aMap == null) {
 	            aMap = mapView.getMap();
 	            setUpMap();
+	           
 	        }
 	        //将当前activity加入到application中
 	        ItasteApplication.getInstance().facMapActivity = this;
@@ -87,6 +98,8 @@ implements LocationSource, AMapLocationListener,OnCheckedChangeListener, OnMarke
 			aMap.setOnMarkerClickListener(this);// 设置点击marker事件监听器
 			aMap.setOnInfoWindowClickListener(this);// 设置点击infoWindow事件监听器
 			aMap.setInfoWindowAdapter(this);// 设置自定义InfoWindow样式
+			//长按时为添加或者修改标记处的数据
+			aMap.setOnMapLongClickListener(this);
 	    }
 	 
 	    /**
@@ -217,7 +230,7 @@ implements LocationSource, AMapLocationListener,OnCheckedChangeListener, OnMarke
 			Builder latLngbuilder = new LatLngBounds.Builder();
 			Marker addMarker = null;
 			FacInfoModel fac = null;
-			for (int i=0;i<facInfos.size();i++) {
+			for (int i=0;facInfos!=null&&i<facInfos.size();i++) {
 				fac = facInfos.get(i);
 				//添加标注
 				MarkerOptions markerOption = 
@@ -317,14 +330,37 @@ implements LocationSource, AMapLocationListener,OnCheckedChangeListener, OnMarke
 			    fac_struct.setText(fac.getFac_struct());
 			    fac_peidian.setText(fac.getFac_peidian());
 			    fac_desc.setText(fac.getFac_desc());
+			    
 		}
 
-		
+
+		@Override
+		public void onMapLongClick(LatLng latlng) {
+			
+			Toast.makeText(this, "纬度："+latlng.latitude+"精度："+latlng.longitude, Toast.LENGTH_LONG).show();
+			/*String url="mqqwpa://im/chat?chat_type=wpa&uin=501863587";  
+			startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(url)));*/
+			userClickLatlng = latlng;
+			Intent addFacInfoIntent = new Intent(this, FacInfoAddActivity.class);
+			startActivityForResult(addFacInfoIntent,ItasteApplication.ADD_FAC_REQUEST_CODE);
+			
+		}
+		//添加数据
+		@Override
+		protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+			if(ItasteApplication.ADD_FAC_REQUEST_CODE==requestCode&&ItasteApplication.ADD_FAC_RESULT_CODE==resultCode&&data!=null){
+				HashMap<String,String> facinfo = (HashMap<String, String>) data.getSerializableExtra("addfacinfo");
+				facinfo.put(FacInfoModel._LOCATION, userClickLatlng.longitude+","+userClickLatlng.latitude);
+				String facinfostr = JSON.toJSONString(facinfo);
+				LBSCloudUtils.addinfo(this, facinfostr);
+				
+			}
+			
+		}
 		
 		@Override
 		public void onInfoWindowClick(Marker arg0) {
 			Toast.makeText(this, "ni dian ji le infowin", Toast.LENGTH_LONG).show();
-			
 		}
 
 		@Override
@@ -350,6 +386,7 @@ implements LocationSource, AMapLocationListener,OnCheckedChangeListener, OnMarke
 			// TODO Auto-generated method stub
 			
 		}
+
 		
 			
 }

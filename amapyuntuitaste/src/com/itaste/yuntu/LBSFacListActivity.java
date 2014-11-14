@@ -17,7 +17,7 @@ import android.widget.Toast;
 
 import com.itaste.yuntu.adapter.FacBaseListAdapter;
 import com.itaste.yuntu.util.ItasteApplication;
-import com.itaste.yuntu.util.LBSCloudSearch;
+import com.itaste.yuntu.util.LBSCloudUtils;
 
 public class LBSFacListActivity extends Activity {
 	private ListView faclv;
@@ -50,7 +50,7 @@ public class LBSFacListActivity extends Activity {
 					@Override
 					public void onClick(DialogInterface arg0, int arg1) {
 						application.istosearch = true;
-						startActivityForResult(new Intent(LBSFacListActivity.this.getParent(), SearchActivity.class), R.string._height_search);
+						startActivityForResult(new Intent(LBSFacListActivity.this, SearchActivity.class), ItasteApplication.List_REQUEST_SEARCH_CODE);
 						
 					}
 				   }).setNegativeButton("稍后", new OnClickListener() {
@@ -68,8 +68,8 @@ public class LBSFacListActivity extends Activity {
 	}
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-		if(ItasteApplication.List_REQUEST_SEARCH_CODE==requestCode&&resultCode==ItasteApplication.SEARCH_RESULT_CODE){
-			LBSCloudSearch.search(this);
+		if(ItasteApplication.List_REQUEST_SEARCH_CODE==requestCode&&resultCode==ItasteApplication.SEARCH_FAC_RESULT_CODE){
+			LBSCloudUtils.search(this);
 		}
 	}
 }

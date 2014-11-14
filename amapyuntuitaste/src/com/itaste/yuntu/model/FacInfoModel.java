@@ -42,6 +42,8 @@ public class FacInfoModel{
  private String _updatetime;//修改时间
  private String fac_mobile;//电话
  private String fac_region;//区域
+ private String qq_code;
+ private String weixin_code;
 //field string
  public final static String _ID="_id";//唯一标示
  public final static String _LOCATION="_location";//经纬度
@@ -61,6 +63,8 @@ public class FacInfoModel{
  public final static String _UPDATETIME="_updatetime";//修改时间
  public final static String FAC_MOBILE="fac_mobile";//电话
  public final static String FAC_REGION="fac_region";//区域
+ public final static  String QQ_CODE="qq_code";
+ public final static String WEIXIN_CODE="weixin_code";
  
  private List<DtoImage> _image = new ArrayList<DtoImage>();//图片信息
 public int get_id() {
@@ -75,7 +79,7 @@ public LatLng getLocation() {
 
 public void setLocation(String _locationStr) {
 	if (_locationStr!=null&&!_locationStr.trim().equals("")) {
-		try{
+		try{ 
 		String[] localLat = _locationStr.split(",");
 		this._location = new LatLng(Double.valueOf(localLat[1]),Double.valueOf(localLat[0]));
 		}catch(Exception e){
@@ -189,5 +193,18 @@ public String getFac_region() {
 public void setFac_region(String fac_region) {
 	this.fac_region = fac_region;
 }
+public String getQq_code() {
+	return qq_code;
+}
+public void setQq_code(String qq_code) {
+	this.qq_code = qq_code;
+}
+public String getWeixin_code() {
+	return weixin_code;
+}
+public void setWeixin_code(String weixin_code) {
+	this.weixin_code = weixin_code;
+}
+
 
 }

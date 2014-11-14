@@ -1,9 +1,12 @@
 package com.itaste.yuntu.model;
+
+import java.io.Serializable;
+
 /**
  * 高德地图记录的图片信息
  *
  */
-public class DtoImage {
+public class DtoImage implements Serializable {
 private String _id;
 private String _preurl;
 private String _url;

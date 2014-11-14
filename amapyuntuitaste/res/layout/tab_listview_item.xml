@@ -1,6 +1,6 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="170dp" 
+    android:layout_height="250dp" 
     android:layout_marginTop="5dp"
     android:orientation="horizontal"
     android:descendantFocusability="blocksDescendants"
@@ -21,7 +21,7 @@
     </LinearLayout>
 <LinearLayout 
     android:layout_width="match_parent"
-    android:layout_height="170dp" 
+    android:layout_height="250dp" 
     android:background="@drawable/coffe_bg"
     android:orientation="vertical"
     android:layout_gravity="center_vertical"
@@ -124,6 +124,58 @@
             />
         <TextView
             android:id="@+id/phonevalue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            style="@style/textwhite"
+            android:layout_marginLeft="5dp"
+            />
+        
+   </LinearLayout>
+   
+   <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        style="@style/listViewItem"
+        >
+
+        <TextView
+            android:id="@+id/qqtext"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="2dp"
+            android:layout_gravity="center_vertical"
+            style="@style/textwhite"
+            android:text="@string/_qq_code"
+            />
+        <TextView
+            android:id="@+id/qqvalue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            style="@style/textwhite"
+            android:layout_marginLeft="5dp"
+            />
+        
+   </LinearLayout>
+   
+   <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        style="@style/listViewItem"
+        >
+
+        <TextView
+            android:id="@+id/weixintext"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="2dp"
+            android:layout_gravity="center_vertical"
+            style="@style/textwhite"
+            android:text="@string/_weinxin_code"
+            />
+        <TextView
+            android:id="@+id/weixinvalue"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"

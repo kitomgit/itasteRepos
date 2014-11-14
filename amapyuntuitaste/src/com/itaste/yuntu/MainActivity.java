@@ -19,7 +19,7 @@ import android.widget.TextView;
 
 import com.itaste.yuntu.adapter.LeftSlideMenuListViewAdapter;
 import com.itaste.yuntu.util.ItasteApplication;
-import com.itaste.yuntu.util.LBSCloudSearch;
+import com.itaste.yuntu.util.LBSCloudUtils;
 import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
 
 @SuppressLint("NewApi")
@@ -60,8 +60,8 @@ public class MainActivity extends TabActivity implements OnClickListener,OnTabCh
 	//查询回归之后
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-		if(ItasteApplication.MAIN_REQUEST_SEARCH_CODE==requestCode&&resultCode==ItasteApplication.SEARCH_RESULT_CODE){
-			LBSCloudSearch.search(this);
+		if(ItasteApplication.MAIN_REQUEST_SEARCH_CODE==requestCode&&resultCode==ItasteApplication.SEARCH_FAC_RESULT_CODE){
+			LBSCloudUtils.search(this);
 		}
 	}
 	

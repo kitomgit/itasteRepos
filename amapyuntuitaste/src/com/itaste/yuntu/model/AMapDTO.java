@@ -60,6 +60,7 @@ public List<T> getDatas() {
 public void setDatas(List<T> datas) {
 	this.datas = datas;
 }
+//由于listview adapter缘故，要持有相同的datas内存，必须copy，不能重新复制
 public  void  copy(AMapDTO<T> dto){
 	
 	if(dto!=null){

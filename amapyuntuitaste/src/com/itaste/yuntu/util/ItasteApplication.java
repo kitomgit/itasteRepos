@@ -45,13 +45,16 @@ public class ItasteApplication extends  Application{
 	
 	public static ItasteApplication instance;
 	
-	public final static int SEARCH_RESULT_CODE=1;
+	public final static int SEARCH_FAC_RESULT_CODE=1;
 	
 	public final static int MAIN_REQUEST_SEARCH_CODE=2; 
 	
 	public final static int List_REQUEST_SEARCH_CODE=2; 
 	
-	
+	//添加数据result code
+	public final static int ADD_FAC_RESULT_CODE=3;
+	//发出activity 
+	public final static int ADD_FAC_REQUEST_CODE=4;
 	
 	
 	public static ItasteApplication getInstance(){

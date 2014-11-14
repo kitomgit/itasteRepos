@@ -37,5 +37,10 @@
     <string name="_cancel">取消</string>
     <string name="_mylocation">我的位置</string>
     <string name="title_activity_fac_image_gallery">FacImageGallery</string>
+    <string name="_qq_code">qq号：</string>
+    <string name="_weinxin_code">微信：</string>
+    <string name="title_activity_fac_info_add">FacInfoAdd</string>
+    <string name="_floor">楼层：</string>
+    <string name="_add">添加</string>
 
 </resources>

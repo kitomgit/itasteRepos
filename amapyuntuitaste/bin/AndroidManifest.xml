@@ -61,8 +61,13 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.itaste.yuntu.FacImageGallery"
-            android:label="@string/title_activity_fac_image_gallery" >
+            android:name="com.itaste.yuntu.FacImageGalleryActivity"
+            android:label="@string/title_activity_fac_image_gallery"
+            android:theme="@style/dialogStyle" >
+        </activity>
+        <activity
+            android:name="com.itaste.yuntu.FacInfoAddActivity"
+            android:label="@string/title_activity_fac_info_add" >
         </activity>
     </application>
 

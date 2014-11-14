@@ -21,7 +21,6 @@ import android.widget.Toast;
 public class SearchActivity extends Activity {
 	private LinearLayout layout; 
 	private EditText struct,region,price,floor,peidian,area,phone;
-	private Button structbtn,regionbtn,pricebtn,floorbtn,peidianbtn,areabtn;
 	
 
 	/* (non-Javadoc)
@@ -55,14 +54,14 @@ public class SearchActivity extends Activity {
 		area = (EditText) this.findViewById(R.id.area);
 		phone = (EditText) this.findViewById(R.id.phone);
 		struct = (EditText) this.findViewById(R.id.struct);
+		layout=(LinearLayout)findViewById(R.id.search_dialog);
 		
-		regionbtn = (Button) this.findViewById(R.id.regionbtn);
+		/*regionbtn = (Button) this.findViewById(R.id.regionbtn);
 		pricebtn = (Button) this.findViewById(R.id.pricebtn);
 		floorbtn = (Button) this.findViewById(R.id.floorbtn);
 		peidianbtn = (Button) this.findViewById(R.id.peidianbtn);
 		areabtn = (Button) this.findViewById(R.id.areabtn);
-		structbtn = (Button) this.findViewById(R.id.structbtn);
-		layout=(LinearLayout)findViewById(R.id.search_dialog);
+		structbtn = (Button) this.findViewById(R.id.structbtn);*/
 		
 	} 
 	@Override 
@@ -96,7 +95,7 @@ public class SearchActivity extends Activity {
 	filters.put(FacInfoModel.FAC_STRUCT, getSearch(structstr));
 	filters.put(FacInfoModel.FAC_MOBILE, phonestr);
 	app.setFilters(filters);
-	setResult(ItasteApplication.SEARCH_RESULT_CODE);
+	setResult(ItasteApplication.SEARCH_FAC_RESULT_CODE);
 	this.finish(); 
 	}
 
@@ -156,7 +155,7 @@ public class SearchActivity extends Activity {
 
 
 	private String getSearch(String str) {
-		String result = "";
+		String result = str;
 		if("不限".equals(str)){
 			result = "";
 		}

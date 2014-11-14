@@ -11,7 +11,6 @@ import android.widget.Toast;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.TypeReference;
-import com.itaste.yuntu.MainActivity;
 import com.itaste.yuntu.R;
 import com.itaste.yuntu.model.AMapDTO;
 import com.itaste.yuntu.model.FacInfoModel;
@@ -24,14 +23,16 @@ import com.loopj.android.http.RequestParams;
  * 高德云检索使用类
  *
  */
-public class LBSCloudSearch {
+public class LBSCloudUtils {
 	
-	private final static String TAG = "LBSCloudSearch";
+	private final static String TAG = "LBSCloudUtils";
 	
 	//云检索API URI
 	private static final String SEARCH_URI_LOCAL = "http://yuntuapi.amap.com/datasearch/local?";
 	private static final String SEARCH_URI_NEARBY = "http://yuntuapi.amap.com/datasearch/around?";
 	private static final String SEARCH_URI_ID = "http://yuntuapi.amap.com/datasearch/id?";
+	//云存储API URI
+	private static final String ADD_INFO_URI = "http://yuntuapi.amap.com/datamanage/data/create?";
 	
 	public static final int SEARCH_TYPE_NEARBY = 1;
 	public static final int SEARCH_TYPE_URI_ID = 2;
@@ -80,6 +81,7 @@ public class LBSCloudSearch {
 				 params.put("key", ak);
 				 params.put("tableid", tableid);
 				 client.get(requestURL.toString(),params,handler);
+				 System.out.println("params>>>>>>:"+params);
 			} catch (Exception e) {
 				Log.e(TAG, "网络异常，请检查网络后重试！");
 				e.printStackTrace();
@@ -94,7 +96,7 @@ public class LBSCloudSearch {
   		filterParams.put("keywords", "");
   		filterParams.put("filter", "fac_area:2000");*/
   		
-		LBSCloudSearch.request(LBSCloudSearch.SEARCH_TYPE_LOCAL,new AsyncHttpResponseHandler(){
+		LBSCloudUtils.request(LBSCloudUtils.SEARCH_TYPE_LOCAL,new AsyncHttpResponseHandler(){
 			 @Override
 			public void onSuccess(int arg0, Header[] arg1, byte[] data) {
 				String dataStr = new String(data);
@@ -114,9 +116,9 @@ public class LBSCloudSearch {
 			  private void refreshActiveView() {
 			  		int count =application.getValidateDto().getCount();
 					if(application.currentactivateView.equals(context.getString(R.string._maptab))){
-						if(count>0){
+						//if(count>0){
 							application.facMapActivity.addMarkersToMap();
-						}
+						//}
 			  		}else if(application.currentactivateView.equals(context.getString(R.string._listtab))){
 						BaseAdapter listAdapter = application.listAdapter;
 						if(listAdapter!=null){
@@ -134,5 +136,34 @@ public class LBSCloudSearch {
 				
 			}
 		 });
+  	}
+  	
+  	//添加info
+  	public static void addinfo(final Context context,String jsoninfo){
+  		AsyncHttpClient client = new AsyncHttpClient();
+  		RequestParams params = new RequestParams();
+  		params.put("key", ak);
+  		params.put("tableid", tableid);
+  		params.put("data",jsoninfo);
+  		client.post(ADD_INFO_URI, params,new AsyncHttpResponseHandler() {
+			
+			@Override
+			public void onSuccess(int statusCode, Header[] headers, byte[] data) {
+				String resultstr = new String(data);
+				HashMap<String,String> resultmap =  JSON.parseObject(resultstr, new TypeReference<HashMap<String,String>>(){});
+				Toast.makeText(context, resultstr, Toast.LENGTH_LONG).show();
+				if(false&&"1".equals(resultmap.get("status"))){
+					Toast.makeText(context, "数据已添加！", Toast.LENGTH_LONG).show();
+				}
+			}
+			
+			@Override
+			public void onFailure(int statusCode, Header[] headers,
+					byte[] responseBody, Throwable error) {
+				
+				Toast.makeText(context, "添加数据失败，请重试", Toast.LENGTH_LONG).show();
+			}
+		});
+  		
   	}
 }
