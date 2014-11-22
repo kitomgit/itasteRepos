@@ -35,7 +35,7 @@ public class LBSCloudUtils {
 	private static final String ADD_INFO_URI = "http://yuntuapi.amap.com/datamanage/data/create?";
 	
 	public static final int SEARCH_TYPE_NEARBY = 1;
-	public static final int SEARCH_TYPE_URI_ID = 2;
+	public static final int SEARCH_TYPE_URI_ID = 2; 
 	public static final int SEARCH_TYPE_LOCAL = 3;
 	
 	public static int currSearchType = 0;
