@@ -1,0 +1,6 @@
+*.class
+*.apk
+*.rm
+bin/
+gen/
+.settings/

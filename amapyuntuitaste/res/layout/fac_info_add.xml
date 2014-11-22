@@ -1,0 +1,391 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="2dp"
+    android:paddingRight="2dp"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:orientation="horizontal"
+    android:background="@drawable/left_bg"
+    android:id="@+id/add_dialog"
+    android:windowSoftInputMode="stateHidden" 
+    tools:context=".FacInfoAddActivity" >
+    
+    <LinearLayout 
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    >
+     <LinearLayout 
+    android:layout_width="0dp"
+    android:layout_height="match_parent"
+    android:layout_weight="3"
+    android:orientation="vertical"
+    android:layout_marginRight="10dp"
+    >
+    <ScrollView
+        android:id="@+id/imageshowscroll"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:overScrollMode="ifContentScrolls"
+        
+         >
+        <LinearLayout
+            android:id="@+id/picregion"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical" >
+          
+        <ImageView 
+        android:layout_width="72dp"
+        android:layout_height="72dp"
+        android:src="@drawable/add_image_icon"
+        android:clickable="true"
+        android:onClick="addfacpic"
+        />
+        </LinearLayout>
+    </ScrollView>
+    
+    </LinearLayout>
+   
+       <LinearLayout 
+    android:layout_width="0dp"
+    android:layout_height="match_parent"
+    android:layout_weight="10"
+    android:orientation="vertical"
+    >
+    
+    <LinearLayout 
+    android:layout_width="match_parent"
+    android:layout_height="32dp"
+    android:orientation="horizontal"
+    >
+    <TextView
+        android:id="@+id/nametext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/textwhite"
+        android:text="@string/_name" />
+
+    <EditText
+        android:id="@+id/name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/textwhite"
+        android:text="sdfsdfsdfsdfsdf"
+        android:ems="8" />
+
+	</LinearLayout>
+	<LinearLayout 
+    android:layout_width="match_parent"
+    android:layout_height="32dp"
+    android:orientation="horizontal"
+    >
+    <TextView
+        android:id="@+id/addresstext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/textwhite"
+        android:text="@string/_address" />
+
+    <EditText
+        android:id="@+id/address"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/textwhite"
+        android:text="hahahha231232"
+        android:ems="8" />
+
+	</LinearLayout>
+	
+	<LinearLayout 
+    android:layout_width="match_parent"
+    android:layout_height="32dp"
+    android:orientation="horizontal"
+    >
+    <TextView
+        android:id="@+id/phonetext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/textwhite"
+        android:text="@string/_mobile" />
+
+    <EditText
+        android:id="@+id/phone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/textwhite"
+        android:text="15024157821"
+        android:ems="8" />
+
+	</LinearLayout>
+	
+	<LinearLayout 
+    android:layout_width="match_parent"
+    android:layout_height="32dp"
+    android:orientation="horizontal"
+    >
+    <TextView
+        android:id="@+id/heighttext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/textwhite"
+        android:text="@string/_height" />
+
+    <EditText
+        android:id="@+id/height"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/textwhite"
+        android:text="3"
+        android:ems="8" />
+
+	</LinearLayout>
+    
+	 
+    
+   <LinearLayout 
+    android:layout_width="match_parent"
+    android:layout_height="32dp"
+    android:orientation="horizontal"
+    >
+    <TextView
+        android:id="@+id/areatext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/textwhite"
+        android:text="@string/_area" />
+
+    <EditText
+        android:id="@+id/area"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/textwhite"
+        android:text="2005"
+        android:ems="8" >
+    </EditText>
+   </LinearLayout>
+
+
+    <LinearLayout 
+    android:layout_width="match_parent"
+    android:layout_height="32dp"
+    android:orientation="horizontal"
+    >
+
+    <TextView
+        android:id="@+id/pricetext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/textwhite"
+        android:text="@string/_price" />
+
+    <EditText
+        android:id="@+id/price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/textwhite"
+        android:text="15"
+        android:ems="8" />
+    </LinearLayout>
+    
+	
+    <LinearLayout 
+    android:layout_width="match_parent"
+    android:layout_height="32dp"
+    android:orientation="horizontal"
+    >
+    <TextView
+        android:id="@+id/regiontext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/textwhite"
+        android:text="@string/_region" />
+      <EditText
+        android:id="@+id/region"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/textwhite"
+        android:ems="8" />
+
+   <Button
+       android:id="@+id/regionbtn"
+       style="@style/lightgreybtn"
+       android:layout_width="40dp"
+       android:layout_height="32dp"
+       android:text="@string/_choose"
+       android:onClick="chooseCondition" />
+
+    </LinearLayout>
+   
+     <LinearLayout 
+    android:layout_width="match_parent"
+    android:layout_height="32dp"
+    android:orientation="horizontal"
+    >
+
+    <TextView
+        android:id="@+id/floortext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/textwhite"
+        android:text="@string/_floor" />
+
+    <EditText
+        android:id="@+id/floor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/textwhite"
+        android:ems="8" />
+
+   <Button
+        android:id="@+id/floorbtn"
+        style="@style/lightgreybtn"
+        android:layout_width="40dp"
+        android:layout_height="32dp"
+        android:text="@string/_choose"
+        android:onClick="chooseCondition"
+       />
+    </LinearLayout>
+ <LinearLayout 
+    android:layout_width="match_parent"
+    android:layout_height="32dp"
+    android:orientation="horizontal"
+    >
+    <TextView
+        android:id="@+id/peidiantext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/textwhite"
+        android:text="@string/_peidian" />
+
+    <EditText
+        android:id="@+id/peidian"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/textwhite"
+        android:ems="8" />
+
+   <Button
+       android:id="@+id/peidianbtn"
+        style="@style/lightgreybtn"
+        android:layout_width="40dp"
+        android:layout_height="32dp"
+        android:text="@string/_choose"
+        android:onClick="chooseCondition"
+       />
+	</LinearLayout>
+	
+<LinearLayout 
+    android:layout_width="match_parent"
+    android:layout_height="32dp"
+    android:orientation="horizontal"
+    >
+    <TextView
+        android:id="@+id/structtext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/textwhite"
+        android:text="@string/_struct" />
+    
+  <EditText
+        android:id="@+id/struct"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/textwhite"
+        android:ems="8" />
+   <Button
+        android:id="@+id/structbtn"
+        style="@style/lightgreybtn"
+        android:layout_width="40dp"
+        android:layout_height="32dp"
+        android:text="@string/_choose"
+        android:onClick="chooseCondition"
+       />
+    </LinearLayout>
+ 
+ 
+	<LinearLayout 
+    android:layout_width="match_parent"
+    android:layout_height="32dp"
+    android:orientation="horizontal"
+    >
+    <TextView
+        android:id="@+id/qqcodetext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/textwhite"
+        android:text="@string/_qq_code" />
+
+    <EditText
+        android:id="@+id/qqcode"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/textwhite"
+        android:text="1003189234"
+        android:ems="8" />
+
+	</LinearLayout>
+	<LinearLayout 
+    android:layout_width="match_parent"
+    android:layout_height="32dp"
+    android:orientation="horizontal"
+    >
+    <TextView
+        android:id="@+id/weixintext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/textwhite"
+        android:text="@string/_weinxin_code" />
+
+    <EditText
+        android:id="@+id/weinxin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/textwhite"
+        android:text="ki_tomsdfsfsdf"
+        android:ems="8" />
+
+	</LinearLayout>
+	
+	
+
+	 <RelativeLayout
+	     android:layout_width="match_parent"
+	     android:layout_height="wrap_content"
+	     android:orientation="horizontal" >
+
+	     <Button
+	         android:id="@+id/addBtn"
+	         android:layout_width="60dp"
+	         android:layout_height="32dp"
+	         android:layout_alignParentLeft="true"
+	         android:layout_alignParentTop="true"
+	         android:layout_marginLeft="43dp"
+	         style="@style/lightgreybtn"
+	         android:text="@string/_add"
+	         android:textColor="@color/white"
+	         android:onClick="addFacInfoClickHandler"
+	         />
+
+	     <Button
+	         android:id="@+id/cancelBtn"
+	         android:layout_width="60dp"
+	         android:layout_height="32dp"
+	         android:layout_alignParentTop="true"
+	         android:layout_marginLeft="32dp"
+	         android:layout_toRightOf="@+id/addBtn"
+	         style="@style/lightgreybtn"
+	         android:text="@string/_cancel"
+	         android:textColor="@color/white"
+	         />
+
+	 </RelativeLayout>
+    </LinearLayout>
+     
+    </LinearLayout>
+    
+    
+
+</ScrollView>
