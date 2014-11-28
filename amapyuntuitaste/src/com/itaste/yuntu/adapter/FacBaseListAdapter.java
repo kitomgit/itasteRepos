@@ -119,7 +119,7 @@ public class FacBaseListAdapter extends BaseAdapter  implements OnItemClickListe
 					v.setBackgroundResource(R.drawable.tab_top_btn_blue);
 					v.getBackground().setAlpha(100);
 				}else if(event.getAction()==MotionEvent.ACTION_UP){
-					v.setBackgroundResource(R.drawable.list_view_bg);
+					v.setBackgroundResource(R.drawable.muwen_item_bg);
 					v.getBackground().setAlpha(225);
 				}
 				return false;
@@ -151,7 +151,7 @@ public class FacBaseListAdapter extends BaseAdapter  implements OnItemClickListe
 						v.setBackgroundResource(R.drawable.tab_top_btn_blue);
 						v.getBackground().setAlpha(100);
 					}else if(event.getAction()==MotionEvent.ACTION_UP){
-						v.setBackgroundResource(R.drawable.list_view_bg);
+						v.setBackgroundResource(R.drawable.muwen_item_bg);
 						v.getBackground().setAlpha(225);
 					}
 					return false;
@@ -189,7 +189,7 @@ public class FacBaseListAdapter extends BaseAdapter  implements OnItemClickListe
 							v.setBackgroundResource(R.drawable.tab_top_btn_blue);
 							v.getBackground().setAlpha(150);
 						}else if(event.getAction()==MotionEvent.ACTION_UP){
-							v.setBackgroundResource(R.drawable.list_view_bg);
+							v.setBackgroundResource(R.drawable.muwen_item_bg);
 							v.getBackground().setAlpha(225);
 						}
 						return false;

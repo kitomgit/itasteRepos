@@ -16,7 +16,7 @@ import com.itaste.yuntu.model.DtoImage;
 import com.loopj.android.image.SmartImageView;
 
 public class FacImageGalleryActivity extends Activity {
-	private ImageView bgiv;  
+	private SmartImageView bgiv;  
 	private List<DtoImage> images; 
 	private LinearLayout iv_gallery;
 	@SuppressWarnings("unchecked")
@@ -27,13 +27,16 @@ public class FacImageGalleryActivity extends Activity {
 	    requestWindowFeature(Window.FEATURE_NO_TITLE);  
 	    setContentView(R.layout.fac_image_gallery);  
 	    images = (List<DtoImage>) getIntent().getExtras().get("fac_images");
-	    bgiv = (ImageView) findViewById(R.id.id_content);  
+	    bgiv = (SmartImageView) findViewById(R.id.id_content);  
 	    iv_gallery = (LinearLayout) findViewById(R.id.id_gallery); 
-	    initGallery();
-	    
+	    if(images!=null&&!images.isEmpty()){
+	    	initGallery();
+	    }
 	}
 	private void initGallery() {
-	for (DtoImage image : images) {
+		DtoImage image;
+	for (int i=0;i<images.size();i++) {
+		image = images.get(i);
 		final SmartImageView siv = new SmartImageView(this);
 		LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
 		lp.setMargins(5, 3, 5, 3);
@@ -48,6 +51,10 @@ public class FacImageGalleryActivity extends Activity {
 				bgiv.setScaleType(ImageView.ScaleType.FIT_CENTER);
 			}
 		});
+		if (i==0){
+			bgiv.setImageUrl(image.getPreurl());
+			bgiv.setScaleType(ImageView.ScaleType.FIT_CENTER);
+		}
 	}
   }
 	@Override 

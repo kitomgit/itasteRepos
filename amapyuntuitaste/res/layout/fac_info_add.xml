@@ -5,37 +5,27 @@
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="2dp"
     android:paddingRight="2dp"
-    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingTop="30dp"
     android:orientation="horizontal"
-    android:background="@drawable/left_bg"
     android:id="@+id/add_dialog"
     android:windowSoftInputMode="stateHidden" 
+    android:background="@drawable/orange_jianbian_90_bg"
     tools:context=".FacInfoAddActivity" >
-    
-    <LinearLayout 
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="horizontal"
-    >
-     <LinearLayout 
-    android:layout_width="0dp"
-    android:layout_height="match_parent"
-    android:layout_weight="3"
-    android:orientation="vertical"
-    android:layout_marginRight="10dp"
-    >
-    <ScrollView
+     <LinearLayout
+         	android:layout_height="100dp"
+            android:layout_width="match_parent"
+            android:orientation="vertical" >
+    <HorizontalScrollView
         android:id="@+id/imageshowscroll"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:overScrollMode="ifContentScrolls"
-        
          >
         <LinearLayout
             android:id="@+id/picregion"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical" >
+            android:orientation="horizontal" >
           
         <ImageView 
         android:layout_width="72dp"
@@ -44,22 +34,18 @@
         android:clickable="true"
         android:onClick="addfacpic"
         />
+       
         </LinearLayout>
-    </ScrollView>
-    
-    </LinearLayout>
-   
-       <LinearLayout 
-    android:layout_width="0dp"
-    android:layout_height="match_parent"
-    android:layout_weight="10"
-    android:orientation="vertical"
-    >
+    </HorizontalScrollView>
+
     
     <LinearLayout 
     android:layout_width="match_parent"
     android:layout_height="32dp"
     android:orientation="horizontal"
+    android:paddingLeft="40dp"
+    android:gravity="center_vertical"
+    android:background="@drawable/border_corner"
     >
     <TextView
         android:id="@+id/nametext"
@@ -80,7 +66,10 @@
 	<LinearLayout 
     android:layout_width="match_parent"
     android:layout_height="32dp"
+    android:paddingLeft="40dp"
     android:orientation="horizontal"
+    android:gravity="center_vertical"
+    android:background="@drawable/border_corner"
     >
     <TextView
         android:id="@+id/addresstext"
@@ -102,7 +91,10 @@
 	<LinearLayout 
     android:layout_width="match_parent"
     android:layout_height="32dp"
+    android:paddingLeft="40dp"
     android:orientation="horizontal"
+    android:gravity="center_vertical"
+    android:background="@drawable/border_corner"
     >
     <TextView
         android:id="@+id/phonetext"
@@ -116,6 +108,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         style="@style/textwhite"
+        android:phoneNumber="true"
         android:text="15024157821"
         android:ems="8" />
 
@@ -124,7 +117,10 @@
 	<LinearLayout 
     android:layout_width="match_parent"
     android:layout_height="32dp"
+    android:paddingLeft="40dp"
     android:orientation="horizontal"
+    android:gravity="center_vertical"
+    android:background="@drawable/border_corner"
     >
     <TextView
         android:id="@+id/heighttext"
@@ -138,6 +134,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         style="@style/textwhite"
+        android:inputType="number"
         android:text="3"
         android:ems="8" />
 
@@ -148,7 +145,10 @@
    <LinearLayout 
     android:layout_width="match_parent"
     android:layout_height="32dp"
+    android:paddingLeft="40dp"
     android:orientation="horizontal"
+    android:gravity="center_vertical"
+    android:background="@drawable/border_corner"
     >
     <TextView
         android:id="@+id/areatext"
@@ -162,6 +162,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         style="@style/textwhite"
+        android:inputType="number"
         android:text="2005"
         android:ems="8" >
     </EditText>
@@ -171,7 +172,10 @@
     <LinearLayout 
     android:layout_width="match_parent"
     android:layout_height="32dp"
+    android:paddingLeft="40dp"
     android:orientation="horizontal"
+    android:gravity="center_vertical"
+    android:background="@drawable/border_corner"
     >
 
     <TextView
@@ -186,6 +190,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         style="@style/textwhite"
+        android:inputType="number"
         android:text="15"
         android:ems="8" />
     </LinearLayout>
@@ -194,7 +199,10 @@
     <LinearLayout 
     android:layout_width="match_parent"
     android:layout_height="32dp"
+    android:paddingLeft="40dp"
     android:orientation="horizontal"
+    android:gravity="center_vertical"
+    android:background="@drawable/border_corner"
     >
     <TextView
         android:id="@+id/regiontext"
@@ -211,9 +219,9 @@
 
    <Button
        android:id="@+id/regionbtn"
-       style="@style/lightgreybtn"
        android:layout_width="40dp"
-       android:layout_height="32dp"
+       android:layout_height="25dp"
+       style="@style/orangebg"
        android:text="@string/_choose"
        android:onClick="chooseCondition" />
 
@@ -222,7 +230,10 @@
      <LinearLayout 
     android:layout_width="match_parent"
     android:layout_height="32dp"
+    android:paddingLeft="40dp"
     android:orientation="horizontal"
+    android:gravity="center_vertical"
+    android:background="@drawable/border_corner"
     >
 
     <TextView
@@ -237,13 +248,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         style="@style/textwhite"
+        android:inputType="number"
         android:ems="8" />
 
    <Button
         android:id="@+id/floorbtn"
-        style="@style/lightgreybtn"
         android:layout_width="40dp"
-        android:layout_height="32dp"
+        android:layout_height="25dp"
+        style="@style/orangebg"
         android:text="@string/_choose"
         android:onClick="chooseCondition"
        />
@@ -251,7 +263,10 @@
  <LinearLayout 
     android:layout_width="match_parent"
     android:layout_height="32dp"
+    android:paddingLeft="40dp"
     android:orientation="horizontal"
+    android:gravity="center_vertical"
+    android:background="@drawable/border_corner"
     >
     <TextView
         android:id="@+id/peidiantext"
@@ -269,9 +284,9 @@
 
    <Button
        android:id="@+id/peidianbtn"
-        style="@style/lightgreybtn"
         android:layout_width="40dp"
-        android:layout_height="32dp"
+        android:layout_height="25dp"
+        style="@style/orangebg"
         android:text="@string/_choose"
         android:onClick="chooseCondition"
        />
@@ -280,7 +295,10 @@
 <LinearLayout 
     android:layout_width="match_parent"
     android:layout_height="32dp"
+    android:paddingLeft="40dp"
     android:orientation="horizontal"
+    android:gravity="center_vertical"
+    android:background="@drawable/border_corner"
     >
     <TextView
         android:id="@+id/structtext"
@@ -297,9 +315,9 @@
         android:ems="8" />
    <Button
         android:id="@+id/structbtn"
-        style="@style/lightgreybtn"
         android:layout_width="40dp"
-        android:layout_height="32dp"
+        android:layout_height="25dp"
+        style="@style/orangebg"
         android:text="@string/_choose"
         android:onClick="chooseCondition"
        />
@@ -309,7 +327,10 @@
 	<LinearLayout 
     android:layout_width="match_parent"
     android:layout_height="32dp"
+    android:paddingLeft="40dp"
     android:orientation="horizontal"
+    android:gravity="center_vertical"
+    android:background="@drawable/border_corner"
     >
     <TextView
         android:id="@+id/qqcodetext"
@@ -323,6 +344,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         style="@style/textwhite"
+        android:inputType="number"
         android:text="1003189234"
         android:ems="8" />
 
@@ -330,7 +352,10 @@
 	<LinearLayout 
     android:layout_width="match_parent"
     android:layout_height="32dp"
+    android:paddingLeft="40dp"
     android:orientation="horizontal"
+    android:gravity="center_vertical"
+    android:background="@drawable/border_corner"
     >
     <TextView
         android:id="@+id/weixintext"
@@ -352,40 +377,34 @@
 	
 
 	 <RelativeLayout
+	     android:layout_marginTop="8dp"
 	     android:layout_width="match_parent"
 	     android:layout_height="wrap_content"
 	     android:orientation="horizontal" >
 
 	     <Button
-	         android:id="@+id/addBtn"
+	         android:id="@+id/cancelBtn"
+	         style="@style/lightgreybtn"
 	         android:layout_width="60dp"
 	         android:layout_height="32dp"
-	         android:layout_alignParentLeft="true"
+	         android:layout_alignParentRight="true"
 	         android:layout_alignParentTop="true"
-	         android:layout_marginLeft="43dp"
-	         style="@style/lightgreybtn"
-	         android:text="@string/_add"
-	         android:textColor="@color/white"
-	         android:onClick="addFacInfoClickHandler"
-	         />
+	         android:layout_marginRight="92dp"
+	         android:text="@string/_cancel"
+	         android:textColor="@color/white" />
 
 	     <Button
-	         android:id="@+id/cancelBtn"
+	         android:id="@+id/addBtn"
+	         style="@style/lightgreybtn"
 	         android:layout_width="60dp"
 	         android:layout_height="32dp"
 	         android:layout_alignParentTop="true"
-	         android:layout_marginLeft="32dp"
-	         android:layout_toRightOf="@+id/addBtn"
-	         style="@style/lightgreybtn"
-	         android:text="@string/_cancel"
-	         android:textColor="@color/white"
-	         />
+	         android:layout_marginRight="47dp"
+	         android:layout_toLeftOf="@+id/cancelBtn"
+	         android:onClick="addFacInfoClickHandler"
+	         android:text="@string/_add"
+	         android:textColor="@color/white" />
 
 	 </RelativeLayout>
     </LinearLayout>
-     
-    </LinearLayout>
-    
-    
-
 </ScrollView>

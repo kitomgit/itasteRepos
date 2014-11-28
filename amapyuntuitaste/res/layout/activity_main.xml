@@ -6,43 +6,6 @@
     tools:context=".MainActivity" 
     style="@style/transluocent"
      >
-<!--         <HorizontalScrollView  -->
-<!-- 		android:layout_width="match_parent" -->
-<!--         android:layout_height="35dp" -->
-<!--         android:scrollbars="none" > -->
-
-        <RelativeLayout
-            android:id="@+id/tab_nav"
-            android:layout_width="match_parent"
-            android:layout_height="30dp"
-            android:background="@drawable/list_view_bg"
-            android:gravity="center_vertical"
-            
-            >
-
-            <Button
-                android:id="@+id/menuBtn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:background="@drawable/tab_top_btn" 
-                android:textColor="@color/white"
-                android:text="菜单"
-                />
-
-            <Button
-                android:id="@+id/searchBtn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentTop="true"
-                android:background="@drawable/tab_top_btn" 
-                 android:textColor="@color/white"
-                android:text="搜索"
-                />
-    
-        </RelativeLayout>
-<!-- </HorizontalScrollView>  -->
 <TabHost 
     android:id="@android:id/tabhost"
     android:layout_width="fill_parent"

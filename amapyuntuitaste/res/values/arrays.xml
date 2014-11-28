@@ -6,6 +6,7 @@
         <item>长安中心区</item>
         <item>街口</item>
         <item>乌沙</item>
+        <item>沙头</item>
         <item>咸西</item>
         <item>宵边</item>
         <item>镇政府</item>
@@ -53,7 +54,6 @@
 <!--     标准厂房简易厂房钢结构其他 -->
     <string-array name="struct">
         <item>不限</item>
-        <item>结构</item>
         <item>简易</item>
         <item>钢构</item>
         <item>无尘车间</item>
@@ -82,9 +82,15 @@
     </string-array>
     
     <string-array name="nearby">
-        <item>附近</item>
-        <item>1000米</item>
-        <item>3000米</item>
-        <item>5000米</item>
+        <item>附近范围</item>
+        <item>1000 米</item>
+        <item>1500 米</item>
+        <item>2000 米</item>
+        <item>2500 米</item>
+        <item>3000 米</item>
+        <item>3500 米</item>
+        <item>4000 米</item>
+        <item>4500 米</item>
+        <item>5000 米</item>
     </string-array>
 </resources>

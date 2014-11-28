@@ -20,7 +20,7 @@ import com.itaste.yuntu.model.FacInfoModel;
  *
  */
 public class ItasteApplication extends  Application{
-	private static final String FILTERKEY = "filter";
+	public static final String FILTERKEY = "filter";
 
 	//当前激活的试图【maptab,listtab】
 	public  String currentactivateView;
@@ -70,6 +70,7 @@ public class ItasteApplication extends  Application{
 		//必填参数初始化
 		filterParams.put("city", "全国");
   		filterParams.put("keywords","");
+  		filterParams.put(FILTERKEY,"");
   		//默认当前激活试图为map试图
 		this.currentactivateView = getString(R.string._maptab);
 	}

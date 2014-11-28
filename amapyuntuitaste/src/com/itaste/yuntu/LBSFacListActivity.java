@@ -69,7 +69,7 @@ public class LBSFacListActivity extends Activity {
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		if(ItasteApplication.List_REQUEST_SEARCH_CODE==requestCode&&resultCode==ItasteApplication.SEARCH_FAC_RESULT_CODE){
-			LBSCloudUtils.search(this);
+			LBSCloudUtils.search(this,LBSCloudUtils.SEARCH_TYPE_ALL_LIST);
 		}
 	}
 }

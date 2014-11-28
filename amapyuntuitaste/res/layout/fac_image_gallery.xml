@@ -2,20 +2,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="300dp"
     android:layout_height="450dp"
-    android:background="@drawable/coffe_bg"
+    android:background="#FFFFFF"
     android:orientation="vertical" >
 
 
 
-        <ImageView
+        <com.loopj.android.image.SmartImageView
             android:id="@+id/id_content"
             android:layout_width="fill_parent"
             android:layout_height="300dp"
             android:layout_gravity="center"
             android:layout_margin="10dp"
-            android:scaleType="centerCrop"
-            android:paddingLeft="8dp"
-            android:paddingRight="8dp"
+            android:scaleType="center"
             android:background="@drawable/left_bg"
             android:src="@drawable/left_bg" />
 
@@ -25,7 +23,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
-        android:background="@drawable/coffe_bg"
+        android:background="#FFFFFF"
         android:scrollbars="none" >
 
         <LinearLayout

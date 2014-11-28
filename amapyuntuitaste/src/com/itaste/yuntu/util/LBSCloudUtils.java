@@ -28,12 +28,14 @@ public class LBSCloudUtils {
 	private final static String TAG = "LBSCloudUtils";
 	
 	//云检索API URI
+	private static final String SEARCH_URI_ALL_LIST = "http://yuntuapi.amap.com/datamanage/data/list?";
 	private static final String SEARCH_URI_LOCAL = "http://yuntuapi.amap.com/datasearch/local?";
 	private static final String SEARCH_URI_NEARBY = "http://yuntuapi.amap.com/datasearch/around?";
 	private static final String SEARCH_URI_ID = "http://yuntuapi.amap.com/datasearch/id?";
 	//云存储API URI
 	private static final String ADD_INFO_URI = "http://yuntuapi.amap.com/datamanage/data/create?";
 	
+	public static final int SEARCH_TYPE_ALL_LIST = 0;
 	public static final int SEARCH_TYPE_NEARBY = 1;
 	public static final int SEARCH_TYPE_URI_ID = 2; 
 	public static final int SEARCH_TYPE_LOCAL = 3;
@@ -64,6 +66,9 @@ public class LBSCloudUtils {
 				case SEARCH_TYPE_LOCAL:
 					requestURL.append(SEARCH_URI_LOCAL);
 					break;
+				case SEARCH_TYPE_ALL_LIST:
+					requestURL.append(SEARCH_URI_ALL_LIST);
+					break;
 				case SEARCH_TYPE_URI_ID:
 					requestURL.append(SEARCH_URI_ID);
 					break;
@@ -71,13 +76,13 @@ public class LBSCloudUtils {
 					requestURL.append(SEARCH_URI_NEARBY);
 					break;
 				default://默认为本地搜索
-					requestURL.append(SEARCH_URI_LOCAL);
+					requestURL.append(SEARCH_URI_ALL_LIST);
 					break;
 				}
 				//当前搜索类型
 				currSearchType = searchType;
 				//请求参数
-				 RequestParams params = new RequestParams( ItasteApplication.getInstance().filterParams); // 绑定参数
+				 RequestParams params = new RequestParams(ItasteApplication.getInstance().filterParams); // 绑定参数
 				 params.put("key", ak);
 				 params.put("tableid", tableid);
 				 client.get(requestURL.toString(),params,handler);
@@ -90,13 +95,13 @@ public class LBSCloudUtils {
 		IsBusy = false;
 	}
 	 //点击搜索按钮
-  	public static void search(final Context context){
+  	public static void search(final Context context,int searchType){
   		final ItasteApplication application = ItasteApplication.getInstance();
   		/*filterParams.put("city", "全国");
   		filterParams.put("keywords", "");
   		filterParams.put("filter", "fac_area:2000");*/
   		
-		LBSCloudUtils.request(LBSCloudUtils.SEARCH_TYPE_LOCAL,new AsyncHttpResponseHandler(){
+		LBSCloudUtils.request(searchType,new AsyncHttpResponseHandler(){
 			 @Override
 			public void onSuccess(int arg0, Header[] arg1, byte[] data) {
 				String dataStr = new String(data);

@@ -1,27 +1,39 @@
 package com.itaste.yuntu;
 
+import java.io.ByteArrayOutputStream;
+import java.io.InputStream;
 import java.util.HashMap;
+
+import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.AlertDialog.Builder;
+import android.content.ContentResolver;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
+import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.Window;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.ScrollView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.itaste.yuntu.model.FacInfoModel;
 import com.itaste.yuntu.util.ItasteApplication;
 
-import android.os.Bundle;
-import android.app.Activity;
-import android.app.AlertDialog;
-import android.app.AlertDialog.Builder;
-import android.content.DialogInterface;
-import android.content.Intent;
-import android.view.Menu;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.EditText;
-import android.widget.ScrollView;
-import android.widget.Toast;
-
 public class FacInfoAddActivity extends Activity {
-
+	private static int  CAMERA_CAPTURE=0;
+	private static int  CAMERA_GELLAY=1;
 	private ScrollView layout; 
+	private LinearLayout picregion;
+	private ImageView topbackBtn;
+	private TextView fanhui;
 	private EditText 
 					struct,region,price
 					,floor,peidian,area,phone
@@ -33,9 +45,10 @@ public class FacInfoAddActivity extends Activity {
 	 */
 	@Override 
 	protected void onCreate(Bundle savedInstanceState) {
-		
 	super.onCreate(savedInstanceState); 
+	requestWindowFeature(Window.FEATURE_CUSTOM_TITLE);
 	setContentView(R.layout.fac_info_add); 
+	getWindow().setFeatureInt(Window.FEATURE_CUSTOM_TITLE, R.layout.back_title_bar);
 	//初始化控件
 	initView(); 
 	//添加监听事件
@@ -45,8 +58,18 @@ public class FacInfoAddActivity extends Activity {
 		Toast.makeText(getApplicationContext(), "提示：点击窗口外部关闭窗口！",Toast.LENGTH_SHORT).show(); 
 		} 
 		}); 
-	
+	OnClickListener fanhuicl = new OnClickListener() {
+		
+		@Override
+		public void onClick(View v) {
+			FacInfoAddActivity.this.finish();
+			
+		}
+	};
+	topbackBtn.setOnClickListener(fanhuicl);
+	fanhui.setOnClickListener(fanhuicl);
 	}
+	
 	
 
 
@@ -64,7 +87,9 @@ public class FacInfoAddActivity extends Activity {
 		weixincode = (EditText) this.findViewById(R.id.weinxin);
 		height = (EditText) this.findViewById(R.id.height);
 		layout=(ScrollView)findViewById(R.id.add_dialog);
-		
+		topbackBtn = (ImageView) this.findViewById(R.id.top_back_iv);
+		picregion = (LinearLayout) this.findViewById(R.id.picregion);
+		fanhui = (TextView) this.findViewById(R.id.fanhui);
 		/*regionbtn = (Button) this.findViewById(R.id.regionbtn);
 		pricebtn = (Button) this.findViewById(R.id.pricebtn);
 		floorbtn = (Button) this.findViewById(R.id.floorbtn);
@@ -74,15 +99,7 @@ public class FacInfoAddActivity extends Activity {
 		
 		
 	} 
-	@Override 
-	public boolean onTouchEvent(MotionEvent event){
-	if(event.getAction()==MotionEvent.ACTION_DOWN){
-		Toast.makeText(getApplicationContext(), "提示：查询已取消！", 
-				Toast.LENGTH_SHORT).show(); 
-		finish();
-	} 
-	return true; 
-	} 
+
 	
 	//查询按钮
 	public void addFacInfoClickHandler(View v) { 
@@ -240,4 +257,120 @@ public class FacInfoAddActivity extends Activity {
 			});
 		builder.show();
 	}
+	//调用系统相机或相册
+	public void addfacpic(View imageview){
+		
+		Toast.makeText(FacInfoAddActivity.this, "哈哈。。。", 5000).show();
+		CharSequence [] items ={"拍照","相册"};
+		AlertDialog.Builder builder = new Builder(FacInfoAddActivity.this);
+		builder.setTitle("选择图片")
+			   .setItems(items,new DialogInterface.OnClickListener() {
+				@Override
+				public void onClick(DialogInterface dialog, int which) {
+					switch (which) {
+					case 0:
+						Intent getImageByCamera = new Intent("android.media.action.IMAGE_CAPTURE");
+						 startActivityForResult(getImageByCamera, CAMERA_CAPTURE);
+						break;
+					case 1:
+						 Intent getImage = new Intent(Intent.ACTION_GET_CONTENT);
+						 getImage.addCategory(Intent.CATEGORY_OPENABLE);
+						 getImage.setType("image/jpeg");
+						 startActivityForResult(getImage, CAMERA_GELLAY);
+						break;
+					default:
+						break;
+					}
+					
+				}
+			});
+		builder.show();
+		
+	}
+	
+
+	 @ Override
+
+	 protected void onActivityResult ( int requestCode , int resultCode , Intent data ){
+	 /**
+	
+	  * 因为两种方式都用到了startActivityForResult方法，
+	
+	  * 这个方法执行完后都会执行onActivityResult方法， 所以为了区别到底选择了那个方式获取图片要进行判断，
+	
+	  * 这里的requestCode跟startActivityForResult里面第二个参数对应
+	
+	  */
+	super.onActivityResult(requestCode, resultCode, data);
+	 ContentResolver resolver = getContentResolver();
+	 Bitmap  myBitmap = null;
+	 if (requestCode == CAMERA_GELLAY){
+	 try{
+	 // 获得图片的uri
+	 Uri originalUri = data.getData();
+
+	 // 将图片内容解析成字节数组
+
+	 byte[] mContent = readStream(resolver.openInputStream(Uri.parse(originalUri.toString())));
+
+	 // 将字节数组转换为ImageView可调用的Bitmap对象
+
+	  myBitmap = getPicFromBytes(mContent, null);
+	 } catch ( Exception e ){
+	 e.printStackTrace();
+	 }
+	 } else if (requestCode == CAMERA_CAPTURE){
+
+	 try{
+	 Bundle extras = data.getExtras();
+	       myBitmap = (Bitmap) extras.get("data");
+	 ByteArrayOutputStream baos = new ByteArrayOutputStream();
+	 myBitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
+	 } catch ( Exception e ){
+	 e.printStackTrace();
+	 }
+	 }
+	 if(myBitmap!=null){
+		 ImageView iv  = new ImageView(this);
+		 LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(80,80);
+		 lp.setMargins(0, 0, 0, 2);
+		 iv.setScaleType(ImageView.ScaleType.FIT_CENTER);
+		 iv.setImageBitmap(myBitmap);
+		 iv.setLayoutParams(lp);
+		 picregion.addView(iv, picregion.getChildCount());
+		 //picregion.addView(iv);
+	 }
+	
+	 }
+
+
+
+	 public static Bitmap getPicFromBytes ( byte[] bytes , BitmapFactory.Options opts )
+	 {
+	 if (bytes != null)
+	 if (opts != null)
+	 return BitmapFactory.decodeByteArray(bytes, 0, bytes.length, opts);
+	 else
+	 return BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
+	 return null;
+	 }
+
+
+
+	 public static byte[] readStream ( InputStream inStream ) throws Exception
+	 {
+	 byte[] buffer = new byte[1024];
+	 int len = -1;
+	 ByteArrayOutputStream outStream = new ByteArrayOutputStream();
+	 while ((len = inStream.read(buffer)) != -1)
+	 {
+	 outStream.write(buffer, 0, len);
+	 }
+	 byte[] data = outStream.toByteArray();
+	 outStream.close();
+	 inStream.close();
+	 return data;
+	 }
+
+
 }

@@ -1,6 +1,8 @@
 package com.itaste.yuntu;
 
 
+import java.util.HashMap;
+
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.app.TabActivity;
@@ -9,10 +11,17 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.View.OnTouchListener;
+import android.view.Window;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.HorizontalScrollView;
+import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.Spinner;
 import android.widget.TabHost;
 import android.widget.TabHost.OnTabChangeListener;
 import android.widget.TextView;
@@ -27,23 +36,29 @@ import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
 public class MainActivity extends TabActivity implements OnClickListener,OnTabChangeListener  {
 
 	private SlidingMenu leftmenu;
+	private HorizontalScrollView scrollmenu;
 	private Button menuBtn;
 	private Button searchBtn;
 	private TabHost tabHost;
+	private ImageView zwsearchiv;
+	private EditText keywords;
+	private Spinner nearby;
 	//private String[] menus=new String[]{"地图","列表","地图","列表","地图","列表","地图","列表"};
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		requestWindowFeature(Window.FEATURE_CUSTOM_TITLE);
 		setContentView(R.layout.activity_main);//主题布局
+		getWindow().setFeatureInt(Window.FEATURE_CUSTOM_TITLE, R.layout.main_title_bar);
 		initTabHost();//tab主页面
 		initSlideMenu();//左侧菜单
 		initNavBtn();
-		
 	}
 	
+
 	@Override
 	public void onClick(View view) {
-		switch (view.getId()) {
+		switch (view.getId()){
 		case R.id.menuBtn:
 			leftmenu.toggle(true);
 			break;
@@ -51,17 +66,61 @@ public class MainActivity extends TabActivity implements OnClickListener,OnTabCh
 			//查询窗口
 			startActivityForResult(new Intent(this, SearchActivity.class), ItasteApplication.MAIN_REQUEST_SEARCH_CODE);
 			break;
-
+		case R.id.zwsearchiv://周围搜索
+			ItasteApplication app = ItasteApplication.getInstance();
+			HashMap<String, String> filterParams = app.filterParams;
+			filterParams.remove(ItasteApplication.FILTERKEY);
+			filterParams.put("center", app.currentLocation.getLongitude()+","+app.currentLocation.getLatitude());
+			filterParams.put("radius",getNearbySerach(nearby.getSelectedItem()));
+			filterParams.put("keywords", keywords.getText().toString().trim());
+			LBSCloudUtils.search(this,LBSCloudUtils.SEARCH_TYPE_NEARBY);
+			break;
 		default:
 			break;
 		}
 		
+		
 	}
+	private String getNearbySerach(Object selectedItem) {
+		/*
+		<item>1000   米</item>
+        <item>1500 米</item>
+        <item>2000 米</item>
+        <item>2500 米</item>
+        <item>3000 米</item>
+        <item>3500 米</item>
+        <item>4000 米</item>
+        <item>4500 米</item>
+        <item>5000 米</item>*/
+		int result = 1000;
+		if("1000 米".equals(selectedItem)){
+			result=1000;
+		}else if("1500 米".equals(selectedItem)){
+			result=1500;
+		}else if("2000 米".equals(selectedItem)){
+			result=2000;
+		}else if("2500 米".equals(selectedItem)){
+			result=2500;
+		}else if("3000 米".equals(selectedItem)){
+			result=3000;
+		}else if("3500 米".equals(selectedItem)){
+			result=3500;
+		}else if("4000 米".equals(selectedItem)){
+			result=4000;
+		}else if("4500 米".equals(selectedItem)){
+			result=4500;
+		}else if("5000 米".equals(selectedItem)){
+			result=5000;
+		}
+		return String.valueOf(result);
+	}
+
+
 	//查询回归之后
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		if(ItasteApplication.MAIN_REQUEST_SEARCH_CODE==requestCode&&resultCode==ItasteApplication.SEARCH_FAC_RESULT_CODE){
-			LBSCloudUtils.search(this);
+			LBSCloudUtils.search(this,LBSCloudUtils.SEARCH_TYPE_ALL_LIST);
 		}
 	}
 	
@@ -70,11 +129,54 @@ public class MainActivity extends TabActivity implements OnClickListener,OnTabCh
 	 private void initNavBtn() {
 		  menuBtn = (Button) this.findViewById(R.id.menuBtn);
 		  searchBtn = (Button) this.findViewById(R.id.searchBtn);
+		  nearby = (Spinner) this.findViewById(R.id.nearby);
+		  zwsearchiv =(ImageView) this.findViewById(R.id.zwsearchiv);
+		  keywords = (EditText) this.findViewById(R.id.keywords);
 		  //添加事件
 		  menuBtn.setOnClickListener(this);
 		  searchBtn.setOnClickListener(this);
-		  
-	}
+		  // ArrayAdapter<String> adapter= new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item, getResources().getStringArray(R.array.nearby));
+		  // nearby.setAdapter(adapter);
+		  scrollmenu = (HorizontalScrollView) this.findViewById(R.id.scrollmenu);
+		  scrollmenu.setOnTouchListener(new OnTouchListener() {
+			  private float mx;
+			  private float stance=5;
+			@Override
+			public boolean onTouch(View v, MotionEvent event) {
+				switch (event.getAction()) {
+				case MotionEvent.ACTION_DOWN:
+					mx = event.getX();
+					break;
+				case MotionEvent.ACTION_UP:
+					System.out.println("mx ："+(mx));
+					System.out.println("event.getXPrecision() ："+(event.getX()));
+					System.out.println("event.getXPrecision()-mx ："+(event.getX()-mx));
+					if(event.getX()-mx>stance){
+						menuBtn.setVisibility(View.GONE);
+						searchBtn.setVisibility(View.VISIBLE);
+						/*nearby.setVisibility(View.GONE);
+						keywords.setVisibility(View.GONE);
+						zwsearchiv.setVisibility(View.GONE);*/
+						
+						
+					}else if(mx-event.getXPrecision()>stance){
+						menuBtn.setVisibility(View.VISIBLE);
+						searchBtn.setVisibility(View.GONE);
+						mx=0;
+						/*nearby.setVisibility(View.VISIBLE);
+						keywords.setVisibility(View.VISIBLE);
+						zwsearchiv.setVisibility(View.VISIBLE);*/
+						
+					}
+					break;
+				default:
+					break;
+				}
+				return false;
+			}
+		});
+		  zwsearchiv.setOnClickListener(this);
+	 }
 	  
 				
 	//初始化侧边菜单
@@ -84,13 +186,14 @@ public class MainActivity extends TabActivity implements OnClickListener,OnTabCh
 				// 设置触摸屏幕的模式
 				leftmenu.setTouchModeAbove(SlidingMenu.TOUCHMODE_NONE);
 				leftmenu.setShadowWidthRes(R.dimen.shadow_width);
-				leftmenu.setShadowDrawable(R.drawable.shadow);
+				leftmenu.setShadowDrawable(R.drawable.orange_jianbian_bg);
 
 				// 设置滑动菜单视图的宽度
 				leftmenu.setBehindOffsetRes(R.dimen.slidingmenu_offset);
 				// 设置渐入渐出效果的值
 				leftmenu.setFadeDegree(0.35f);
 				leftmenu.showSecondaryMenu(true);
+				//leftmenu.setMode(SlidingMenu.RIGHT);
 				/**
 				 * SLIDING_WINDOW will include the Title/ActionBar in the content
 				 * section of the SlidingMenu, while SLIDING_CONTENT does not.
