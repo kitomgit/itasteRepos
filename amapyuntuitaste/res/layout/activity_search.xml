@@ -30,6 +30,7 @@
    <Button
        android:id="@+id/regionbtn"
        style="@style/lightgreybtn"
+       android:background="@drawable/light_green_btn"
        android:layout_width="40dp"
        android:layout_height="25dp"
        android:text="@string/_choose"

@@ -6,6 +6,7 @@ import java.util.List;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -104,27 +105,30 @@ public class FacBaseListAdapter extends BaseAdapter  implements OnItemClickListe
 				TextView phonetv = (TextView) view.findViewById(R.id.phonevalue);
 				String phone = phonetv.getText().toString();
 				if(TextUtils.isEmpty(phone)){
-					phone="114";
+					return;
 				}
 				Toast.makeText(context,phone,Toast.LENGTH_LONG).show();
 				Intent callphoneIntent= new Intent(Intent.ACTION_CALL,Uri.parse("tel:"+phone));
 				context.startActivity(callphoneIntent);
 			}
 		});
-		phonelay.setOnTouchListener(new OnTouchListener() {
+	/*	phonelay.setOnTouchListener(new OnTouchListener() {
 			
 			@Override
 			public boolean onTouch(View v, MotionEvent event) {
-				if(event.getAction()==MotionEvent.ACTION_DOWN){
+				int action = event.getAction();
+				Drawable background = v.getBackground();
+				if(action==MotionEvent.ACTION_DOWN){
 					v.setBackgroundResource(R.drawable.tab_top_btn_blue);
-					v.getBackground().setAlpha(100);
-				}else if(event.getAction()==MotionEvent.ACTION_UP){
-					v.setBackgroundResource(R.drawable.muwen_item_bg);
-					v.getBackground().setAlpha(225);
+				}else if(action==MotionEvent.ACTION_UP
+						||action==MotionEvent.ACTION_OUTSIDE
+						){
+					v.setBackgroundResource(R.drawable.half_alpha_bg);
+					background.setAlpha(225);
 				}
 				return false;
 			}
-		});
+		});*/
 		 contentHolder.qqvalue.setText(facinfo.getQq_code());
 		 View qqlay = (View) contentHolder.qqvalue.getParent();
 		 qqlay.setOnClickListener(new OnClickListener() {
@@ -134,6 +138,7 @@ public class FacBaseListAdapter extends BaseAdapter  implements OnItemClickListe
 				String qqcode = qq.getText().toString();
 				if(TextUtils.isEmpty(qqcode)){
 					Toast.makeText(context,"木有qq!",Toast.LENGTH_LONG).show();
+					return;
 				}
 				Toast.makeText(context,qqcode,Toast.LENGTH_LONG).show();
 				//启动qq临时聊天窗口
@@ -143,22 +148,24 @@ public class FacBaseListAdapter extends BaseAdapter  implements OnItemClickListe
 				
 			}
 		});
-		 qqlay.setOnTouchListener(new OnTouchListener() {
+		/* qqlay.setOnTouchListener(new OnTouchListener() {
 				
 				@Override
 				public boolean onTouch(View v, MotionEvent event) {
-					if(event.getAction()==MotionEvent.ACTION_DOWN){
+					int action = event.getAction();
+					if(action==MotionEvent.ACTION_DOWN){
 						v.setBackgroundResource(R.drawable.tab_top_btn_blue);
-						v.getBackground().setAlpha(100);
-					}else if(event.getAction()==MotionEvent.ACTION_UP){
-						v.setBackgroundResource(R.drawable.muwen_item_bg);
+					}else if(action==MotionEvent.ACTION_UP
+							||action==MotionEvent.ACTION_OUTSIDE
+							){
+						v.setBackgroundResource(R.drawable.half_alpha_bg);
 						v.getBackground().setAlpha(225);
 					}
 					return false;
 				}
-			});
+			});*/
 		 contentHolder.weixinvalue.setText(facinfo.getWeixin_code());
-		 View weixinlay = (View)contentHolder.weixinvalue;
+		 /*View weixinlay = (View)contentHolder.weixinvalue;
 		 weixinlay.setOnClickListener(new OnClickListener() {
 				@Override
 				public void onClick(View v) {
@@ -185,16 +192,16 @@ public class FacBaseListAdapter extends BaseAdapter  implements OnItemClickListe
 					
 					@Override
 					public boolean onTouch(View v, MotionEvent event) {
-						if(event.getAction()==MotionEvent.ACTION_DOWN){
+						int action = event.getAction();
+						if(action==MotionEvent.ACTION_DOWN){
 							v.setBackgroundResource(R.drawable.tab_top_btn_blue);
-							v.getBackground().setAlpha(150);
-						}else if(event.getAction()==MotionEvent.ACTION_UP){
-							v.setBackgroundResource(R.drawable.muwen_item_bg);
+						}else if(action==MotionEvent.ACTION_UP||action==MotionEvent.ACTION_OUTSIDE){
+							v.setBackgroundResource(R.drawable.half_alpha_bg);
 							v.getBackground().setAlpha(225);
 						}
 						return false;
 					}
-				});
+				});*/
 		System.out.println("contentHolder====================:::"+contentHolder);
 		return lay;
 	}

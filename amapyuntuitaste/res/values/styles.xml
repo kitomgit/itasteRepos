@@ -29,8 +29,8 @@
 
     <style name="map_icon_image_style">
         <item name="android:layout_marginRight">5dp</item>
-        <item name="android:layout_width">40dp</item>
-        <item name="android:layout_height">40dp</item>
+        <item name="android:layout_width">63dp</item>
+        <item name="android:layout_height">63dp</item>
         <item name="android:layout_marginLeft">3dp</item>
         <item name="android:layout_marginTop">2dp</item>
     </style>
@@ -75,16 +75,17 @@
 	    <item name="android:textColor">#000000</item>
 	    <item name="android:textStyle">normal</item>
 	    <item name="android:textSize">18sp</item>
-	    <item name="android:background">#06FFFFFF</item>
+	    <item name="android:singleLine">false</item>
+	    <item name="android:background">#00000000</item>
 	</style>
 	<style name="listViewItem" parent="textwhite">
-	    <item name="android:background">#43FFFFFF</item>
+	    <item name="android:background">@drawable/half_alpha_bg</item>
 	    <item name="android:textColor">#FFFFFF</item>
 	    <item name="android:textStyle">bold</item>
 	    <item name="android:textSize">14sp</item>
 	    <item name="android:gravity">fill_vertical</item>
 	    <item name="android:orientation">horizontal</item>
-	    <item name="android:unselectedAlpha">0.3</item>
+	    <item name="android:unselectedAlpha">0.6</item>
 	    <item name="android:layout_marginTop">5dp</item>
 	    <item name="android:paddingLeft">2dp</item>
 	</style>
@@ -101,6 +102,11 @@
 	    <item name="android:textSize">14sp</item>
 	</style>
 	
+	 <!-- select -->
+    <style name="select_style">
+    <item name="android:background">@drawable/orange_jianbian_bg</item>
+    <item name="android:paddingLeft">5dip</item>
+    </style>
 	
 
 </resources>

@@ -46,5 +46,6 @@
     <string name="_aroundsearch">周围搜索</string>
     <string name="_chooseregion">选择范围</string>
     <string name="title_activity_load"></string>
+    <string name="_loading">加载中......</string>
 
 </resources>

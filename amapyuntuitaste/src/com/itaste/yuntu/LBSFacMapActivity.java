@@ -1,5 +1,6 @@
 package com.itaste.yuntu;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -11,6 +12,7 @@ import android.location.Location;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.RadioGroup;
 import android.widget.RadioGroup.OnCheckedChangeListener;
@@ -306,7 +308,7 @@ OnMapLongClickListener
 		 */
 		public void render(Marker marker, View view) {
 			
-				FacInfoModel fac = (FacInfoModel) marker.getObject();
+				final FacInfoModel fac = (FacInfoModel) marker.getObject();
 				SmartImageView badge = (SmartImageView) view.findViewById(R.id.badge);
 			    TextView fac_name = ((TextView) view.findViewById(R.id.fac_name));
 			    TextView fac_address = ((TextView) view.findViewById(R.id.fac_address));
@@ -320,6 +322,17 @@ OnMapLongClickListener
 			    DtoImage image = fac.getFistImage();
 				if (image!=null) {
 					badge.setImageUrl(image.getPreurl());
+					badge.setOnClickListener(new OnClickListener() {
+						
+						@Override
+						public void onClick(View v) {
+							Bundle bundle = new Bundle();
+							bundle.putSerializable("fac_images", (Serializable) fac.getImage());
+							Intent intent = new Intent(LBSFacMapActivity.this, FacImageGalleryActivity.class);
+							intent.putExtras(bundle);
+							LBSFacMapActivity.this.startActivity(intent);
+						}
+					});
 				}
 			    fac_name.setText(marker.getTitle());
 			    fac_address.setText(marker.getSnippet());

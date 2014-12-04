@@ -11,11 +11,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.View.OnTouchListener;
 import android.view.Window;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.HorizontalScrollView;
@@ -36,9 +35,7 @@ import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
 public class MainActivity extends TabActivity implements OnClickListener,OnTabChangeListener  {
 
 	private SlidingMenu leftmenu;
-	private HorizontalScrollView scrollmenu;
-	private Button menuBtn;
-	private Button searchBtn;
+	private Button menuBtn,searchBtn;
 	private TabHost tabHost;
 	private ImageView zwsearchiv;
 	private EditText keywords;
@@ -51,7 +48,7 @@ public class MainActivity extends TabActivity implements OnClickListener,OnTabCh
 		setContentView(R.layout.activity_main);//主题布局
 		getWindow().setFeatureInt(Window.FEATURE_CUSTOM_TITLE, R.layout.main_title_bar);
 		initTabHost();//tab主页面
-		initSlideMenu();//左侧菜单
+		//initSlideMenu();//左侧菜单
 		initNavBtn();
 	}
 	
@@ -59,15 +56,16 @@ public class MainActivity extends TabActivity implements OnClickListener,OnTabCh
 	@Override
 	public void onClick(View view) {
 		switch (view.getId()){
-		case R.id.menuBtn:
+		/*case R.id.menuBtn:
 			leftmenu.toggle(true);
-			break;
+			break;*/
 		case R.id.searchBtn:
 			//查询窗口
 			startActivityForResult(new Intent(this, SearchActivity.class), ItasteApplication.MAIN_REQUEST_SEARCH_CODE);
 			break;
 		case R.id.zwsearchiv://周围搜索
 			ItasteApplication app = ItasteApplication.getInstance();
+			app.resetLoad();
 			HashMap<String, String> filterParams = app.filterParams;
 			filterParams.remove(ItasteApplication.FILTERKEY);
 			filterParams.put("center", app.currentLocation.getLongitude()+","+app.currentLocation.getLatitude());
@@ -127,54 +125,18 @@ public class MainActivity extends TabActivity implements OnClickListener,OnTabCh
 
 	  //初始化上方导航菜单及其事件
 	 private void initNavBtn() {
-		  menuBtn = (Button) this.findViewById(R.id.menuBtn);
-		  searchBtn = (Button) this.findViewById(R.id.searchBtn);
+		 // menuBtn = (Button) this.findViewById(R.id.menuBtn);
+		 searchBtn = (Button) this.findViewById(R.id.searchBtn);
 		  nearby = (Spinner) this.findViewById(R.id.nearby);
 		  zwsearchiv =(ImageView) this.findViewById(R.id.zwsearchiv);
 		  keywords = (EditText) this.findViewById(R.id.keywords);
-		  //添加事件
-		  menuBtn.setOnClickListener(this);
-		  searchBtn.setOnClickListener(this);
-		  // ArrayAdapter<String> adapter= new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item, getResources().getStringArray(R.array.nearby));
-		  // nearby.setAdapter(adapter);
-		  scrollmenu = (HorizontalScrollView) this.findViewById(R.id.scrollmenu);
-		  scrollmenu.setOnTouchListener(new OnTouchListener() {
-			  private float mx;
-			  private float stance=5;
-			@Override
-			public boolean onTouch(View v, MotionEvent event) {
-				switch (event.getAction()) {
-				case MotionEvent.ACTION_DOWN:
-					mx = event.getX();
-					break;
-				case MotionEvent.ACTION_UP:
-					System.out.println("mx ："+(mx));
-					System.out.println("event.getXPrecision() ："+(event.getX()));
-					System.out.println("event.getXPrecision()-mx ："+(event.getX()-mx));
-					if(event.getX()-mx>stance){
-						menuBtn.setVisibility(View.GONE);
-						searchBtn.setVisibility(View.VISIBLE);
-						/*nearby.setVisibility(View.GONE);
-						keywords.setVisibility(View.GONE);
-						zwsearchiv.setVisibility(View.GONE);*/
-						
-						
-					}else if(mx-event.getXPrecision()>stance){
-						menuBtn.setVisibility(View.VISIBLE);
-						searchBtn.setVisibility(View.GONE);
-						mx=0;
-						/*nearby.setVisibility(View.VISIBLE);
-						keywords.setVisibility(View.VISIBLE);
-						zwsearchiv.setVisibility(View.VISIBLE);*/
-						
-					}
-					break;
-				default:
-					break;
-				}
-				return false;
-			}
-		});
+		  //下拉菜单
+		   ArrayAdapter<String> adapter= new ArrayAdapter<String>(this,R.layout.simple_spinner_item, getResources().getStringArray(R.array.nearby));
+		   adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+		   nearby.setAdapter(adapter);
+		   //添加事件
+		   //menuBtn.setOnClickListener(this);
+		   searchBtn.setOnClickListener(this);
 		  zwsearchiv.setOnClickListener(this);
 	 }
 	  
@@ -207,7 +169,6 @@ public class MainActivity extends TabActivity implements OnClickListener,OnTabCh
 				LeftSlideMenuListViewAdapter adapter =LeftSlideMenuListViewAdapter.getInstance(this);
 				lvListView.setAdapter(adapter);
 				lvListView.setOnItemClickListener(adapter);
-				
 				//为侧滑菜单设置布局
 				leftmenu.setMenu(view);
 	}

@@ -19,6 +19,7 @@ public class FacImageGalleryActivity extends Activity {
 	private SmartImageView bgiv;  
 	private List<DtoImage> images; 
 	private LinearLayout iv_gallery;
+	private LinearLayout imagedialog;
 	@SuppressWarnings("unchecked")
 	@Override  
 	protected void onCreate(Bundle savedInstanceState)  
@@ -29,6 +30,13 @@ public class FacImageGalleryActivity extends Activity {
 	    images = (List<DtoImage>) getIntent().getExtras().get("fac_images");
 	    bgiv = (SmartImageView) findViewById(R.id.id_content);  
 	    iv_gallery = (LinearLayout) findViewById(R.id.id_gallery); 
+	    imagedialog = (LinearLayout) findViewById(R.id.imagedialog); 
+	    imagedialog.setOnClickListener(new OnClickListener() { 
+			@Override 
+			public void onClick(View v) { 
+			Toast.makeText(getApplicationContext(), "提示：点击窗口外部关闭窗口！",Toast.LENGTH_SHORT).show(); 
+			} 
+			}); 
 	    if(images!=null&&!images.isEmpty()){
 	    	initGallery();
 	    }

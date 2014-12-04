@@ -2,7 +2,7 @@
 <selector
   xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:state_selected="true"
-        android:drawable="@drawable/orange_bg_selected"/>
+        android:drawable="@drawable/orange_bg"/>
     <item android:state_selected="false"
-        android:drawable="@drawable/gray_bg"/>
+        android:drawable="@drawable/half_alpha_rect_bg"/>
 </selector>

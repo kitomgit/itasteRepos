@@ -31,6 +31,12 @@ public class ItasteApplication extends  Application{
 	//查询结果集
 	private AMapDTO<FacInfoModel>  dto;
 	
+	private int page=1;//页码
+	
+	private int limit = 10;//分页大小
+	
+	public boolean isrequery;//是否重新搜索
+	
 	public LBSFacListActivity facListActivity;
 	//用于更新map图层和标记
 	public LBSFacMapActivity facMapActivity;
@@ -71,6 +77,8 @@ public class ItasteApplication extends  Application{
 		filterParams.put("city", "全国");
   		filterParams.put("keywords","");
   		filterParams.put(FILTERKEY,"");
+  		filterParams.put("page", page+"");
+  		filterParams.put("limit", limit+"");
   		//默认当前激活试图为map试图
 		this.currentactivateView = getString(R.string._maptab);
 	}
@@ -82,6 +90,11 @@ public class ItasteApplication extends  Application{
 		if(dto==null)dto = new AMapDTO<FacInfoModel>();
 		return dto;
 	}
+	//返回记录数量
+	public int getTotalCount(){
+		return dto!=null?dto.getCount():0;
+	}
+	
 	
 	/*高德地图云检索filter条件，一次性添加*/
 	public void setFilters(String filterstr){
@@ -125,6 +138,31 @@ public class ItasteApplication extends  Application{
 	}
 	public LatLng getCurrentLocation(){
 		return currentLocation!=null? new LatLng(currentLocation.getLatitude(), currentLocation.getLongitude()):null;
+	}
+	//获取当前页数
+	public int getCurPage(){
+		String page = filterParams.get("page");
+		return page!=null?Integer.valueOf(page):this.page;
+	}
+	//获取当前的分页大小
+	public int getpageSize(){
+		String page = filterParams.get("limit");
+		return page!=null?Integer.valueOf(page):this.limit;
+	}
+	
+	public int setNextStepPage(int step){
+			this.page= getCurPage()+step;
+			filterParams.put("page", this.page+"");
+			this.isrequery = false;
+			//this.istosearch=true;
+			return this.page;
+	}
+	
+	public void resetLoad(){
+		this.page = 1;
+		//this.istosearch = false;
+		filterParams.put("page", this.page+"");
+		this.isrequery = true;
 	}
 	
 }

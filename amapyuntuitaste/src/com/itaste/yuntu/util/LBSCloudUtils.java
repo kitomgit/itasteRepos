@@ -5,6 +5,7 @@ import java.util.HashMap;
 import org.apache.http.Header;
 
 import android.content.Context;
+import android.os.Handler;
 import android.util.Log;
 import android.widget.BaseAdapter;
 import android.widget.Toast;
@@ -55,8 +56,10 @@ public class LBSCloudUtils {
 	 * @return
 	 */
 	public static void request(final int searchType,final AsyncHttpResponseHandler handler) {
-		if (IsBusy )return;
+		ItasteApplication app = ItasteApplication.getInstance();
+		if (IsBusy||app.istosearch)return;
 		IsBusy = true;
+		app.istosearch = true;
 		AsyncHttpClient client = new AsyncHttpClient();
 			try {
 				//根据过滤选项拼接请求URL
@@ -72,7 +75,9 @@ public class LBSCloudUtils {
 				case SEARCH_TYPE_URI_ID:
 					requestURL.append(SEARCH_URI_ID);
 					break;
-				case SEARCH_TYPE_NEARBY:
+				case SEARCH_TYPE_NEARBY://周围搜索时，不分页
+					app.filterParams.remove("page");
+					app.filterParams.remove("limit");
 					requestURL.append(SEARCH_URI_NEARBY);
 					break;
 				default://默认为本地搜索
@@ -82,7 +87,7 @@ public class LBSCloudUtils {
 				//当前搜索类型
 				currSearchType = searchType;
 				//请求参数
-				 RequestParams params = new RequestParams(ItasteApplication.getInstance().filterParams); // 绑定参数
+				 RequestParams params = new RequestParams(app.filterParams); // 绑定参数
 				 params.put("key", ak);
 				 params.put("tableid", tableid);
 				 client.get(requestURL.toString(),params,handler);
@@ -93,6 +98,7 @@ public class LBSCloudUtils {
 			}
 		
 		IsBusy = false;
+		app.istosearch = false;
 	}
 	 //点击搜索按钮
   	public static void search(final Context context,int searchType){
@@ -107,7 +113,13 @@ public class LBSCloudUtils {
 				String dataStr = new String(data);
 				dataStr = dataStr.replaceAll("\"_", "\"");
 				 AMapDTO<FacInfoModel>  dto = JSON.parseObject(dataStr, new TypeReference<AMapDTO<FacInfoModel>>(){});
-				 application.getValidateDto().copy(dto);//对象copy
+				 //判断是否是重新搜索
+				 AMapDTO<FacInfoModel> validateDto = application.getValidateDto();
+				 if(application.isrequery){
+				 	 validateDto.copy(dto);//更新数据
+				 }else{
+					 validateDto.add(dto);//添加数据
+				 }
 				Toast.makeText(
 						context
 						,"符合条件数据:"+dto.getCount()+"个"
@@ -156,10 +168,16 @@ public class LBSCloudUtils {
 			public void onSuccess(int statusCode, Header[] headers, byte[] data) {
 				String resultstr = new String(data);
 				HashMap<String,String> resultmap =  JSON.parseObject(resultstr, new TypeReference<HashMap<String,String>>(){});
-				Toast.makeText(context, resultstr, Toast.LENGTH_LONG).show();
-				if(false&&"1".equals(resultmap.get("status"))){
+				//Toast.makeText(context, resultstr, Toast.LENGTH_LONG).show();
+				if("1".equals(resultmap.get("status"))){
 					Toast.makeText(context, "数据已添加！", Toast.LENGTH_LONG).show();
 				}
+				new Handler().postDelayed(new Runnable() {
+					@Override
+					public void run() {
+						LBSCloudUtils.search(context, currSearchType);
+					}
+				},2000);
 			}
 			
 			@Override
