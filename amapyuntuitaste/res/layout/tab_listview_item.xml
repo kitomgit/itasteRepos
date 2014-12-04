@@ -1,7 +1,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="250dp" 
-    android:layout_marginTop="5dp"
+    android:layout_marginTop="10dp"
     android:orientation="horizontal"
     android:descendantFocusability="blocksDescendants"
     android:background="@drawable/left_bg"
@@ -14,8 +14,8 @@
     >
     <com.loopj.android.image.SmartImageView
         android:id="@+id/facimagefirst"
-        android:layout_width="50dp"
-    	android:layout_height="50dp" 
+        android:layout_width="63dp"
+    	android:layout_height="63dp" 
         android:contentDescription="@string/_fac_logo"
         android:src="@drawable/ic_launcher" />
     </LinearLayout>
