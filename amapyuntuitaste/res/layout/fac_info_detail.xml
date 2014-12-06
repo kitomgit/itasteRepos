@@ -1,0 +1,396 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="2dp"
+    android:paddingRight="2dp"
+    android:paddingTop="30dp"
+    android:orientation="horizontal"
+    android:id="@+id/add_dialog"
+    android:windowSoftInputMode="stateHidden" 
+    android:background="@drawable/left_bg"
+    tools:context=".FacInfoDetailActivity" >
+     <LinearLayout
+         	android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:orientation="vertical" >
+    <HorizontalScrollView
+        android:id="@+id/imageshowscroll"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:scrollbars="none"
+        android:background="@drawable/half_alpha_bg"
+         >
+        <LinearLayout
+            android:id="@+id/picregion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+        </LinearLayout>
+    </HorizontalScrollView>
+
+    
+    <LinearLayout 
+    android:layout_width="match_parent"
+    android:layout_height="32dp"
+    android:orientation="horizontal"
+    android:paddingLeft="10dp"
+    android:layout_marginLeft="20dp"
+    android:layout_marginRight="20dp"
+    android:gravity="center_vertical"
+    style="@style/listViewItem"
+    >
+    <TextView
+        android:id="@+id/nametext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/textblock"
+        android:text="@string/_name" />
+
+    <TextView
+        android:id="@+id/name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/textblock"
+        android:text="sdfsdfsdfsdfsdf"
+        android:ems="8" />
+
+	</LinearLayout>
+	<LinearLayout 
+    android:layout_width="match_parent"
+    android:layout_height="32dp"
+    android:paddingLeft="10dp"
+    android:layout_marginLeft="20dp"
+    android:layout_marginRight="20dp"
+    android:orientation="horizontal"
+    android:gravity="center_vertical"
+    style="@style/listViewItem"
+    >
+    <TextView
+        android:id="@+id/addresstext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/textblock"
+        android:text="@string/_address" />
+
+    <TextView
+        android:id="@+id/address"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/textblock"
+        android:text="hahahha231232"
+        android:ems="8" />
+
+	</LinearLayout>
+	
+	<LinearLayout 
+    android:layout_width="match_parent"
+    android:layout_height="32dp"
+    android:paddingLeft="10dp"
+    android:orientation="horizontal"
+    android:gravity="center_vertical"
+    android:layout_marginLeft="20dp"
+    android:layout_marginRight="20dp"
+    style="@style/listViewItem"
+    >
+    <TextView
+        android:id="@+id/phonetext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/textblock"
+        android:text="@string/_mobile" />
+
+    <TextView
+        android:id="@+id/phone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/textblock"
+        android:phoneNumber="true"
+        android:text="15024157821"
+        android:ems="8" />
+
+	</LinearLayout>
+	
+	<LinearLayout 
+    android:layout_width="match_parent"
+    android:layout_height="32dp"
+    android:paddingLeft="10dp"
+    android:layout_marginLeft="20dp"
+    android:layout_marginRight="20dp"
+    android:orientation="horizontal"
+    android:gravity="center_vertical"
+    style="@style/listViewItem"
+    >
+    <TextView
+        android:id="@+id/heighttext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/textblock"
+        android:text="@string/_height" />
+
+    <TextView
+        android:id="@+id/height"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/textblock"
+        android:inputType="number"
+        android:text="3"
+        android:ems="8" />
+
+	</LinearLayout>
+    
+	 
+    
+   <LinearLayout 
+    android:layout_width="match_parent"
+    android:layout_height="32dp"
+    android:paddingLeft="10dp"
+    android:layout_marginLeft="20dp"
+    android:layout_marginRight="20dp"
+    android:orientation="horizontal"
+    android:gravity="center_vertical"
+    style="@style/listViewItem"
+    >
+    <TextView
+        android:id="@+id/areatext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/textblock"
+        android:text="@string/_area" />
+
+    <TextView
+        android:id="@+id/area"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/textblock"
+        android:inputType="number"
+        android:text="2005"
+        android:ems="8" >
+    </TextView>
+   </LinearLayout>
+ <LinearLayout 
+    android:layout_width="match_parent"
+    android:layout_height="32dp"
+    android:paddingLeft="10dp"
+    android:layout_marginLeft="20dp"
+    android:layout_marginRight="20dp"
+    android:orientation="horizontal"
+    android:gravity="center_vertical"
+    style="@style/listViewItem"
+    >
+    <TextView
+        android:id="@+id/sushetext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/textblock"
+        android:text="@string/_sushe_area" />
+
+    <TextView
+        android:id="@+id/sushe_area"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/textblock"
+        android:inputType="number"
+        android:text="200"
+        android:ems="8" >
+    </TextView>
+   </LinearLayout>
+
+    <LinearLayout 
+    android:layout_width="match_parent"
+    android:layout_height="32dp"
+    android:paddingLeft="10dp"
+    android:orientation="horizontal"
+    android:layout_marginLeft="20dp"
+    android:layout_marginRight="20dp"
+    android:gravity="center_vertical"
+    style="@style/listViewItem"
+    >
+
+    <TextView
+        android:id="@+id/pricetext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/textblock"
+        android:text="@string/_price" />
+
+    <TextView
+        android:id="@+id/price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/textblock"
+        android:inputType="number"
+        android:text="15"
+        android:ems="8" />
+    </LinearLayout>
+    
+	
+    <LinearLayout 
+    android:layout_width="match_parent"
+    android:layout_height="32dp"
+    android:paddingLeft="10dp"
+    android:layout_marginLeft="20dp"
+    android:layout_marginRight="20dp"
+    android:orientation="horizontal"
+    android:gravity="center_vertical"
+    style="@style/listViewItem"
+    >
+    <TextView
+        android:id="@+id/regiontext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/textblock"
+        android:text="@string/_region" />
+      <TextView
+        android:id="@+id/region"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/textblock"
+        android:ems="8" />
+
+    </LinearLayout>
+   
+     <LinearLayout 
+    android:layout_width="match_parent"
+    android:layout_height="32dp"
+    android:paddingLeft="10dp"
+    android:orientation="horizontal"
+    android:gravity="center_vertical"
+    android:layout_marginLeft="20dp"
+    android:layout_marginRight="20dp"
+    style="@style/listViewItem"
+    >
+
+    <TextView
+        android:id="@+id/floortext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/textblock"
+        android:text="@string/_floor" />
+
+    <TextView
+        android:id="@+id/floor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/textblock"
+        android:inputType="number"
+        android:ems="8" />
+    </LinearLayout>
+ <LinearLayout 
+    android:layout_width="match_parent"
+    android:layout_height="32dp"
+    android:paddingLeft="10dp"
+    android:layout_marginLeft="20dp"
+    android:layout_marginRight="20dp"
+    android:orientation="horizontal"
+    android:gravity="center_vertical"
+    style="@style/listViewItem"
+    >
+    <TextView
+        android:id="@+id/peidiantext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/textblock"
+        android:text="@string/_peidian" />
+
+    <TextView
+        android:id="@+id/peidian"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/textblock"
+        android:ems="8" />
+	</LinearLayout>
+	
+<LinearLayout 
+    android:layout_width="match_parent"
+    android:layout_height="32dp"
+    android:paddingLeft="10dp"
+    android:layout_marginLeft="20dp"
+    android:layout_marginRight="20dp"
+    android:orientation="horizontal"
+    android:gravity="center_vertical"
+    style="@style/listViewItem"
+    >
+    <TextView
+        android:id="@+id/structtext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/textblock"
+        android:text="@string/_struct" />
+    
+  <TextView
+        android:id="@+id/struct"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/textblock"
+        android:ems="8" />
+    </LinearLayout>
+ 
+ 
+	<LinearLayout 
+    android:layout_width="match_parent"
+    android:layout_height="32dp"
+    android:paddingLeft="10dp"
+    android:layout_marginLeft="20dp"
+    android:layout_marginRight="20dp"
+    android:orientation="horizontal"
+    android:gravity="center_vertical"
+    style="@style/listViewItem"
+    >
+    <TextView
+        android:id="@+id/qqcodetext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/textblock"
+        android:text="@string/_qq_code" />
+
+    <TextView
+        android:id="@+id/qqcode"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/textblock"
+        android:inputType="number"
+        android:text="1003189234"
+        android:ems="8" />
+
+	</LinearLayout>
+	<LinearLayout 
+    android:layout_width="match_parent"
+    android:layout_height="32dp"
+    android:paddingLeft="10dp"
+    android:layout_marginLeft="20dp"
+    android:layout_marginRight="20dp"
+    android:orientation="horizontal"
+    android:gravity="center_vertical"
+    style="@style/listViewItem"
+    >
+    <TextView
+        android:id="@+id/weixintext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/textblock"
+        android:text="@string/_weinxin_code" />
+
+    <TextView
+        android:id="@+id/weinxin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/textblock"
+        android:text="ki_tomsdfsfsdf"
+        android:ems="8" />
+
+	</LinearLayout>
+	
+	
+
+	 <RelativeLayout
+	     android:layout_marginTop="8dp"
+	     android:layout_width="match_parent"
+	     android:layout_height="wrap_content"
+	     android:orientation="horizontal" >
+
+	 </RelativeLayout>
+    </LinearLayout>
+</ScrollView>

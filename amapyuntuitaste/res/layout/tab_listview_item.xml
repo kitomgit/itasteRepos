@@ -1,6 +1,6 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="250dp" 
+    android:layout_height="wrap_content" 
     android:layout_marginTop="10dp"
     android:orientation="horizontal"
     android:descendantFocusability="blocksDescendants"
@@ -21,12 +21,39 @@
     </LinearLayout>
 <LinearLayout 
     android:layout_width="match_parent"
-    android:layout_height="250dp" 
+    android:layout_height="wrap_content" 
     android:background="#00000000"
     android:orientation="vertical"
     android:layout_gravity="center_vertical"
     android:id="@+id/tmplinelayout"
     >
+    <!-- 地址 -->
+   <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+       	style="@style/listViewItem"
+        >
+
+        <TextView
+            android:id="@+id/nametext"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="2dp"
+            android:layout_gravity="center_vertical"
+            style="@style/textblock"
+            android:text="@string/_name"
+            />
+        <TextView
+            android:id="@+id/namevalue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            style="@style/textblock"
+             android:singleLine="false"
+            android:layout_marginLeft="5dp"
+            />
+        
+   </LinearLayout>
     <!-- 地址 -->
    <LinearLayout
         android:layout_width="match_parent"
@@ -49,6 +76,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             style="@style/textblock"
+             android:singleLine="false"
             android:layout_marginLeft="5dp"
             />
         
@@ -184,6 +212,57 @@
             />
         
    </LinearLayout>
+   
+   <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        >
+	 <TextView
+            android:id="@+id/fac_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            />
+        <TextView
+            android:id="@+id/facdetail"
+            android:clickable="true"
+            style="@style/listViewItem"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/facedit"
+            android:layout_alignBottom="@+id/facedit"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="14dp"
+            android:text="@string/_detail"
+            android:textColor="#F92200"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/facedit"
+            android:clickable="true"
+            style="@style/listViewItem"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="18dp"
+            android:layout_toLeftOf="@+id/facdelete"
+            android:text="@string/_edit"
+            android:textColor="#F92200"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/facdelete"
+            android:clickable="true"
+            style="@style/listViewItem"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="16dp"
+            android:layout_toLeftOf="@+id/facdetail"
+            android:text="@string/_delete"
+            android:textColor="#F92200"
+            android:textSize="18sp" />
+        
+   </RelativeLayout>
         
 </LinearLayout>
 

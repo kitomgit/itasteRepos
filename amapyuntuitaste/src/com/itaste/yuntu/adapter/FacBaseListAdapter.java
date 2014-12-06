@@ -3,31 +3,31 @@ package com.itaste.yuntu.adapter;
 import java.io.Serializable;
 import java.util.List;
 
-import android.content.ComponentName;
+import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.View.OnTouchListener;
 import android.view.ViewGroup;
-import android.view.ViewParent;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.BaseAdapter;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.itaste.yuntu.FacImageGalleryActivity;
+import com.itaste.yuntu.FacInfoAddActivity;
+import com.itaste.yuntu.FacInfoDetailActivity;
 import com.itaste.yuntu.R;
 import com.itaste.yuntu.model.DtoImage;
 import com.itaste.yuntu.model.FacInfoModel;
+import com.itaste.yuntu.util.LBSCloudUtils;
+import com.itaste.yuntu.widget.WhiteDialog;
+import com.itaste.yuntu.widget.WhiteDialog.WhiteDialogClickListener;
 import com.loopj.android.image.SmartImageView;
 
 public class FacBaseListAdapter extends BaseAdapter  implements OnItemClickListener {
@@ -56,12 +56,16 @@ public class FacBaseListAdapter extends BaseAdapter  implements OnItemClickListe
 		 ListCacheViewHolder contentHolder;
 		 final FacInfoModel facinfo = facinfs.get(position);
 		 if(lay==null){
+			 
 			 contentHolder = new ListCacheViewHolder();
 			 LayoutInflater inflater = LayoutInflater.from(context);
 			 lay = inflater.inflate(R.layout.tab_listview_item, null);
 			//图片信息
 			contentHolder.iv = (SmartImageView) lay.findViewById(R.id.facimagefirst);
 			//文字信息
+			
+			//名称
+			contentHolder.namevalue = (TextView) lay.findViewById(R.id.namevalue);
 			//地址
 			contentHolder.addressvalue = (TextView) lay.findViewById(R.id.addressvalue);
 			//面积
@@ -74,6 +78,13 @@ public class FacBaseListAdapter extends BaseAdapter  implements OnItemClickListe
 			contentHolder.qqvalue =  (TextView) lay.findViewById(R.id.qqvalue);
 			//weixin
 			contentHolder.weixinvalue =  (TextView) lay.findViewById(R.id.weixinvalue);
+			//编辑
+			contentHolder.facedit = (TextView) lay.findViewById(R.id.facedit);
+			//删除
+			contentHolder.facdelete = (TextView) lay.findViewById(R.id.facdelete);
+			//详细
+			contentHolder.facdetail = (TextView) lay.findViewById(R.id.facdetail);
+			
 			lay.setTag(contentHolder);//绑定数据
 		 }else{
 			 contentHolder = (ListCacheViewHolder) lay.getTag();
@@ -92,10 +103,14 @@ public class FacBaseListAdapter extends BaseAdapter  implements OnItemClickListe
 					context.startActivity(intent);
 				}
 			});
+		 }else{
+			 contentHolder.iv.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_launcher));
+			 contentHolder.iv.setOnClickListener(null);
 		 }
+		 contentHolder.namevalue.setText(facinfo.getName());
 		 contentHolder.addressvalue.setText(facinfo.getAddress());
 		 contentHolder.areavalue.setText(facinfo.getFac_area());
-		 contentHolder.pricevalue.setText(facinfo.getFac_rent_orsale_price());
+		 contentHolder.pricevalue.setText(facinfo.getFac_price());
 		 contentHolder.phonevalue.setText(facinfo.getFac_mobile());
 		
 		 View phonelay = (View)contentHolder.phonevalue.getParent();
@@ -202,6 +217,51 @@ public class FacBaseListAdapter extends BaseAdapter  implements OnItemClickListe
 						return false;
 					}
 				});*/
+		 //编辑
+		 contentHolder.facedit.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				Intent edit = new Intent(context, FacInfoAddActivity.class);
+				Bundle args = new Bundle();
+				args.putSerializable("facinfo", facinfo);
+				edit.putExtras(args);
+				context.startActivity(edit);
+			}
+		});
+		 //删除
+		 contentHolder.facdelete.setOnClickListener(new OnClickListener() {
+				@Override
+				public void onClick(View v) {
+					
+					 WhiteDialog dialog = WhiteDialog.fastBuild(context, context.getResources().getString(R.string.dialog_title), "确定要删除吗？"
+						, new WhiteDialogClickListener() {
+						@Override
+						public void onClick(Dialog dialog,View v) {
+							Toast.makeText(context, "删除中...", Toast.LENGTH_LONG).show();
+							LBSCloudUtils.deleleinfo(context,String.valueOf( facinfo.get_id()));
+						}
+						}, 
+						new WhiteDialogClickListener() {
+						@Override
+						public void onClick(Dialog dialog,View v) {
+							dialog.dismiss();
+							Toast.makeText(context, "已取消删除...", Toast.LENGTH_LONG).show();
+						}
+					});
+					dialog.show();
+				}
+			});
+		 //详细页面
+		 contentHolder.facdetail.setOnClickListener(new OnClickListener() {
+				@Override
+				public void onClick(View v) {
+					Intent edit = new Intent(context, FacInfoDetailActivity.class);
+					Bundle args = new Bundle();
+					args.putSerializable("facinfo", facinfo);
+					edit.putExtras(args);
+					context.startActivity(edit);
+				}
+			});
 		System.out.println("contentHolder====================:::"+contentHolder);
 		return lay;
 	}
@@ -212,12 +272,16 @@ public class FacBaseListAdapter extends BaseAdapter  implements OnItemClickListe
 	 */
 	private class ListCacheViewHolder{
 		SmartImageView iv;
+		TextView namevalue;
 		TextView addressvalue;
 		TextView areavalue;
 		TextView pricevalue;
 		TextView phonevalue;
 		TextView qqvalue;
 		TextView weixinvalue;
+		TextView facedit;
+		TextView facdelete;
+		TextView facdetail;
 		
 	}
 	//事件协议

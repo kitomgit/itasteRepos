@@ -9,7 +9,7 @@
     android:orientation="horizontal"
     android:id="@+id/add_dialog"
     android:windowSoftInputMode="stateHidden" 
-    android:background="@drawable/orange_jianbian_90_bg"
+    android:background="@drawable/left_bg"
     tools:context=".FacInfoAddActivity" >
      <LinearLayout
          	android:layout_height="100dp"
@@ -19,7 +19,8 @@
         android:id="@+id/imageshowscroll"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:overScrollMode="ifContentScrolls"
+        android:scrollbars="none"
+        android:background="@drawable/border_corner"
          >
         <LinearLayout
             android:id="@+id/picregion"
@@ -43,22 +44,24 @@
     android:layout_width="match_parent"
     android:layout_height="32dp"
     android:orientation="horizontal"
-    android:paddingLeft="40dp"
+    android:paddingLeft="10dp"
+    android:layout_marginLeft="20dp"
+    android:layout_marginRight="20dp"
     android:gravity="center_vertical"
-    android:background="@drawable/border_corner"
+    style="@style/listViewItem"
     >
     <TextView
         android:id="@+id/nametext"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        style="@style/textwhite"
+        style="@style/textblock"
         android:text="@string/_name" />
 
     <EditText
         android:id="@+id/name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        style="@style/textwhite"
+        style="@style/textblock"
         android:text="sdfsdfsdfsdfsdf"
         android:ems="8" />
 
@@ -66,23 +69,25 @@
 	<LinearLayout 
     android:layout_width="match_parent"
     android:layout_height="32dp"
-    android:paddingLeft="40dp"
+    android:paddingLeft="10dp"
+    android:layout_marginLeft="20dp"
+    android:layout_marginRight="20dp"
     android:orientation="horizontal"
     android:gravity="center_vertical"
-    android:background="@drawable/border_corner"
+    style="@style/listViewItem"
     >
     <TextView
         android:id="@+id/addresstext"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        style="@style/textwhite"
+        style="@style/textblock"
         android:text="@string/_address" />
 
     <EditText
         android:id="@+id/address"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        style="@style/textwhite"
+        style="@style/textblock"
         android:text="hahahha231232"
         android:ems="8" />
 
@@ -91,23 +96,25 @@
 	<LinearLayout 
     android:layout_width="match_parent"
     android:layout_height="32dp"
-    android:paddingLeft="40dp"
+    android:paddingLeft="10dp"
     android:orientation="horizontal"
     android:gravity="center_vertical"
-    android:background="@drawable/border_corner"
+    android:layout_marginLeft="20dp"
+    android:layout_marginRight="20dp"
+    style="@style/listViewItem"
     >
     <TextView
         android:id="@+id/phonetext"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        style="@style/textwhite"
+        style="@style/textblock"
         android:text="@string/_mobile" />
 
     <EditText
         android:id="@+id/phone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        style="@style/textwhite"
+        style="@style/textblock"
         android:phoneNumber="true"
         android:text="15024157821"
         android:ems="8" />
@@ -117,23 +124,25 @@
 	<LinearLayout 
     android:layout_width="match_parent"
     android:layout_height="32dp"
-    android:paddingLeft="40dp"
+    android:paddingLeft="10dp"
+    android:layout_marginLeft="20dp"
+    android:layout_marginRight="20dp"
     android:orientation="horizontal"
     android:gravity="center_vertical"
-    android:background="@drawable/border_corner"
+    style="@style/listViewItem"
     >
     <TextView
         android:id="@+id/heighttext"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        style="@style/textwhite"
+        style="@style/textblock"
         android:text="@string/_height" />
 
     <EditText
         android:id="@+id/height"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        style="@style/textwhite"
+        style="@style/textblock"
         android:inputType="number"
         android:text="3"
         android:ems="8" />
@@ -145,25 +154,54 @@
    <LinearLayout 
     android:layout_width="match_parent"
     android:layout_height="32dp"
-    android:paddingLeft="40dp"
+    android:paddingLeft="10dp"
+    android:layout_marginLeft="20dp"
+    android:layout_marginRight="20dp"
     android:orientation="horizontal"
     android:gravity="center_vertical"
-    android:background="@drawable/border_corner"
+    style="@style/listViewItem"
     >
     <TextView
         android:id="@+id/areatext"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        style="@style/textwhite"
+        style="@style/textblock"
         android:text="@string/_area" />
 
     <EditText
         android:id="@+id/area"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        style="@style/textwhite"
+        style="@style/textblock"
         android:inputType="number"
         android:text="2005"
+        android:ems="8" >
+    </EditText>
+   </LinearLayout>
+   <LinearLayout 
+    android:layout_width="match_parent"
+    android:layout_height="32dp"
+    android:paddingLeft="10dp"
+    android:layout_marginLeft="20dp"
+    android:layout_marginRight="20dp"
+    android:orientation="horizontal"
+    android:gravity="center_vertical"
+    style="@style/listViewItem"
+    >
+    <TextView
+        android:id="@+id/sushetext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/textblock"
+        android:text="@string/_sushe_area" />
+
+    <EditText
+        android:id="@+id/sushe_area"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/textblock"
+        android:inputType="number"
+        android:text="200"
         android:ems="8" >
     </EditText>
    </LinearLayout>
@@ -172,24 +210,26 @@
     <LinearLayout 
     android:layout_width="match_parent"
     android:layout_height="32dp"
-    android:paddingLeft="40dp"
+    android:paddingLeft="10dp"
     android:orientation="horizontal"
+    android:layout_marginLeft="20dp"
+    android:layout_marginRight="20dp"
     android:gravity="center_vertical"
-    android:background="@drawable/border_corner"
+    style="@style/listViewItem"
     >
 
     <TextView
         android:id="@+id/pricetext"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        style="@style/textwhite"
+        style="@style/textblock"
         android:text="@string/_price" />
 
     <EditText
         android:id="@+id/price"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        style="@style/textwhite"
+        style="@style/textblock"
         android:inputType="number"
         android:text="15"
         android:ems="8" />
@@ -199,22 +239,24 @@
     <LinearLayout 
     android:layout_width="match_parent"
     android:layout_height="32dp"
-    android:paddingLeft="40dp"
+    android:paddingLeft="10dp"
+    android:layout_marginLeft="20dp"
+    android:layout_marginRight="20dp"
     android:orientation="horizontal"
     android:gravity="center_vertical"
-    android:background="@drawable/border_corner"
+    style="@style/listViewItem"
     >
     <TextView
         android:id="@+id/regiontext"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        style="@style/textwhite"
+        style="@style/textblock"
         android:text="@string/_region" />
       <EditText
         android:id="@+id/region"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        style="@style/textwhite"
+        style="@style/textblock"
         android:ems="8" />
 
    <Button
@@ -230,24 +272,26 @@
      <LinearLayout 
     android:layout_width="match_parent"
     android:layout_height="32dp"
-    android:paddingLeft="40dp"
+    android:paddingLeft="10dp"
     android:orientation="horizontal"
     android:gravity="center_vertical"
-    android:background="@drawable/border_corner"
+    android:layout_marginLeft="20dp"
+    android:layout_marginRight="20dp"
+    style="@style/listViewItem"
     >
 
     <TextView
         android:id="@+id/floortext"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        style="@style/textwhite"
+        style="@style/textblock"
         android:text="@string/_floor" />
 
     <EditText
         android:id="@+id/floor"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        style="@style/textwhite"
+        style="@style/textblock"
         android:inputType="number"
         android:ems="8" />
 
@@ -263,23 +307,25 @@
  <LinearLayout 
     android:layout_width="match_parent"
     android:layout_height="32dp"
-    android:paddingLeft="40dp"
+    android:paddingLeft="10dp"
+    android:layout_marginLeft="20dp"
+    android:layout_marginRight="20dp"
     android:orientation="horizontal"
     android:gravity="center_vertical"
-    android:background="@drawable/border_corner"
+    style="@style/listViewItem"
     >
     <TextView
         android:id="@+id/peidiantext"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        style="@style/textwhite"
+        style="@style/textblock"
         android:text="@string/_peidian" />
 
     <EditText
         android:id="@+id/peidian"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        style="@style/textwhite"
+        style="@style/textblock"
         android:ems="8" />
 
    <Button
@@ -295,23 +341,25 @@
 <LinearLayout 
     android:layout_width="match_parent"
     android:layout_height="32dp"
-    android:paddingLeft="40dp"
+    android:paddingLeft="10dp"
+    android:layout_marginLeft="20dp"
+    android:layout_marginRight="20dp"
     android:orientation="horizontal"
     android:gravity="center_vertical"
-    android:background="@drawable/border_corner"
+    style="@style/listViewItem"
     >
     <TextView
         android:id="@+id/structtext"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        style="@style/textwhite"
+        style="@style/textblock"
         android:text="@string/_struct" />
     
   <EditText
         android:id="@+id/struct"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        style="@style/textwhite"
+        style="@style/textblock"
         android:ems="8" />
    <Button
         android:id="@+id/structbtn"
@@ -327,23 +375,25 @@
 	<LinearLayout 
     android:layout_width="match_parent"
     android:layout_height="32dp"
-    android:paddingLeft="40dp"
+    android:paddingLeft="10dp"
+    android:layout_marginLeft="20dp"
+    android:layout_marginRight="20dp"
     android:orientation="horizontal"
     android:gravity="center_vertical"
-    android:background="@drawable/border_corner"
+    style="@style/listViewItem"
     >
     <TextView
         android:id="@+id/qqcodetext"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        style="@style/textwhite"
+        style="@style/textblock"
         android:text="@string/_qq_code" />
 
     <EditText
         android:id="@+id/qqcode"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        style="@style/textwhite"
+        style="@style/textblock"
         android:inputType="number"
         android:text="1003189234"
         android:ems="8" />
@@ -352,23 +402,25 @@
 	<LinearLayout 
     android:layout_width="match_parent"
     android:layout_height="32dp"
-    android:paddingLeft="40dp"
+    android:paddingLeft="10dp"
+    android:layout_marginLeft="20dp"
+    android:layout_marginRight="20dp"
     android:orientation="horizontal"
     android:gravity="center_vertical"
-    android:background="@drawable/border_corner"
+    style="@style/listViewItem"
     >
     <TextView
         android:id="@+id/weixintext"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        style="@style/textwhite"
+        style="@style/textblock"
         android:text="@string/_weinxin_code" />
 
     <EditText
         android:id="@+id/weinxin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        style="@style/textwhite"
+        style="@style/textblock"
         android:text="ki_tomsdfsfsdf"
         android:ems="8" />
 
@@ -390,6 +442,7 @@
 	         android:layout_alignParentRight="true"
 	         android:layout_alignParentTop="true"
 	         android:layout_marginRight="92dp"
+	         android:onClick="cancelBtnClickHandler"
 	         android:text="@string/_cancel"
 	         android:textColor="@color/white" />
 

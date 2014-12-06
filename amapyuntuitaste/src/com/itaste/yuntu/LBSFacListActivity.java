@@ -12,6 +12,7 @@ import android.widget.AbsListView.OnScrollListener;
 import android.widget.BaseAdapter;
 import android.widget.ListView;
 import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.itaste.yuntu.adapter.FacBaseListAdapter;
@@ -22,7 +23,6 @@ public class LBSFacListActivity extends Activity
 implements OnRefreshListener,OnScrollListener  {
 	private ListView faclv;
 	private SwipeRefreshLayout swipe_ly;
-	private ProgressBar load_data_pg;
 	private BaseAdapter listAdapter;
 	// 最后可见条目的索引
     private int lastVisibleIndex;
@@ -35,7 +35,7 @@ implements OnRefreshListener,OnScrollListener  {
 			switch (msg.what)
 			{
 			case REFRESH_COMPLETE:
-				ItasteApplication.getInstance().resetLoad();
+				ItasteApplication.getInstance().isrequery=true;
 				LBSCloudUtils.search(LBSFacListActivity.this,LBSCloudUtils.currSearchType);
 				listAdapter.notifyDataSetChanged();
 				swipe_ly.setRefreshing(false);
@@ -62,7 +62,7 @@ implements OnRefreshListener,OnScrollListener  {
 				android.R.color.holo_orange_light, android.R.color.holo_red_light);
 		//下方加载更多数据view
 		moreView = getLayoutInflater().inflate(R.layout.more_data, null);
-		load_data_pg = (ProgressBar) moreView.findViewById(R.id.load_data_pg);
+		moreView.setVisibility(View.GONE);
 		listAdapter = new FacBaseListAdapter(this,application.getValidateDto().getDatas());
 		faclv.addFooterView(moreView);
 		faclv.setAdapter(listAdapter);
@@ -79,12 +79,6 @@ implements OnRefreshListener,OnScrollListener  {
 		listAdapter.notifyDataSetChanged();
 		}
 		if(application.getValidateDto().getCount()<=0){
-			LBSCloudUtils.search(this,LBSCloudUtils.SEARCH_TYPE_ALL_LIST);
-		}
-	}
-	@Override
-	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-		if(ItasteApplication.List_REQUEST_SEARCH_CODE==requestCode&&resultCode==ItasteApplication.SEARCH_FAC_RESULT_CODE){
 			LBSCloudUtils.search(this,LBSCloudUtils.SEARCH_TYPE_ALL_LIST);
 		}
 	}
@@ -105,9 +99,9 @@ implements OnRefreshListener,OnScrollListener  {
                 &&totalCount>count
                 ) {
         	ItasteApplication.getInstance().setNextStepPage(1);
-        	load_data_pg.setVisibility(View.VISIBLE);
+        	moreView.setVisibility(View.VISIBLE);
         	LBSCloudUtils.search(this,LBSCloudUtils.currSearchType);
-        	Toast.makeText(this, "狂力加载中......！", Toast.LENGTH_LONG).show();
+        	Toast.makeText(this, "加载中......", Toast.LENGTH_LONG).show();
         }
 		  // 所有的条目已经和最大条数相等，则移除底部的View
         if (scrollState == OnScrollListener.SCROLL_STATE_IDLE&&
@@ -123,4 +117,12 @@ implements OnRefreshListener,OnScrollListener  {
 		 // 计算最后可见条目的索引
         lastVisibleIndex = firstVisibleItem + visibleItemCount - 1;
 	}
+	
+	public void detailfac(View v){
+		
+		RelativeLayout rl = (RelativeLayout) v.getParent();
+		Toast.makeText(this, v.toString(), Toast.LENGTH_LONG).show();
+	}
+	
+	
 }

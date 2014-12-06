@@ -3,6 +3,7 @@ package com.itaste.yuntu;
 import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
 import java.util.HashMap;
+import java.util.List;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -17,6 +18,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -24,8 +26,12 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.alibaba.fastjson.JSON;
+import com.itaste.yuntu.model.DtoImage;
 import com.itaste.yuntu.model.FacInfoModel;
 import com.itaste.yuntu.util.ItasteApplication;
+import com.itaste.yuntu.util.LBSCloudUtils;
+import com.loopj.android.image.SmartImageView;
 
 public class FacInfoAddActivity extends Activity {
 	private static int  CAMERA_CAPTURE=0;
@@ -36,8 +42,10 @@ public class FacInfoAddActivity extends Activity {
 	private TextView fanhui;
 	private EditText 
 					struct,region,price
-					,floor,peidian,area,phone
+					,floor,peidian,area,sushe,phone
 					,name,address,qqcode,weixincode,height;
+	private FacInfoModel facinfo;
+	private String location;
 	
 
 	/* (non-Javadoc)
@@ -63,7 +71,6 @@ public class FacInfoAddActivity extends Activity {
 		@Override
 		public void onClick(View v) {
 			FacInfoAddActivity.this.finish();
-			
 		}
 	};
 	topbackBtn.setOnClickListener(fanhuicl);
@@ -79,6 +86,7 @@ public class FacInfoAddActivity extends Activity {
 		floor = (EditText) this.findViewById(R.id.floor);
 		peidian = (EditText) this.findViewById(R.id.peidian);
 		area = (EditText) this.findViewById(R.id.area);
+		sushe = (EditText) this.findViewById(R.id.sushe_area);
 		phone = (EditText) this.findViewById(R.id.phone);
 		struct = (EditText) this.findViewById(R.id.struct);
 		name = (EditText) this.findViewById(R.id.name);
@@ -90,13 +98,48 @@ public class FacInfoAddActivity extends Activity {
 		topbackBtn = (ImageView) this.findViewById(R.id.top_back_iv);
 		picregion = (LinearLayout) this.findViewById(R.id.picregion);
 		fanhui = (TextView) this.findViewById(R.id.fanhui);
+		Button addBtn = (Button)this.findViewById(R.id.addBtn);
 		/*regionbtn = (Button) this.findViewById(R.id.regionbtn);
 		pricebtn = (Button) this.findViewById(R.id.pricebtn);
 		floorbtn = (Button) this.findViewById(R.id.floorbtn);
 		peidianbtn = (Button) this.findViewById(R.id.peidianbtn);
 		areabtn = (Button) this.findViewById(R.id.areabtn);
 		structbtn = (Button) this.findViewById(R.id.structbtn);*/
-		
+		Intent intent = getIntent();
+		location = intent.getStringExtra("location");
+		Bundle bundle = intent.getExtras();
+		if(bundle!=null){
+		facinfo = (FacInfoModel)bundle.get("facinfo");
+		if(facinfo!=null){
+			addBtn.setText(getString(R.string._edit));
+			region.setText(facinfo.getFac_region());
+			price.setText(facinfo.getFac_price());
+			floor.setText(facinfo.getFac_floor());
+			peidian.setText(facinfo.getFac_peidian());
+			area.setText(facinfo.getFac_area());
+			sushe.setText(facinfo.getFac_sushe_area());
+			phone.setText(facinfo.getFac_mobile());
+			struct.setText(facinfo.getFac_struct());
+			name.setText(facinfo.getName());
+			address.setText(facinfo.getAddress());
+			qqcode.setText(facinfo.getQq_code());
+			weixincode.setText(facinfo.getWeixin_code());
+			height.setText(facinfo.getFac_height());
+			location = facinfo.getLocationStr();
+			List<DtoImage> images = facinfo.getImage();
+			LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+			lp.setMargins(5, 3,5, 3);
+			lp.width=150;
+			lp.height=150;
+			for (DtoImage dtoImage : images) {
+				SmartImageView iv = new SmartImageView(this);
+				//iv.setPadding(0, 0, 0, 0);
+				iv.setLayoutParams(lp);
+				iv.setImageUrl(dtoImage.getPreurl());
+				picregion.addView(iv);
+			}
+		}
+		}
 		
 	} 
 
@@ -109,6 +152,7 @@ public class FacInfoAddActivity extends Activity {
 	String floorstr = floor.getText().toString().trim();
 	String peidianstr = peidian.getText().toString().trim();
 	String areastr = area.getText().toString().trim();
+	String sushestr = sushe.getText().toString().trim();
 	String structstr = struct.getText().toString().trim();
 	String phonestr = phone.getText().toString().trim();
 	String namevalue = name.getText().toString().trim();
@@ -121,10 +165,11 @@ public class FacInfoAddActivity extends Activity {
 	HashMap<String,String> addfacinfo = new HashMap<String, String>();
 	
 	addfacinfo.put(FacInfoModel.FAC_REGION, regionstr);
-	addfacinfo.put(FacInfoModel.FAC_RENT_ORSALE_PRICE, pricestr);
+	addfacinfo.put(FacInfoModel.FAC_PRICE, pricestr);
 	addfacinfo.put(FacInfoModel.FAC_FLOOR, getSearchFloor(floorstr));
 	addfacinfo.put(FacInfoModel.FAC_PEIDIAN,peidianstr);
 	addfacinfo.put(FacInfoModel.FAC_AREA, areastr);
+	addfacinfo.put(FacInfoModel.FAC_SUSHE_AREA, sushestr);
 	addfacinfo.put(FacInfoModel.FAC_STRUCT, structstr);
 	addfacinfo.put(FacInfoModel.FAC_MOBILE, phonestr);
 	addfacinfo.put(FacInfoModel._NAME, namevalue);
@@ -132,23 +177,18 @@ public class FacInfoAddActivity extends Activity {
 	addfacinfo.put(FacInfoModel.QQ_CODE, qqcodevalue);
 	addfacinfo.put(FacInfoModel.WEIXIN_CODE, weixinvalue);
 	addfacinfo.put(FacInfoModel.FAC_HEIGHT, heightvalue);
-	Intent intent = getIntent();
-	intent.putExtra("addfacinfo", addfacinfo);
-	setResult(ItasteApplication.ADD_FAC_RESULT_CODE,intent);
+	addfacinfo.put(FacInfoModel._LOCATION, location);
+	int mergeType = LBSCloudUtils.ADD_INFO;
+	if(facinfo!=null){
+		mergeType = LBSCloudUtils.UPDATE_INFO;
+		addfacinfo.put(FacInfoModel._ID,String.valueOf( facinfo.get_id()));
+	}
+	/*Intent intent = getIntent();
+	intent.putExtra("addfacinfo", addfacinfo);*/
+	String jsoninfo = JSON.toJSONString(addfacinfo);
+	LBSCloudUtils.mergeinfo(getApplication(), jsoninfo,mergeType);
 	this.finish(); 
 	}
-
-
-
-	private String getSearch(String str) {
-		String result = "";
-		if("不限".equals(str)){
-			result = "";
-		}
-		return result;
-	}
-
-
 
 	private String getSearchFloor(String floorstr) {
 		/**
@@ -194,8 +234,6 @@ public class FacInfoAddActivity extends Activity {
 
 	//查询取消按钮
 	public void cancelBtnClickHandler(View v) { 
-	Toast.makeText(getApplicationContext(), "提示：查询已取消！", 
-	Toast.LENGTH_SHORT).show(); 
 	this.finish(); 
 	} 
 	//选择按钮的单击事件

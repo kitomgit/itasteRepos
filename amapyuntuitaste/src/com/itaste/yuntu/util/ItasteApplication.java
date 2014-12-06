@@ -73,14 +73,20 @@ public class ItasteApplication extends  Application{
 	public void onCreate() {
 		super.onCreate();
 		instance = this;
+		listInit();
+  		//默认当前激活试图为map试图
+		this.currentactivateView = getString(R.string._maptab);
+	}
+	private void listInit() {
 		//必填参数初始化
 		filterParams.put("city", "全国");
   		filterParams.put("keywords","");
   		filterParams.put(FILTERKEY,"");
   		filterParams.put("page", page+"");
   		filterParams.put("limit", limit+"");
-  		//默认当前激活试图为map试图
-		this.currentactivateView = getString(R.string._maptab);
+  		filterParams.remove("radius");
+  		filterParams.remove("center");
+  		this.isrequery = true;
 	}
 	/*
 	 * 如果dto不存在，则创建一个返回
@@ -98,9 +104,7 @@ public class ItasteApplication extends  Application{
 	
 	/*高德地图云检索filter条件，一次性添加*/
 	public void setFilters(String filterstr){
-		if(filterParams.containsKey(FILTERKEY)){
-			filterParams.remove(FILTERKEY);
-		}
+		listInit();
 		if (filterstr==null) {
 			filterstr = "";
 		}
@@ -108,9 +112,7 @@ public class ItasteApplication extends  Application{
 	}
 	/*高德地图云检索filter条件，一次性添加*/
 	public void setFilters(HashMap<String,String> filters){
-		if(filterParams.containsKey(FILTERKEY)){
-			filterParams.remove(FILTERKEY);
-		}
+		listInit();
 		String filter = "";
 		StringBuffer filterstr = new StringBuffer("");
 		if(filters!=null&&filters.size()>0){
@@ -141,13 +143,11 @@ public class ItasteApplication extends  Application{
 	}
 	//获取当前页数
 	public int getCurPage(){
-		String page = filterParams.get("page");
-		return page!=null?Integer.valueOf(page):this.page;
+		return this.page;
 	}
 	//获取当前的分页大小
 	public int getpageSize(){
-		String page = filterParams.get("limit");
-		return page!=null?Integer.valueOf(page):this.limit;
+		return this.limit;
 	}
 	
 	public int setNextStepPage(int step){
@@ -157,11 +157,13 @@ public class ItasteApplication extends  Application{
 			//this.istosearch=true;
 			return this.page;
 	}
-	
-	public void resetLoad(){
-		this.page = 1;
+	//周围搜索用
+	public void nearbyInit(){
 		//this.istosearch = false;
-		filterParams.put("page", this.page+"");
+		filterParams.remove(FILTERKEY);
+		//filterParams.remove("limit");
+		//filterParams.remove("page");
+		filterParams.put("limit", "100");
 		this.isrequery = true;
 	}
 	

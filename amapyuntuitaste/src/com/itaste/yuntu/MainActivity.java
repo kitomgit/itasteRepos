@@ -5,6 +5,7 @@ import java.util.HashMap;
 
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.app.TabActivity;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -22,12 +23,15 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TabHost;
+import android.widget.Toast;
 import android.widget.TabHost.OnTabChangeListener;
 import android.widget.TextView;
 
 import com.itaste.yuntu.adapter.LeftSlideMenuListViewAdapter;
 import com.itaste.yuntu.util.ItasteApplication;
 import com.itaste.yuntu.util.LBSCloudUtils;
+import com.itaste.yuntu.widget.WhiteDialog;
+import com.itaste.yuntu.widget.WhiteDialog.WhiteDialogClickListener;
 import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
 
 @SuppressLint("NewApi")
@@ -65,9 +69,12 @@ public class MainActivity extends TabActivity implements OnClickListener,OnTabCh
 			break;
 		case R.id.zwsearchiv://周围搜索
 			ItasteApplication app = ItasteApplication.getInstance();
-			app.resetLoad();
+			if(app.currentLocation==null){
+				Toast.makeText(this,"自动定位失败，请在地图页面右上角手动点击定位按钮", Toast.LENGTH_LONG).show();
+				return;
+			}
+			app.nearbyInit();
 			HashMap<String, String> filterParams = app.filterParams;
-			filterParams.remove(ItasteApplication.FILTERKEY);
 			filterParams.put("center", app.currentLocation.getLongitude()+","+app.currentLocation.getLatitude());
 			filterParams.put("radius",getNearbySerach(nearby.getSelectedItem()));
 			filterParams.put("keywords", keywords.getText().toString().trim());
@@ -223,21 +230,21 @@ public class MainActivity extends TabActivity implements OnClickListener,OnTabCh
 	 * 退出应用程序
 	 */
 	private void exit() {
-		AlertDialog alertDialog = new AlertDialog.Builder(MainActivity.this)
-				.setIcon(R.drawable.ic_launcher)
-				.setTitle("提示")
-				.setMessage(R.string.exit_confirm)
-				.setPositiveButton(R.string.button_ok,
-						new DialogInterface.OnClickListener() {
-
-							public void onClick(DialogInterface dialog,
-									int whichButton) {
-								finish();
-								android.os.Process
-										.killProcess(android.os.Process.myPid());
-							}
-						}).setNegativeButton(R.string.button_cancel, null).create();
-			alertDialog.show();
+			 WhiteDialog dialog = WhiteDialog.fastBuild(this, getResources().getString(R.string.dialog_title), "确定要退出吗？"
+						, new WhiteDialogClickListener() {
+						@Override
+						public void onClick(Dialog dialog,View v) {
+							android.os.Process.killProcess(android.os.Process.myPid());
+						}
+						}, 
+						new WhiteDialogClickListener() {
+						@Override
+						public void onClick(Dialog dialog,View v) {
+							dialog.dismiss();
+							Toast.makeText(MainActivity.this, "已取消退出...", Toast.LENGTH_LONG).show();
+						}
+					});
+					dialog.show();
 	}
 
 }

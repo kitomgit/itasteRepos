@@ -35,7 +35,6 @@
             android:theme="@android:style/Theme.NoTitleBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -74,6 +73,11 @@
         <activity
             android:name="com.itaste.yuntu.FacInfoAddActivity"
             android:label="@string/title_activity_fac_info_add"
+            android:theme="@style/top_bar"
+            android:windowSoftInputMode="stateHidden|stateUnchanged" >
+        </activity>
+        <activity
+            android:name="com.itaste.yuntu.FacInfoDetailActivity"
             android:theme="@style/top_bar"
             android:windowSoftInputMode="stateHidden|stateUnchanged" >
         </activity>

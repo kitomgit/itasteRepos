@@ -1,6 +1,7 @@
 package com.itaste.yuntu;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -11,6 +12,7 @@ import android.graphics.Color;
 import android.location.Location;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -29,6 +31,7 @@ import com.amap.api.maps.AMap.InfoWindowAdapter;
 import com.amap.api.maps.AMap.OnInfoWindowClickListener;
 import com.amap.api.maps.AMap.OnMapLongClickListener;
 import com.amap.api.maps.AMap.OnMarkerClickListener;
+import com.amap.api.maps.AMapUtils;
 import com.amap.api.maps.CameraUpdateFactory;
 import com.amap.api.maps.LocationSource;
 import com.amap.api.maps.MapView;
@@ -59,7 +62,7 @@ OnMapLongClickListener
 	    private OnLocationChangedListener mListener;
 	    private LocationManagerProxy mAMapLocationManager;
 	    private RadioGroup mGPSModeGroup;//地图定位模式切换
-	    private LatLng userClickLatlng;//用户点击的位置坐标
+	    //private LatLng userClickLatlng;//用户点击的位置坐标
 	  
 	 
 	    @Override
@@ -80,6 +83,7 @@ OnMapLongClickListener
 	            setUpMap();
 	           
 	        }
+	   
 	        //将当前activity加入到application中
 	        ItasteApplication.getInstance().facMapActivity = this;
 	    }
@@ -232,8 +236,14 @@ OnMapLongClickListener
 			Builder latLngbuilder = new LatLngBounds.Builder();
 			Marker addMarker = null;
 			FacInfoModel fac = null;
+			LatLng currentLocation = app.getCurrentLocation();
 			for (int i=0;facInfos!=null&&i<facInfos.size();i++) {
 				fac = facInfos.get(i);
+				if (currentLocation!=null) {
+					double distance = AMapUtils.calculateLineDistance(currentLocation, fac.getLocation());
+					distance= new BigDecimal(distance).setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();
+					fac.setDistance(distance);
+				}
 				//添加标注
 				MarkerOptions markerOption = 
 						new MarkerOptions()
@@ -254,7 +264,6 @@ OnMapLongClickListener
 				addMarker.showInfoWindow();
 			}
 			//添加用当前位置
-			LatLng currentLocation = app.getCurrentLocation();
 			if(currentLocation!=null){
 				 
 		    aMap.addMarker(
@@ -318,7 +327,8 @@ OnMapLongClickListener
 			    TextView fac_height = ((TextView) view.findViewById(R.id.fac_height));
 			    TextView fac_struct = ((TextView) view.findViewById(R.id.fac_struct));
 			    TextView fac_peidian = ((TextView) view.findViewById(R.id.fac_peidian));
-			    TextView fac_desc = ((TextView) view.findViewById(R.id.fac_desc));
+			    //TextView fac_desc = ((TextView) view.findViewById(R.id.fac_desc));
+			    TextView distance = ((TextView) view.findViewById(R.id.distance));
 			    DtoImage image = fac.getFistImage();
 				if (image!=null) {
 					badge.setImageUrl(image.getPreurl());
@@ -338,11 +348,12 @@ OnMapLongClickListener
 			    fac_address.setText(marker.getSnippet());
 			    fac_area.setText(fac.getFac_area());
 			    fac_sushe_area.setText(fac.getFac_sushe_area());
-			    fac_price.setText(fac.getFac_rent_orsale_price());
+			    fac_price.setText(fac.getFac_price());
 			    fac_height.setText(fac.getFac_floor());
 			    fac_struct.setText(fac.getFac_struct());
 			    fac_peidian.setText(fac.getFac_peidian());
-			    fac_desc.setText(fac.getFac_desc());
+			    distance.setText(fac.getDistance()+" 米 ");
+			    //fac_desc.setText(fac.getFac_desc());
 			    
 		}
 
@@ -353,21 +364,22 @@ OnMapLongClickListener
 			Toast.makeText(this, "纬度："+latlng.latitude+"精度："+latlng.longitude, Toast.LENGTH_LONG).show();
 			/*String url="mqqwpa://im/chat?chat_type=wpa&uin=501863587";  
 			startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(url)));*/
-			userClickLatlng = latlng;
+			//userClickLatlng = latlng;
 			Intent addFacInfoIntent = new Intent(this, FacInfoAddActivity.class);
+			addFacInfoIntent.putExtra("location",  latlng.longitude+","+latlng.latitude);
 			startActivityForResult(addFacInfoIntent,ItasteApplication.ADD_FAC_REQUEST_CODE);
 			
 		}
 		//添加数据
 		@Override
 		protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-			if(ItasteApplication.ADD_FAC_REQUEST_CODE==requestCode&&ItasteApplication.ADD_FAC_RESULT_CODE==resultCode&&data!=null){
+/*			if(ItasteApplication.ADD_FAC_REQUEST_CODE==requestCode&&ItasteApplication.ADD_FAC_RESULT_CODE==resultCode&&data!=null){
 				HashMap<String,String> facinfo = (HashMap<String, String>) data.getSerializableExtra("addfacinfo");
 				facinfo.put(FacInfoModel._LOCATION, userClickLatlng.longitude+","+userClickLatlng.latitude);
 				String facinfostr = JSON.toJSONString(facinfo);
 				LBSCloudUtils.addinfo(this, facinfostr);
 				
-			}
+			}*/
 			
 		}
 		
@@ -399,7 +411,10 @@ OnMapLongClickListener
 			// TODO Auto-generated method stub
 			
 		}
-
-		
+		//删除fac
+		public void deletefac(View v){
+			
+			
+		}
 			
 }

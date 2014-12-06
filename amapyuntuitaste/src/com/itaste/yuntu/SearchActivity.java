@@ -20,7 +20,7 @@ import android.widget.Toast;
 
 public class SearchActivity extends Activity {
 	private LinearLayout layout; 
-	private EditText struct,region,price,floor,peidian,area,phone;
+	private EditText struct,region,price,floor,peidian,area,phone,name,address;
 	
 
 	/* (non-Javadoc)
@@ -54,6 +54,8 @@ public class SearchActivity extends Activity {
 		area = (EditText) this.findViewById(R.id.area);
 		phone = (EditText) this.findViewById(R.id.phone);
 		struct = (EditText) this.findViewById(R.id.struct);
+		name =(EditText) this.findViewById(R.id.name); 
+		address = (EditText) this.findViewById(R.id.address);
 		layout=(LinearLayout)findViewById(R.id.search_dialog);
 		
 		/*regionbtn = (Button) this.findViewById(R.id.regionbtn);
@@ -85,15 +87,19 @@ public class SearchActivity extends Activity {
 	String areastr = area.getText().toString().trim();
 	String structstr = struct.getText().toString().trim();
 	String phonestr = phone.getText().toString().trim();
+	String namestr = name.getText().toString().trim();
+	String addressstr = address.getText().toString().trim();
 	HashMap<String,String> filters = new HashMap<String, String>();
 	
 	filters.put(FacInfoModel.FAC_REGION, getSearch(regionstr));
-	filters.put(FacInfoModel.FAC_RENT_ORSALE_PRICE, getSearchPrice(pricestr));
+	filters.put(FacInfoModel.FAC_PRICE, getSearchPrice(pricestr));
 	filters.put(FacInfoModel.FAC_FLOOR, getSearchFloor(floorstr));
 	filters.put(FacInfoModel.FAC_PEIDIAN, getSearch(peidianstr));
 	filters.put(FacInfoModel.FAC_AREA, getSearchArea(areastr));
 	filters.put(FacInfoModel.FAC_STRUCT, getSearch(structstr));
 	filters.put(FacInfoModel.FAC_MOBILE, phonestr);
+	filters.put(FacInfoModel._NAME, namestr);
+	filters.put(FacInfoModel._ADDRESS, addressstr);
 	app.setFilters(filters);
 	setResult(ItasteApplication.SEARCH_FAC_RESULT_CODE);
 	this.finish(); 

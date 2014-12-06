@@ -28,7 +28,7 @@
     <string name="_left_menu_icon">左侧菜单图标</string>
     <string name="_maptab">maptab</string>
     <string name="_listtab">listtab</string>
-    <string name="exit_confirm">确定退出</string>
+    <string name="dialog_title">搜fac信息提示</string>
     <string name="button_ok">确定</string>
     <string name="button_cancel">取消</string>
     <string name="_choose">选择</string>
@@ -47,5 +47,9 @@
     <string name="_chooseregion">选择范围</string>
     <string name="title_activity_load"></string>
     <string name="_loading">加载中......</string>
+    <string name="_edit">" 编  辑 "</string>
+    <string name="_delete">" 删 除  "</string>
+    <string name="_detail">详细>></string>
+    <string name="_distance">距离：</string>
 
 </resources>

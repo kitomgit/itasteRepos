@@ -1,5 +1,6 @@
 package com.itaste.yuntu.model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,16 +24,16 @@ import com.amap.api.maps.model.LatLng;
             "_createtime": "2014-11-04 17:39:00", 
             "_updatetime": "2014-11-05 16:07:05"
         }*/
-public class FacInfoModel{
+public class FacInfoModel implements Serializable{
  private int _id;//唯一标示
- private LatLng _location;//经纬度
+ private String _location;//经纬度
  private String _name;//名称
  private String _address;//地址
  private String fac_area;//面积
  private String fac_struct;//结构
  private String fac_height;//高度
  private String fac_peidian;//配电
- private String fac_rent_orsale_price;//价格
+ private String fac_price;//价格
  private String fac_sushe_area;//宿舍面积
  private String fac_lift;//电梯
  private String fac_floor;//楼层
@@ -44,6 +45,7 @@ public class FacInfoModel{
  private String fac_region;//区域
  private String qq_code;
  private String weixin_code;
+ private double distance;//距离当前位置距离
 //field string
  public final static String _ID="_id";//唯一标示
  public final static String _LOCATION="_location";//经纬度
@@ -52,8 +54,8 @@ public class FacInfoModel{
  public final static String FAC_AREA="fac_area";//面积
  public final static String FAC_STRUCT="fac_struct";//结构
  public final static String FAC_HEIGHT="fac_height";//高度
- public final static String FAC_PEIDIAN="fac_height";//配电
- public final static String FAC_RENT_ORSALE_PRICE="fac_rent_orsale_price";//价格
+ public final static String FAC_PEIDIAN="fac_peidian";//配电
+ public final static String FAC_PRICE="fac_price";//价格
  public final static String FAC_SUSHE_AREA="fac_sushe_area";//宿舍面积
  public final static String FAC_LIFT="fac_lift";//电梯
  public final static String FAC_FLOOR="fac_floor";//楼层
@@ -74,18 +76,21 @@ public void setId(int _id) {
 	this._id = _id;
 }
 public LatLng getLocation() {
+	if (_location!=null&&!_location.trim().equals("")) {
+		try{ 
+		String[] localLat = _location.split(",");
+		return new LatLng(Double.valueOf(localLat[1]),Double.valueOf(localLat[0]));
+		}catch(Exception e){
+		}
+	}
+	return new LatLng(0d,0d);
+}
+public String getLocationStr(){
 	return _location;
 }
 
 public void setLocation(String _locationStr) {
-	if (_locationStr!=null&&!_locationStr.trim().equals("")) {
-		try{ 
-		String[] localLat = _locationStr.split(",");
-		this._location = new LatLng(Double.valueOf(localLat[1]),Double.valueOf(localLat[0]));
-		}catch(Exception e){
-			this._location = new LatLng(0d,0d);
-		}
-	}
+	this._location = _locationStr;
 }
 public String getName() {
 	return _name;
@@ -123,11 +128,12 @@ public String getFac_peidian() {
 public void setFac_peidian(String fac_peidian) {
 	this.fac_peidian = fac_peidian;
 }
-public String getFac_rent_orsale_price() {
-	return fac_rent_orsale_price;
+
+public String getFac_price() {
+	return fac_price;
 }
-public void setFac_rent_orsale_price(String fac_rent_orsale_price) {
-	this.fac_rent_orsale_price = fac_rent_orsale_price;
+public void setFac_price(String fac_price) {
+	this.fac_price = fac_price;
 }
 public String getFac_sushe_area() {
 	return fac_sushe_area;
@@ -205,6 +211,10 @@ public String getWeixin_code() {
 public void setWeixin_code(String weixin_code) {
 	this.weixin_code = weixin_code;
 }
-
-
+public double getDistance() {
+	return distance;
+}
+public void setDistance(double distance) {
+	this.distance = distance;
+}
 }

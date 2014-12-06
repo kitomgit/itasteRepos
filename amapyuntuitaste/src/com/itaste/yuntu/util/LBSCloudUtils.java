@@ -35,11 +35,15 @@ public class LBSCloudUtils {
 	private static final String SEARCH_URI_ID = "http://yuntuapi.amap.com/datasearch/id?";
 	//云存储API URI
 	private static final String ADD_INFO_URI = "http://yuntuapi.amap.com/datamanage/data/create?";
+	private static final String UPDATE_INFO_URI = "http://yuntuapi.amap.com/datamanage/data/update?";
+	private static final String DELETE_INFO_URI = "http://yuntuapi.amap.com/datamanage/data/delete?";
 	
 	public static final int SEARCH_TYPE_ALL_LIST = 0;
 	public static final int SEARCH_TYPE_NEARBY = 1;
 	public static final int SEARCH_TYPE_URI_ID = 2; 
 	public static final int SEARCH_TYPE_LOCAL = 3;
+	public static final int ADD_INFO = 0;
+	public static final int UPDATE_INFO = 1;
 	
 	public static int currSearchType = 0;
 	
@@ -75,9 +79,7 @@ public class LBSCloudUtils {
 				case SEARCH_TYPE_URI_ID:
 					requestURL.append(SEARCH_URI_ID);
 					break;
-				case SEARCH_TYPE_NEARBY://周围搜索时，不分页
-					app.filterParams.remove("page");
-					app.filterParams.remove("limit");
+				case SEARCH_TYPE_NEARBY:
 					requestURL.append(SEARCH_URI_NEARBY);
 					break;
 				default://默认为本地搜索
@@ -155,14 +157,14 @@ public class LBSCloudUtils {
 		 });
   	}
   	
-  	//添加info
-  	public static void addinfo(final Context context,String jsoninfo){
+  	//添加更细info
+  	public static void mergeinfo(final Context context,String jsoninfo,int mergeType){
   		AsyncHttpClient client = new AsyncHttpClient();
   		RequestParams params = new RequestParams();
   		params.put("key", ak);
   		params.put("tableid", tableid);
   		params.put("data",jsoninfo);
-  		client.post(ADD_INFO_URI, params,new AsyncHttpResponseHandler() {
+  		client.post((mergeType==ADD_INFO?ADD_INFO_URI:UPDATE_INFO_URI), params,new AsyncHttpResponseHandler() {
 			
 			@Override
 			public void onSuccess(int statusCode, Header[] headers, byte[] data) {
@@ -170,23 +172,58 @@ public class LBSCloudUtils {
 				HashMap<String,String> resultmap =  JSON.parseObject(resultstr, new TypeReference<HashMap<String,String>>(){});
 				//Toast.makeText(context, resultstr, Toast.LENGTH_LONG).show();
 				if("1".equals(resultmap.get("status"))){
-					Toast.makeText(context, "数据已添加！", Toast.LENGTH_LONG).show();
+					Toast.makeText(context, "操作成功！", Toast.LENGTH_LONG).show();
 				}
 				new Handler().postDelayed(new Runnable() {
 					@Override
 					public void run() {
 						LBSCloudUtils.search(context, currSearchType);
 					}
-				},2000);
+				},1500);
 			}
 			
 			@Override
 			public void onFailure(int statusCode, Header[] headers,
 					byte[] responseBody, Throwable error) {
 				
-				Toast.makeText(context, "添加数据失败，请重试", Toast.LENGTH_LONG).show();
+				Toast.makeText(context, "操作失败！", Toast.LENGTH_LONG).show();
 			}
 		});
+  		
+  	}
+  	//删除info
+  	public static void deleleinfo(final Context context,String ids){
+  		AsyncHttpClient client = new AsyncHttpClient();
+  		RequestParams params = new RequestParams();
+  		params.put("key", ak);
+  		params.put("tableid", tableid);
+  		params.put("ids",ids);
+  		client.post(DELETE_INFO_URI, params,new AsyncHttpResponseHandler() {
+  			
+  			@Override
+  			public void onSuccess(int statusCode, Header[] headers, byte[] data) {
+  				String resultstr = new String(data);
+  				HashMap<String,String> resultmap =  JSON.parseObject(resultstr, new TypeReference<HashMap<String,String>>(){});
+  				Toast.makeText(context, resultstr, Toast.LENGTH_LONG).show();
+  				if("1".equals(resultmap.get("status"))){
+  					Toast.makeText(context, "数据删除成功！", Toast.LENGTH_LONG).show();
+  					new Handler().postDelayed(new Runnable() {
+  	  					@Override
+  	  					public void run() {
+  	  						LBSCloudUtils.search(context, currSearchType);
+  	  					}
+  	  				},1500);
+  				}
+  				
+  			}
+  			
+  			@Override
+  			public void onFailure(int statusCode, Header[] headers,
+  					byte[] responseBody, Throwable error) {
+  				
+  				Toast.makeText(context, "添加删除失败，请重试", Toast.LENGTH_LONG).show();
+  			}
+  		});
   		
   	}
 }
