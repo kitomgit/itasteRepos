@@ -2,48 +2,68 @@ package com.itaste.yuntu;
 
 
 import java.util.HashMap;
+import java.util.Map;
+
+import org.apache.http.Header;
 
 import android.annotation.SuppressLint;
-import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.TabActivity;
-import android.content.DialogInterface;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
+import android.os.Handler;
+import android.text.TextUtils;
+import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.View.OnKeyListener;
 import android.view.Window;
+import android.view.WindowManager.LayoutParams;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
-import android.widget.HorizontalScrollView;
 import android.widget.ImageView;
-import android.widget.ListView;
+import android.widget.LinearLayout;
+import android.widget.PopupWindow;
 import android.widget.Spinner;
 import android.widget.TabHost;
-import android.widget.Toast;
 import android.widget.TabHost.OnTabChangeListener;
 import android.widget.TextView;
+import android.widget.Toast;
 
-import com.itaste.yuntu.adapter.LeftSlideMenuListViewAdapter;
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.TypeReference;
+import com.itaste.yuntu.util.AsyncHttpUtils;
+import com.itaste.yuntu.util.Constants;
 import com.itaste.yuntu.util.ItasteApplication;
 import com.itaste.yuntu.util.LBSCloudUtils;
 import com.itaste.yuntu.widget.WhiteDialog;
 import com.itaste.yuntu.widget.WhiteDialog.WhiteDialogClickListener;
-import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
+import com.loopj.android.http.AsyncHttpResponseHandler;
+
+//import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
 
 @SuppressLint("NewApi")
 @SuppressWarnings("deprecation")
 public class MainActivity extends TabActivity implements OnClickListener,OnTabChangeListener  {
 
-	private SlidingMenu leftmenu;
+	//private SlidingMenu leftmenu;
 	private Button menuBtn,searchBtn;
 	private TabHost tabHost;
 	private ImageView zwsearchiv;
 	private EditText keywords;
 	private Spinner nearby;
+	private View mainview,loginView;
+	private EditText usernameet;
+	private EditText passwordet;
+	private CheckBox mmpwd;
+	private PopupWindow popWin;
 	//private String[] menus=new String[]{"地图","列表","地图","列表","地图","列表","地图","列表"};
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -54,9 +74,59 @@ public class MainActivity extends TabActivity implements OnClickListener,OnTabCh
 		initTabHost();//tab主页面
 		//initSlideMenu();//左侧菜单
 		initNavBtn();
+		//登录验证
+		initlogin();
+	}
+
+	
+	private void initlogin() {
+		new Handler().postDelayed(new Runnable() {
+			@Override
+			public void run() {
+				// TODO Auto-generated method stub
+				//判断是否有登录
+		 		SharedPreferences sharedPreferences = getSharedPreferences(Constants._PRIVATE_STORE, Context.MODE_PRIVATE); //私有数据
+		 		String username = sharedPreferences.getString("_userame", "");
+		 		String password = sharedPreferences.getString("_password", "");
+		 		
+		 		//如果没有保存密码 显示登录界面
+		 		if(TextUtils.isEmpty(password)){
+		 		//打开登录
+		 		  loginView = getLayoutInflater().inflate(R.layout.login, null);
+		 		  usernameet = (EditText) loginView.findViewById(R.id.username);
+		 		  passwordet = (EditText) loginView.findViewById(R.id.password);
+		 		  mmpwd = (CheckBox) loginView.findViewById(R.id.mmpwd);
+		 		  usernameet.setText(username);
+		 		  mainview = MainActivity.this.findViewById(R.id.mainview);
+		 		  LinearLayout login_dialog = (LinearLayout) loginView.findViewById(R.id.login_dialog);
+		 		  popWin = new PopupWindow(loginView,LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
+		 		   //设置可以获取焦点，否则弹出菜单中的EditText是无法获取输入的
+		 		    popWin.setFocusable(true);
+		 		    //这句是为了防止弹出菜单获取焦点之后，点击activity的其他组件没有响应
+		 		    popWin.setBackgroundDrawable(new BitmapDrawable()); 
+		 		    //防止虚拟软键盘被弹出菜单遮住
+		 		    popWin.setSoftInputMode(LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
+		 		    //在底部显示
+			 		//popWin.showAtLocation(mainview,Gravity.BOTTOM, 0, 0); 
+			 		popWin.setAnimationStyle(R.style.popuanim);
+			 		popWin.showAtLocation(mainview, Gravity.CENTER, 0, 0);
+			 		login_dialog.setOnKeyListener(new OnKeyListener() {
+						@Override
+						public boolean onKey(View v, int keyCode, KeyEvent event) {
+							if (event.getKeyCode() == KeyEvent.KEYCODE_BACK&& event.getAction() != 1) {
+								//popWin.dismiss();
+								exit();
+								return true;
+							}
+							return false;
+						}
+					});
+		 		
+		 		}
+			}
+		}, 1500);
 	}
 	
-
 	@Override
 	public void onClick(View view) {
 		switch (view.getId()){
@@ -86,7 +156,51 @@ public class MainActivity extends TabActivity implements OnClickListener,OnTabCh
 		
 		
 	}
-	private String getNearbySerach(Object selectedItem) {
+	//注册
+	public void registerClickHandler(View btnv){
+		
+	}
+	//登录
+	public void loginClickHandler(View btnv){
+		String username =usernameet.getText().toString().trim();
+		String password = passwordet.getText().toString().trim();
+		if(TextUtils.isEmpty(username)){
+			Toast.makeText(MainActivity.this, "账号不能为空", Toast.LENGTH_LONG).show();
+			return;
+		}else if(TextUtils.isDigitsOnly(password)){
+			Toast.makeText(MainActivity.this, "密码不能为空", Toast.LENGTH_LONG).show();
+			return;
+		}
+		//发请求验证
+		String requestURL = Constants.LOGIN_URL;
+		Map<String, String> params = new HashMap<String, String>();
+		params.put("username", username);
+		params.put("password", password);
+		AsyncHttpResponseHandler handler = new AsyncHttpResponseHandler() {
+			@Override
+			public void onSuccess(int statusCode, Header[] headers, byte[] responseBody){
+			 Map<String, Object> data=JSON.parseObject(new String(responseBody),new TypeReference<Map<String, Object>>(){});
+			 Toast.makeText(MainActivity.this, data.toString(), Toast.LENGTH_LONG).show();
+			 if(data.get("status").equals("1")){
+				 popWin.dismiss();
+				 Map<String,String> user = (Map<String, String>) data.get("user");
+				 Toast.makeText(MainActivity.this, user.toString(), Toast.LENGTH_LONG).show();
+			 }
+			}
+			
+			@Override
+			public void onFailure(int statusCode, Header[] headers,
+					byte[] responseBody, Throwable error) {
+				
+			}
+		};
+		AsyncHttpUtils.post(requestURL,params,handler);
+		//成功后
+		
+		
+	}
+	
+    private String getNearbySerach(Object selectedItem) {
 		/*
 		<item>1000   米</item>
         <item>1500 米</item>
@@ -149,7 +263,7 @@ public class MainActivity extends TabActivity implements OnClickListener,OnTabCh
 	  
 				
 	//初始化侧边菜单
-	private void initSlideMenu() {
+	/*private void initSlideMenu() {
 				leftmenu = new SlidingMenu(this);
 				leftmenu.setMode(SlidingMenu.LEFT);
 				// 设置触摸屏幕的模式
@@ -166,7 +280,6 @@ public class MainActivity extends TabActivity implements OnClickListener,OnTabCh
 				/**
 				 * SLIDING_WINDOW will include the Title/ActionBar in the content
 				 * section of the SlidingMenu, while SLIDING_CONTENT does not.
-				 */
 				leftmenu.attachToActivity(this, SlidingMenu.SLIDING_CONTENT);
 				
 				//设置侧滑菜单
@@ -179,6 +292,8 @@ public class MainActivity extends TabActivity implements OnClickListener,OnTabCh
 				//为侧滑菜单设置布局
 				leftmenu.setMenu(view);
 	}
+***/
+	
 	//初始化tab搜索选项卡
 	private void initTabHost() {
 		tabHost = getTabHost();
@@ -202,9 +317,6 @@ public class MainActivity extends TabActivity implements OnClickListener,OnTabCh
 		tabHost.setOnTabChangedListener(this);
 	}
 	
-  	
-  	
-  	 
   	//当前tab切换时，记录当前激活的activity
 	@Override
 	public void onTabChanged(String tabId) {

@@ -4,5 +4,6 @@
     android:layout_height="match_parent"
  	android:gravity="center|center"
     android:background="@drawable/load"
+    android:id="@+id/mainview"
     tools:context=".LoadActivity" >
 </RelativeLayout>

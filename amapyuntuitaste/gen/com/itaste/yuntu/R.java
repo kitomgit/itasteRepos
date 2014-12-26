@@ -8,6 +8,10 @@
 package com.itaste.yuntu;
 
 public final class R {
+    public static final class anim {
+        public static final int fade_in=0x7f040000;
+        public static final int fade_out=0x7f040001;
+    }
     public static final class array {
         /**      500平米以下500-1000平米1000-1500平米1500-2500平米2500-4000平米4000-6000平米6000-10000平米10000平米以上 
          */
@@ -22,117 +26,6 @@ public final class R {
         public static final int struct=0x7f050003;
     }
     public static final class attr {
-        /** <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
-Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
-in (inches), mm (millimeters).
-<p>This may also be a reference to a resource (in the form
-"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
-theme attribute (in the form
-"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
-containing a value of this type.
-         */
-        public static final int behindOffset=0x7f010003;
-        /** <p>Must be a floating point value, such as "<code>1.2</code>".
-<p>This may also be a reference to a resource (in the form
-"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
-theme attribute (in the form
-"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
-containing a value of this type.
-         */
-        public static final int behindScrollScale=0x7f010005;
-        /** <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
-Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
-in (inches), mm (millimeters).
-<p>This may also be a reference to a resource (in the form
-"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
-theme attribute (in the form
-"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
-containing a value of this type.
-         */
-        public static final int behindWidth=0x7f010004;
-        /** <p>Must be a floating point value, such as "<code>1.2</code>".
-<p>This may also be a reference to a resource (in the form
-"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
-theme attribute (in the form
-"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
-containing a value of this type.
-         */
-        public static final int fadeDegree=0x7f01000b;
-        /** <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
-<p>This may also be a reference to a resource (in the form
-"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
-theme attribute (in the form
-"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
-containing a value of this type.
-         */
-        public static final int fadeEnabled=0x7f01000a;
-        /** <p>Must be one of the following constant values.</p>
-<table>
-<colgroup align="left" />
-<colgroup align="left" />
-<colgroup align="left" />
-<tr><th>Constant</th><th>Value</th><th>Description</th></tr>
-<tr><td><code>left</code></td><td>0</td><td></td></tr>
-<tr><td><code>right</code></td><td>1</td><td></td></tr>
-</table>
-         */
-        public static final int mode=0x7f010000;
-        /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
-or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-         */
-        public static final int selectorDrawable=0x7f01000d;
-        /** <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
-<p>This may also be a reference to a resource (in the form
-"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
-theme attribute (in the form
-"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
-containing a value of this type.
-         */
-        public static final int selectorEnabled=0x7f01000c;
-        /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
-or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-         */
-        public static final int shadowDrawable=0x7f010008;
-        /** <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
-Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
-in (inches), mm (millimeters).
-<p>This may also be a reference to a resource (in the form
-"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
-theme attribute (in the form
-"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
-containing a value of this type.
-         */
-        public static final int shadowWidth=0x7f010009;
-        /** <p>Must be one of the following constant values.</p>
-<table>
-<colgroup align="left" />
-<colgroup align="left" />
-<colgroup align="left" />
-<tr><th>Constant</th><th>Value</th><th>Description</th></tr>
-<tr><td><code>margin</code></td><td>0</td><td></td></tr>
-<tr><td><code>fullscreen</code></td><td>1</td><td></td></tr>
-</table>
-         */
-        public static final int touchModeAbove=0x7f010006;
-        /** <p>Must be one of the following constant values.</p>
-<table>
-<colgroup align="left" />
-<colgroup align="left" />
-<colgroup align="left" />
-<tr><th>Constant</th><th>Value</th><th>Description</th></tr>
-<tr><td><code>margin</code></td><td>0</td><td></td></tr>
-<tr><td><code>fullscreen</code></td><td>1</td><td></td></tr>
-</table>
-         */
-        public static final int touchModeBehind=0x7f010007;
-        /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
-or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-         */
-        public static final int viewAbove=0x7f010001;
-        /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
-or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-         */
-        public static final int viewBehind=0x7f010002;
     }
     public static final class color {
         public static final int black=0x7f060001;
@@ -163,146 +56,149 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int btn_light_gray=0x7f020005;
         public static final int button_corner=0x7f020006;
         public static final int coffe_bg=0x7f020007;
-        public static final int gray_bg=0x7f020008;
-        public static final int half_alpha_bg=0x7f020009;
-        public static final int half_alpha_block_corner_bg=0x7f02000a;
-        public static final int half_alpha_rect_bg=0x7f02000b;
-        public static final int ic_launcher=0x7f02000c;
-        public static final int left_bg=0x7f02000d;
-        public static final int light_blue_bg=0x7f02000e;
-        public static final int light_blue_btn=0x7f02000f;
-        public static final int light_green_btn=0x7f020010;
-        public static final int load=0x7f020011;
-        public static final int load_org=0x7f020012;
-        public static final int location_marker=0x7f020013;
-        public static final int muwen254=0x7f020014;
-        public static final int muwen_item_bg=0x7f020015;
-        public static final int orange_bg=0x7f020016;
-        public static final int orange_bg_selected=0x7f020017;
-        public static final int orange_corner_bg=0x7f020018;
-        public static final int orange_jianbian_90_bg=0x7f020019;
-        public static final int orange_jianbian_bg=0x7f02001a;
-        public static final int orange_light_bg=0x7f02001b;
-        public static final int progressbar=0x7f02001c;
-        public static final int search_d=0x7f02001d;
-        public static final int search_icon=0x7f02001e;
-        public static final int select_bg=0x7f02001f;
-        public static final int select_normal=0x7f020020;
-        public static final int select_selected=0x7f020021;
-        public static final int start=0x7f020022;
-        public static final int tab_bg=0x7f020023;
-        public static final int tab_normal_01=0x7f020024;
-        public static final int tab_selected_01=0x7f020025;
-        public static final int tab_top_btn=0x7f020026;
-        public static final int tab_top_btn_blue=0x7f020027;
-        public static final int tab_top_btn_gray=0x7f020028;
-        public static final int tabmini=0x7f020029;
-        public static final int title_bar_bg=0x7f02002a;
-        public static final int top_bar_back_arr=0x7f02002b;
+        public static final int coffe_bg_mh=0x7f020008;
+        public static final int gray_bg=0x7f020009;
+        public static final int half_alpha_bg=0x7f02000a;
+        public static final int half_alpha_block_corner_bg=0x7f02000b;
+        public static final int half_alpha_rect_bg=0x7f02000c;
+        public static final int ic_launcher=0x7f02000d;
+        public static final int left_bg=0x7f02000e;
+        public static final int light_blue_bg=0x7f02000f;
+        public static final int light_blue_btn=0x7f020010;
+        public static final int light_green_btn=0x7f020011;
+        public static final int load=0x7f020012;
+        public static final int load_org=0x7f020013;
+        public static final int location_marker=0x7f020014;
+        public static final int login_bg=0x7f020015;
+        public static final int muwen254=0x7f020016;
+        public static final int muwen_item_bg=0x7f020017;
+        public static final int orange_bg=0x7f020018;
+        public static final int orange_bg_selected=0x7f020019;
+        public static final int orange_corner_bg=0x7f02001a;
+        public static final int orange_jianbian_90_bg=0x7f02001b;
+        public static final int orange_jianbian_bg=0x7f02001c;
+        public static final int orange_light_bg=0x7f02001d;
+        public static final int progressbar=0x7f02001e;
+        public static final int search_d=0x7f02001f;
+        public static final int search_icon=0x7f020020;
+        public static final int select_bg=0x7f020021;
+        public static final int select_normal=0x7f020022;
+        public static final int select_selected=0x7f020023;
+        public static final int start=0x7f020024;
+        public static final int tab_bg=0x7f020025;
+        public static final int tab_normal_01=0x7f020026;
+        public static final int tab_selected_01=0x7f020027;
+        public static final int tab_top_btn=0x7f020028;
+        public static final int tab_top_btn_blue=0x7f020029;
+        public static final int tab_top_btn_gray=0x7f02002a;
+        public static final int tabmini=0x7f02002b;
+        public static final int title_bar_bg=0x7f02002c;
+        public static final int top_bar_back_arr=0x7f02002d;
     }
     public static final class id {
-        public static final int ItemImage=0x7f04003d;
-        public static final int ItemText=0x7f04003f;
-        public static final int ItemTitle=0x7f04003e;
-        public static final int action_settings=0x7f040065;
-        public static final int addBtn=0x7f040035;
-        public static final int add_dialog=0x7f04002a;
-        public static final int address=0x7f04000b;
-        public static final int addresstext=0x7f04000a;
-        public static final int addressvalue=0x7f040055;
-        public static final int area=0x7f040010;
-        public static final int areabtn=0x7f040011;
-        public static final int areatext=0x7f04000f;
-        public static final int areavalue=0x7f040056;
-        public static final int badge=0x7f040046;
-        public static final int cancel=0x7f040063;
-        public static final int cancelBtn=0x7f040021;
-        public static final int content=0x7f040062;
-        public static final int distance=0x7f04004f;
-        public static final int ensure=0x7f040064;
-        public static final int fac_address=0x7f040048;
-        public static final int fac_area=0x7f040049;
-        public static final int fac_height=0x7f04004c;
-        public static final int fac_id=0x7f04005c;
-        public static final int fac_name=0x7f040047;
-        public static final int fac_peidian=0x7f04004e;
-        public static final int fac_price=0x7f04004b;
-        public static final int fac_struct=0x7f04004d;
-        public static final int fac_sushe_area=0x7f04004a;
-        public static final int facdelete=0x7f04005f;
-        public static final int facdetail=0x7f04005d;
-        public static final int facedit=0x7f04005e;
-        public static final int facimagefirst=0x7f040052;
-        public static final int faclv=0x7f040037;
-        public static final int fanhui=0x7f040022;
-        public static final int floor=0x7f040016;
-        public static final int floorbtn=0x7f040017;
-        public static final int floortext=0x7f040015;
-        public static final int fullscreen=0x7f040003;
-        public static final int gps_follow_button=0x7f04003b;
-        public static final int gps_locate_button=0x7f04003a;
-        public static final int gps_radio_group=0x7f040039;
-        public static final int gps_rotate_button=0x7f04003c;
-        public static final int height=0x7f04002e;
-        public static final int heighttext=0x7f04002d;
-        public static final int id_content=0x7f040025;
-        public static final int id_gallery=0x7f040027;
-        public static final int id_horizontalScrollView=0x7f040026;
-        public static final int imagedialog=0x7f040024;
-        public static final int imageshowscroll=0x7f04002b;
-        public static final int itemImage=0x7f040028;
-        public static final int itemTitle=0x7f040029;
-        public static final int keywords=0x7f040044;
-        public static final int left=0x7f040000;
-        public static final int left_menu_lv=0x7f040040;
-        public static final int load_data_pg=0x7f040050;
-        public static final int mainmap=0x7f040038;
-        public static final int margin=0x7f040002;
-        public static final int name=0x7f040009;
-        public static final int nametext=0x7f040008;
-        public static final int namevalue=0x7f040054;
-        public static final int nearby=0x7f040043;
-        public static final int peidian=0x7f040019;
-        public static final int peidianbtn=0x7f04001a;
-        public static final int peidiantext=0x7f040018;
-        public static final int phone=0x7f04001f;
-        public static final int phonetext=0x7f04001e;
-        public static final int phonevalue=0x7f040058;
-        public static final int picregion=0x7f04002c;
-        public static final int price=0x7f040013;
-        public static final int pricebtn=0x7f040014;
-        public static final int pricetext=0x7f040012;
-        public static final int pricevalue=0x7f040057;
-        public static final int qqcode=0x7f040032;
-        public static final int qqcodetext=0x7f040031;
-        public static final int qqtext=0x7f040059;
-        public static final int qqvalue=0x7f04005a;
-        public static final int region=0x7f04000d;
-        public static final int regionbtn=0x7f04000e;
-        public static final int regiontext=0x7f04000c;
-        public static final int right=0x7f040001;
-        public static final int scrollmenu=0x7f040041;
-        public static final int searchBtn=0x7f040020;
-        public static final int search_dialog=0x7f040007;
-        public static final int selected_view=0x7f040004;
-        public static final int slidingmenumain=0x7f040051;
-        public static final int struct=0x7f04001c;
-        public static final int structbtn=0x7f04001d;
-        public static final int structtext=0x7f04001b;
-        public static final int sushe_area=0x7f040030;
-        public static final int sushetext=0x7f04002f;
-        public static final int swipe_ly=0x7f040036;
-        public static final int tab1=0x7f040005;
-        public static final int tab2=0x7f040006;
-        public static final int tab_label=0x7f040060;
-        public static final int tab_nav=0x7f040042;
-        public static final int title=0x7f040061;
-        public static final int tmplinelayout=0x7f040053;
-        public static final int top_back_iv=0x7f040023;
-        public static final int weinxin=0x7f040034;
-        public static final int weixintext=0x7f040033;
-        public static final int weixinvalue=0x7f04005b;
-        public static final int zwsearchiv=0x7f040045;
+        public static final int ItemImage=0x7f0b0039;
+        public static final int ItemText=0x7f0b003b;
+        public static final int ItemTitle=0x7f0b003a;
+        public static final int action_settings=0x7f0b0066;
+        public static final int addBtn=0x7f0b0031;
+        public static final int add_dialog=0x7f0b0026;
+        public static final int address=0x7f0b0007;
+        public static final int addresstext=0x7f0b0006;
+        public static final int addressvalue=0x7f0b0056;
+        public static final int area=0x7f0b000c;
+        public static final int areabtn=0x7f0b000d;
+        public static final int areatext=0x7f0b000b;
+        public static final int areavalue=0x7f0b0057;
+        public static final int badge=0x7f0b0048;
+        public static final int cancel=0x7f0b0064;
+        public static final int cancelBtn=0x7f0b001d;
+        public static final int content=0x7f0b0063;
+        public static final int distance=0x7f0b0051;
+        public static final int ensure=0x7f0b0065;
+        public static final int fac_address=0x7f0b004a;
+        public static final int fac_area=0x7f0b004b;
+        public static final int fac_height=0x7f0b004e;
+        public static final int fac_id=0x7f0b005d;
+        public static final int fac_name=0x7f0b0049;
+        public static final int fac_peidian=0x7f0b0050;
+        public static final int fac_price=0x7f0b004d;
+        public static final int fac_struct=0x7f0b004f;
+        public static final int fac_sushe_area=0x7f0b004c;
+        public static final int facdelete=0x7f0b0060;
+        public static final int facdetail=0x7f0b005e;
+        public static final int facedit=0x7f0b005f;
+        public static final int facimagefirst=0x7f0b0053;
+        public static final int faclv=0x7f0b0033;
+        public static final int fanhui=0x7f0b001e;
+        public static final int floor=0x7f0b0012;
+        public static final int floorbtn=0x7f0b0013;
+        public static final int floortext=0x7f0b0011;
+        public static final int gps_follow_button=0x7f0b0037;
+        public static final int gps_locate_button=0x7f0b0036;
+        public static final int gps_radio_group=0x7f0b0035;
+        public static final int gps_rotate_button=0x7f0b0038;
+        public static final int height=0x7f0b002a;
+        public static final int heighttext=0x7f0b0029;
+        public static final int id_content=0x7f0b0021;
+        public static final int id_gallery=0x7f0b0023;
+        public static final int id_horizontalScrollView=0x7f0b0022;
+        public static final int imagedialog=0x7f0b0020;
+        public static final int imageshowscroll=0x7f0b0027;
+        public static final int itemImage=0x7f0b0024;
+        public static final int itemTitle=0x7f0b0025;
+        public static final int keywords=0x7f0b0046;
+        public static final int left_menu_lv=0x7f0b003c;
+        public static final int load_data_pg=0x7f0b0052;
+        public static final int login=0x7f0b0042;
+        public static final int login_dialog=0x7f0b003d;
+        public static final int mainmap=0x7f0b0034;
+        public static final int mainview=0x7f0b0000;
+        public static final int mmpwd=0x7f0b0040;
+        public static final int name=0x7f0b0005;
+        public static final int nametext=0x7f0b0004;
+        public static final int namevalue=0x7f0b0055;
+        public static final int nearby=0x7f0b0045;
+        public static final int password=0x7f0b003f;
+        public static final int peidian=0x7f0b0015;
+        public static final int peidianbtn=0x7f0b0016;
+        public static final int peidiantext=0x7f0b0014;
+        public static final int phone=0x7f0b001b;
+        public static final int phonetext=0x7f0b001a;
+        public static final int phonevalue=0x7f0b0059;
+        public static final int picregion=0x7f0b0028;
+        public static final int price=0x7f0b000f;
+        public static final int pricebtn=0x7f0b0010;
+        public static final int pricetext=0x7f0b000e;
+        public static final int pricevalue=0x7f0b0058;
+        public static final int qqcode=0x7f0b002e;
+        public static final int qqcodetext=0x7f0b002d;
+        public static final int qqtext=0x7f0b005a;
+        public static final int qqvalue=0x7f0b005b;
+        public static final int region=0x7f0b0009;
+        public static final int regionbtn=0x7f0b000a;
+        public static final int regiontext=0x7f0b0008;
+        public static final int register=0x7f0b0041;
+        public static final int scrollmenu=0x7f0b0043;
+        public static final int searchBtn=0x7f0b001c;
+        public static final int search_dialog=0x7f0b0003;
+        public static final int struct=0x7f0b0018;
+        public static final int structbtn=0x7f0b0019;
+        public static final int structtext=0x7f0b0017;
+        public static final int sushe_area=0x7f0b002c;
+        public static final int sushetext=0x7f0b002b;
+        public static final int swipe_ly=0x7f0b0032;
+        public static final int tab1=0x7f0b0001;
+        public static final int tab2=0x7f0b0002;
+        public static final int tab_label=0x7f0b0061;
+        public static final int tab_nav=0x7f0b0044;
+        public static final int title=0x7f0b0062;
+        public static final int tmplinelayout=0x7f0b0054;
+        public static final int top_back_iv=0x7f0b001f;
+        public static final int username=0x7f0b003e;
+        public static final int weinxin=0x7f0b0030;
+        public static final int weixintext=0x7f0b002f;
+        public static final int weixinvalue=0x7f0b005c;
+        public static final int zwsearchiv=0x7f0b0047;
     }
     public static final class layout {
         public static final int activity_load=0x7f030000;
@@ -317,11 +213,11 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int fac_map=0x7f030009;
         public static final int left_menu_listviewitem=0x7f03000a;
         public static final int left_menu_panel=0x7f03000b;
-        public static final int main_title_bar=0x7f03000c;
-        public static final int map_info_window=0x7f03000d;
-        public static final int more_data=0x7f03000e;
-        public static final int simple_spinner_item=0x7f03000f;
-        public static final int slidingmenumain=0x7f030010;
+        public static final int login=0x7f03000c;
+        public static final int main_title_bar=0x7f03000d;
+        public static final int map_info_window=0x7f03000e;
+        public static final int more_data=0x7f03000f;
+        public static final int simple_spinner_item=0x7f030010;
         public static final int tab_listview_item=0x7f030011;
         public static final int tabmini=0x7f030012;
         public static final int white_dialog=0x7f030013;
@@ -335,6 +231,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int search=0x7f0a0005;
     }
     public static final class string {
+        public static final int _account=0x7f080032;
         public static final int _add=0x7f080028;
         public static final int _address=0x7f08000a;
         public static final int _area=0x7f08000b;
@@ -356,48 +253,53 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int _list=0x7f080016;
         public static final int _listtab=0x7f08001a;
         public static final int _loading=0x7f08002d;
+        public static final int _login=0x7f080034;
         public static final int _map=0x7f080015;
         public static final int _maptab=0x7f080019;
         public static final int _menu=0x7f080029;
+        public static final int _mmpwd=0x7f080036;
         public static final int _mobile=0x7f080011;
         public static final int _mylocation=0x7f080022;
         public static final int _name=0x7f080009;
+        public static final int _password=0x7f080033;
         public static final int _peidian=0x7f080010;
         public static final int _price=0x7f08000d;
         public static final int _qq_code=0x7f080024;
         public static final int _query=0x7f080020;
         public static final int _region=0x7f08001f;
+        public static final int _register=0x7f080035;
         public static final int _search=0x7f080004;
         public static final int _struct=0x7f08000f;
         public static final int _sushe_area=0x7f08000c;
+        public static final int _usernameoremail=0x7f080037;
         public static final int _voice_search=0x7f080014;
         public static final int _weinxin_code=0x7f080025;
-        public static final int action_forgot_password=0x7f080037;
+        public static final int action_forgot_password=0x7f08003d;
         public static final int action_settings=0x7f080001;
-        public static final int action_sign_in_register=0x7f080035;
-        public static final int action_sign_in_short=0x7f080036;
+        public static final int action_sign_in_register=0x7f08003b;
+        public static final int action_sign_in_short=0x7f08003c;
         public static final int app_name=0x7f080000;
         public static final int button_cancel=0x7f08001d;
         public static final int button_ok=0x7f08001c;
         public static final int dialog_title=0x7f08001b;
-        public static final int error_field_required=0x7f08003c;
-        public static final int error_incorrect_password=0x7f08003b;
-        public static final int error_invalid_email=0x7f080039;
-        public static final int error_invalid_password=0x7f08003a;
+        public static final int error_field_required=0x7f080042;
+        public static final int error_incorrect_password=0x7f080041;
+        public static final int error_invalid_email=0x7f08003f;
+        public static final int error_invalid_password=0x7f080040;
         public static final int gpsfollow=0x7f080005;
         public static final int gpslocate=0x7f080006;
         public static final int gpsrotate=0x7f080007;
         public static final int hello_world=0x7f080002;
-        public static final int login_progress_signing_in=0x7f080038;
+        public static final int login_progress_signing_in=0x7f08003e;
         /**  Strings related to login 
          */
-        public static final int prompt_email=0x7f080033;
-        public static final int prompt_password=0x7f080034;
+        public static final int prompt_email=0x7f080039;
+        public static final int prompt_password=0x7f08003a;
         public static final int title_activity_fac_image_gallery=0x7f080023;
         public static final int title_activity_fac_info_add=0x7f080026;
         public static final int title_activity_lbsfac_list=0x7f080017;
         public static final int title_activity_load=0x7f08002c;
-        public static final int title_activity_search=0x7f080032;
+        public static final int title_activity_search=0x7f080038;
     }
     public static final class style {
         /** 
@@ -431,15 +333,19 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int CustomWindowTitleBackground=0x7f090002;
         public static final int LoginFormContainer=0x7f090006;
         public static final int dialogStyle=0x7f090007;
-        public static final int lightgreybtn=0x7f09000d;
-        public static final int listViewItem=0x7f09000c;
+        public static final int lightgreybtn=0x7f09000e;
+        public static final int listViewItem=0x7f09000d;
         public static final int map_icon_image_style=0x7f090004;
-        public static final int orangebg=0x7f09000e;
+        public static final int orangebg=0x7f09000f;
+        /**  anim 
+         */
+        public static final int popuanim=0x7f090011;
         /**  select 
          */
-        public static final int select_style=0x7f09000f;
-        public static final int textblock=0x7f09000b;
+        public static final int select_style=0x7f090010;
+        public static final int textblock=0x7f09000c;
         public static final int textgreen=0x7f09000a;
+        public static final int textorange=0x7f09000b;
         public static final int textwhite=0x7f090009;
         public static final int top_bar=0x7f090003;
         /**  true背景灰色 false背景白色 
@@ -447,243 +353,4 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int transluocent=0x7f090005;
         public static final int whitedialog=0x7f090008;
     }
-    public static final class styleable {
-        /** Attributes that can be used with a SlidingMenu.
-           <p>Includes the following attributes:</p>
-           <table>
-           <colgroup align="left" />
-           <colgroup align="left" />
-           <tr><th>Attribute</th><th>Description</th></tr>
-           <tr><td><code>{@link #SlidingMenu_behindOffset com.itaste.yuntu:behindOffset}</code></td><td></td></tr>
-           <tr><td><code>{@link #SlidingMenu_behindScrollScale com.itaste.yuntu:behindScrollScale}</code></td><td></td></tr>
-           <tr><td><code>{@link #SlidingMenu_behindWidth com.itaste.yuntu:behindWidth}</code></td><td></td></tr>
-           <tr><td><code>{@link #SlidingMenu_fadeDegree com.itaste.yuntu:fadeDegree}</code></td><td></td></tr>
-           <tr><td><code>{@link #SlidingMenu_fadeEnabled com.itaste.yuntu:fadeEnabled}</code></td><td></td></tr>
-           <tr><td><code>{@link #SlidingMenu_mode com.itaste.yuntu:mode}</code></td><td></td></tr>
-           <tr><td><code>{@link #SlidingMenu_selectorDrawable com.itaste.yuntu:selectorDrawable}</code></td><td></td></tr>
-           <tr><td><code>{@link #SlidingMenu_selectorEnabled com.itaste.yuntu:selectorEnabled}</code></td><td></td></tr>
-           <tr><td><code>{@link #SlidingMenu_shadowDrawable com.itaste.yuntu:shadowDrawable}</code></td><td></td></tr>
-           <tr><td><code>{@link #SlidingMenu_shadowWidth com.itaste.yuntu:shadowWidth}</code></td><td></td></tr>
-           <tr><td><code>{@link #SlidingMenu_touchModeAbove com.itaste.yuntu:touchModeAbove}</code></td><td></td></tr>
-           <tr><td><code>{@link #SlidingMenu_touchModeBehind com.itaste.yuntu:touchModeBehind}</code></td><td></td></tr>
-           <tr><td><code>{@link #SlidingMenu_viewAbove com.itaste.yuntu:viewAbove}</code></td><td></td></tr>
-           <tr><td><code>{@link #SlidingMenu_viewBehind com.itaste.yuntu:viewBehind}</code></td><td></td></tr>
-           </table>
-           @see #SlidingMenu_behindOffset
-           @see #SlidingMenu_behindScrollScale
-           @see #SlidingMenu_behindWidth
-           @see #SlidingMenu_fadeDegree
-           @see #SlidingMenu_fadeEnabled
-           @see #SlidingMenu_mode
-           @see #SlidingMenu_selectorDrawable
-           @see #SlidingMenu_selectorEnabled
-           @see #SlidingMenu_shadowDrawable
-           @see #SlidingMenu_shadowWidth
-           @see #SlidingMenu_touchModeAbove
-           @see #SlidingMenu_touchModeBehind
-           @see #SlidingMenu_viewAbove
-           @see #SlidingMenu_viewBehind
-         */
-        public static final int[] SlidingMenu = {
-            0x7f010000, 0x7f010001, 0x7f010002, 0x7f010003,
-            0x7f010004, 0x7f010005, 0x7f010006, 0x7f010007,
-            0x7f010008, 0x7f010009, 0x7f01000a, 0x7f01000b,
-            0x7f01000c, 0x7f01000d
-        };
-        /**
-          <p>This symbol is the offset where the {@link com.itaste.yuntu.R.attr#behindOffset}
-          attribute's value can be found in the {@link #SlidingMenu} array.
-
-
-          <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
-Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
-in (inches), mm (millimeters).
-<p>This may also be a reference to a resource (in the form
-"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
-theme attribute (in the form
-"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
-containing a value of this type.
-          @attr name com.itaste.yuntu:behindOffset
-        */
-        public static final int SlidingMenu_behindOffset = 3;
-        /**
-          <p>This symbol is the offset where the {@link com.itaste.yuntu.R.attr#behindScrollScale}
-          attribute's value can be found in the {@link #SlidingMenu} array.
-
-
-          <p>Must be a floating point value, such as "<code>1.2</code>".
-<p>This may also be a reference to a resource (in the form
-"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
-theme attribute (in the form
-"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
-containing a value of this type.
-          @attr name com.itaste.yuntu:behindScrollScale
-        */
-        public static final int SlidingMenu_behindScrollScale = 5;
-        /**
-          <p>This symbol is the offset where the {@link com.itaste.yuntu.R.attr#behindWidth}
-          attribute's value can be found in the {@link #SlidingMenu} array.
-
-
-          <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
-Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
-in (inches), mm (millimeters).
-<p>This may also be a reference to a resource (in the form
-"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
-theme attribute (in the form
-"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
-containing a value of this type.
-          @attr name com.itaste.yuntu:behindWidth
-        */
-        public static final int SlidingMenu_behindWidth = 4;
-        /**
-          <p>This symbol is the offset where the {@link com.itaste.yuntu.R.attr#fadeDegree}
-          attribute's value can be found in the {@link #SlidingMenu} array.
-
-
-          <p>Must be a floating point value, such as "<code>1.2</code>".
-<p>This may also be a reference to a resource (in the form
-"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
-theme attribute (in the form
-"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
-containing a value of this type.
-          @attr name com.itaste.yuntu:fadeDegree
-        */
-        public static final int SlidingMenu_fadeDegree = 11;
-        /**
-          <p>This symbol is the offset where the {@link com.itaste.yuntu.R.attr#fadeEnabled}
-          attribute's value can be found in the {@link #SlidingMenu} array.
-
-
-          <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
-<p>This may also be a reference to a resource (in the form
-"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
-theme attribute (in the form
-"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
-containing a value of this type.
-          @attr name com.itaste.yuntu:fadeEnabled
-        */
-        public static final int SlidingMenu_fadeEnabled = 10;
-        /**
-          <p>This symbol is the offset where the {@link com.itaste.yuntu.R.attr#mode}
-          attribute's value can be found in the {@link #SlidingMenu} array.
-
-
-          <p>Must be one of the following constant values.</p>
-<table>
-<colgroup align="left" />
-<colgroup align="left" />
-<colgroup align="left" />
-<tr><th>Constant</th><th>Value</th><th>Description</th></tr>
-<tr><td><code>left</code></td><td>0</td><td></td></tr>
-<tr><td><code>right</code></td><td>1</td><td></td></tr>
-</table>
-          @attr name com.itaste.yuntu:mode
-        */
-        public static final int SlidingMenu_mode = 0;
-        /**
-          <p>This symbol is the offset where the {@link com.itaste.yuntu.R.attr#selectorDrawable}
-          attribute's value can be found in the {@link #SlidingMenu} array.
-
-
-          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
-or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          @attr name com.itaste.yuntu:selectorDrawable
-        */
-        public static final int SlidingMenu_selectorDrawable = 13;
-        /**
-          <p>This symbol is the offset where the {@link com.itaste.yuntu.R.attr#selectorEnabled}
-          attribute's value can be found in the {@link #SlidingMenu} array.
-
-
-          <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
-<p>This may also be a reference to a resource (in the form
-"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
-theme attribute (in the form
-"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
-containing a value of this type.
-          @attr name com.itaste.yuntu:selectorEnabled
-        */
-        public static final int SlidingMenu_selectorEnabled = 12;
-        /**
-          <p>This symbol is the offset where the {@link com.itaste.yuntu.R.attr#shadowDrawable}
-          attribute's value can be found in the {@link #SlidingMenu} array.
-
-
-          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
-or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          @attr name com.itaste.yuntu:shadowDrawable
-        */
-        public static final int SlidingMenu_shadowDrawable = 8;
-        /**
-          <p>This symbol is the offset where the {@link com.itaste.yuntu.R.attr#shadowWidth}
-          attribute's value can be found in the {@link #SlidingMenu} array.
-
-
-          <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
-Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
-in (inches), mm (millimeters).
-<p>This may also be a reference to a resource (in the form
-"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
-theme attribute (in the form
-"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
-containing a value of this type.
-          @attr name com.itaste.yuntu:shadowWidth
-        */
-        public static final int SlidingMenu_shadowWidth = 9;
-        /**
-          <p>This symbol is the offset where the {@link com.itaste.yuntu.R.attr#touchModeAbove}
-          attribute's value can be found in the {@link #SlidingMenu} array.
-
-
-          <p>Must be one of the following constant values.</p>
-<table>
-<colgroup align="left" />
-<colgroup align="left" />
-<colgroup align="left" />
-<tr><th>Constant</th><th>Value</th><th>Description</th></tr>
-<tr><td><code>margin</code></td><td>0</td><td></td></tr>
-<tr><td><code>fullscreen</code></td><td>1</td><td></td></tr>
-</table>
-          @attr name com.itaste.yuntu:touchModeAbove
-        */
-        public static final int SlidingMenu_touchModeAbove = 6;
-        /**
-          <p>This symbol is the offset where the {@link com.itaste.yuntu.R.attr#touchModeBehind}
-          attribute's value can be found in the {@link #SlidingMenu} array.
-
-
-          <p>Must be one of the following constant values.</p>
-<table>
-<colgroup align="left" />
-<colgroup align="left" />
-<colgroup align="left" />
-<tr><th>Constant</th><th>Value</th><th>Description</th></tr>
-<tr><td><code>margin</code></td><td>0</td><td></td></tr>
-<tr><td><code>fullscreen</code></td><td>1</td><td></td></tr>
-</table>
-          @attr name com.itaste.yuntu:touchModeBehind
-        */
-        public static final int SlidingMenu_touchModeBehind = 7;
-        /**
-          <p>This symbol is the offset where the {@link com.itaste.yuntu.R.attr#viewAbove}
-          attribute's value can be found in the {@link #SlidingMenu} array.
-
-
-          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
-or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          @attr name com.itaste.yuntu:viewAbove
-        */
-        public static final int SlidingMenu_viewAbove = 1;
-        /**
-          <p>This symbol is the offset where the {@link com.itaste.yuntu.R.attr#viewBehind}
-          attribute's value can be found in the {@link #SlidingMenu} array.
-
-
-          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
-or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          @attr name com.itaste.yuntu:viewBehind
-        */
-        public static final int SlidingMenu_viewBehind = 2;
-    };
 }

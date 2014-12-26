@@ -63,7 +63,7 @@
             android:background="@drawable/half_alpha_bg"
             android:gravity="center"
             android:text="@string/button_ok"
-            android:textColor="#697B4E" />
+            android:textColor="#F88E30" />
     </RelativeLayout>
 
 </LinearLayout>

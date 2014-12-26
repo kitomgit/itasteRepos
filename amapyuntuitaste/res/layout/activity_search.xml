@@ -4,14 +4,14 @@
     android:layout_height="wrap_content"
     android:orientation="vertical"
     android:padding="2dp"
-    android:background="@drawable/muwen254"
+    android:background="@drawable/half_alpha_bg"
     android:id="@+id/search_dialog"
+    android:gravity="center|center"
     tools:context=".SearchActivity" >
-  <LinearLayout 
+  <ScrollView 
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:background="@drawable/half_alpha_bg"
+    android:background="@drawable/left_bg"
     android:padding="12dp"
     >
     <LinearLayout 
@@ -32,7 +32,6 @@
         android:layout_height="wrap_content"
         android:background="@drawable/border_rect"
         style="@style/textwhite"
-        android:text="sfsfsfdfafasdfas"
         android:ems="8" />
 
     </LinearLayout>
@@ -284,7 +283,7 @@
 	         android:layout_alignParentLeft="true"
 	         android:layout_alignParentTop="true"
 	         android:layout_marginLeft="43dp"
-	         android:background="@drawable/tab_top_btn_blue"
+	         style="@style/lightgreybtn"
 	         android:text="@string/_query"
 	         android:onClick="searchBtnClickHandler"
 	         android:textColor="@color/white"
@@ -297,12 +296,12 @@
 	         android:layout_alignParentTop="true"
 	         android:layout_marginLeft="32dp"
 	         android:layout_toRightOf="@+id/searchBtn"
-	         android:background="@drawable/tab_top_btn_blue"
+	         style="@style/lightgreybtn"
 	         android:text="@string/_cancel"
 	         android:onClick="cancelBtnClickHandler"
 	         android:textColor="@color/white"
 	         android:textSize="14sp" />
 
 	 </RelativeLayout>
-</LinearLayout>
+</ScrollView>
 </LinearLayout>

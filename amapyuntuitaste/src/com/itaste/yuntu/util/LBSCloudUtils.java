@@ -99,8 +99,6 @@ public class LBSCloudUtils {
 				e.printStackTrace();
 			}
 		
-		IsBusy = false;
-		app.istosearch = false;
 	}
 	 //点击搜索按钮
   	public static void search(final Context context,int searchType){
@@ -112,6 +110,8 @@ public class LBSCloudUtils {
 		LBSCloudUtils.request(searchType,new AsyncHttpResponseHandler(){
 			 @Override
 			public void onSuccess(int arg0, Header[] arg1, byte[] data) {
+				 IsBusy = false;
+				 ItasteApplication.getInstance().istosearch = false;
 				String dataStr = new String(data);
 				dataStr = dataStr.replaceAll("\"_", "\"");
 				 AMapDTO<FacInfoModel>  dto = JSON.parseObject(dataStr, new TypeReference<AMapDTO<FacInfoModel>>(){});
@@ -151,6 +151,8 @@ public class LBSCloudUtils {
 			@Override
 			public void onFailure(int arg0, Header[] arg1, byte[] arg2,
 				Throwable arg3) {
+				IsBusy = false;
+				ItasteApplication.getInstance().istosearch = false;
 				Toast.makeText(context, "读取数据失败，请重试", Toast.LENGTH_LONG).show();
 				
 			}

@@ -5,6 +5,7 @@
     android:orientation="vertical"
     tools:context=".MainActivity" 
     style="@style/transluocent"
+    android:id="@+id/mainview"
     android:background="#F88E30"
      >
 <TabHost 

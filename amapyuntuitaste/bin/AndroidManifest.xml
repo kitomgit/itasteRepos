@@ -27,7 +27,7 @@
         android:theme="@style/AppTheme" >
         <meta-data
             android:name="com.amap.api.v2.apikey"
-            android:value="dfe09cc34bf46af5facc30a4d6600bb4" />
+            android:value="fdb7515b742666d4338bf07686e84b89" />
 		<!-- 启动界面 -->
 		<activity
             android:screenOrientation="portrait"   
