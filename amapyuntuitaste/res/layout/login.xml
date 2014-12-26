@@ -1,0 +1,130 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="2dp"
+    android:background="@drawable/half_alpha_rect_bg"
+    android:id="@+id/login_dialog"
+    android:gravity="center|center" >
+  <LinearLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:gravity="center|center"
+    android:background="@drawable/coffe_bg_mh"
+    android:padding="15dp"
+    >
+    <LinearLayout 
+    android:layout_width="match_parent"
+    android:layout_height="45dp"
+    android:gravity="center"
+    android:orientation="horizontal"
+    android:layout_margin="8dp"
+    android:padding="5dp"
+    >
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/textwhite"
+        android:text="@string/_account" />
+      <EditText
+        android:id="@+id/username"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:background="@drawable/border_rect"
+        style="@style/textwhite"
+        android:inputType="text"
+        android:hint="@string/_usernameoremail"
+        android:textStyle="normal"
+        android:textColorHint="@color/white"
+        android:textSize="14sp"
+        android:ems="9" />
+
+    </LinearLayout>
+    <LinearLayout 
+    android:layout_width="match_parent"
+    android:layout_height="45dp"
+    android:gravity="center"
+    android:orientation="horizontal"
+    android:layout_margin="6dp"
+    >
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/textwhite"
+        android:text="@string/_password" />
+      <EditText
+        android:id="@+id/password"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:background="@drawable/border_rect"
+        style="@style/textwhite"
+         android:inputType="textPassword"
+         android:textStyle="normal"
+         android:textColorHint="@color/white"
+         android:textSize="14sp"
+        android:ems="9" />
+
+    </LinearLayout>
+ 
+ <LinearLayout 
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:layout_margin="8dp"
+    android:paddingLeft="85dp"
+    >
+
+     <CheckBox
+         android:id="@+id/mmpwd"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_marginRight="0dp"
+         android:text="@string/_mmpwd"
+         style="@style/textwhite"
+         android:textSize="12sp"
+          />
+
+	</LinearLayout>
+	
+	
+
+	 <RelativeLayout
+	     android:layout_width="match_parent"
+	     android:layout_height="wrap_content"
+	     android:orientation="horizontal" 
+	     android:layout_margin="8dp"
+	     >
+
+	     <Button
+	         android:id="@+id/register"
+	         android:layout_width="60dp"
+	         android:layout_height="30dp"
+	         android:layout_alignParentLeft="true"
+	         android:layout_alignParentTop="true"
+	         android:layout_marginLeft="43dp"
+	         android:background="@drawable/half_alpha_rect_bg"
+	         android:text="@string/_register"
+	         android:gravity="center"
+	         android:onClick="registerClickHandler"
+	         android:textColor="#697B4E"
+	         android:textSize="14sp" />
+
+	     <Button
+	         android:id="@+id/login"
+	         android:layout_width="60dp"
+	         android:layout_height="30dp"
+	         android:layout_alignParentTop="true"
+	         android:layout_marginLeft="32dp"
+	         android:layout_toRightOf="@+id/register"
+	         android:background="@drawable/half_alpha_rect_bg"
+	         android:text="@string/_login"
+	         android:onClick="loginClickHandler"
+	         android:gravity="center"
+	         style="@style/textorange"
+	         android:textSize="14sp" />
+
+	 </RelativeLayout>
+</LinearLayout>
+</LinearLayout>
