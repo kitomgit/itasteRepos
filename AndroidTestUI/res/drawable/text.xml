@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+      <item android:state_window_focused="false" android:drawable="@string/title_text"/>
+    <item android:drawable="@drawable/ico_lefts" android:state_pressed="true"/>
+    <item android:drawable="@drawable/ico_lefts" android:state_focused="true"/>
+  
+ </selector>

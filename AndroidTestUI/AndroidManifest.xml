@@ -1,0 +1,68 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.androidtestui"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="8"
+        android:targetSdkVersion="15" />
+
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+
+    <application
+        android:icon="@drawable/testes"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+
+        <!-- <supports-screens android:largeScreens="true" android:anyDensity="true"/> -->
+
+        <activity
+            android:name="com.example.androidtestui.MainActivity"
+            android:label="@string/title_activity_main" >
+          
+        </activity>
+        
+        <activity
+            android:name="com.example.androidtestui.TestmainActiity"
+            android:label="@string/title_activity_main" >
+         
+        </activity>
+          <activity
+            android:name="com.example.androidtestui.WindowMessageActivity"
+            android:label="@string/title_activity_main" >
+        </activity>
+          <activity
+            android:name="com.example.androidtestui.TestSetingActivity"
+            android:label="@string/title_activity_main" >
+               
+        </activity>
+        
+        <activity
+            android:name="com.example.androidtestui.PopWindowActivity"
+            android:label="@string/title_activity_main" >
+        </activity>
+        
+        <activity
+            android:name="com.example.androidtestui.TestPopuWindow"
+            android:label="@string/title_activity_main" >
+        </activity>
+        
+        <activity
+            android:name="com.example.androidtestui.TabHostActivity"
+            android:label="@string/title_activity_main" >
+                  <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        
+            
+        </activity>
+        
+        <activity
+            android:name="com.example.androidtestui.HomeActivity"
+            android:label="@string/title_activity_main" >
+        </activity>
+        
+    </application>
+
+</manifest>

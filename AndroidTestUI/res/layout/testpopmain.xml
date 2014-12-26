@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+  <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+     android:orientation="vertical"
+     android:layout_width="fill_parent"
+      android:layout_height="fill_parent"
+      android:id="@+id/linear"
+     >
+      <TextView  
+      android:layout_width="fill_parent" 
+     android:layout_height="wrap_content" 
+     android:text="566565"
+     />
+     <Button
+         android:id="@+id/btn1"
+         android:text="以本身作为Anchor，Drawdown风格，显示在正下方"
+         android:onClick="btn1Click"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content" />
+     <Button
+         android:id="@+id/btn2"
+         android:text="以本身为Anchor，偏移100，-50"
+         android:onClick="btn2Click"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content" />
+     <Button
+         android:id="@+id/btn3"
+         android:text="以屏幕正中为参照，不偏移"
+         android:onClick="btn3Click"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content" />
+     <Button
+        android:id="@+id/btn4"
+         android:text="以屏幕左上为参照，偏移50，50（包含状况栏）"
+         android:onClick="btn4Click"
+         android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <Button
+        android:id="@+id/btn5"
+        android:text="距屏幕下方一个popwin高度"
+        android:onClick="btn5Click"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+ </LinearLayout>
+
+
