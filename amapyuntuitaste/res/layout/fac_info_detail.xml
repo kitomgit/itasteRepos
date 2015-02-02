@@ -22,6 +22,7 @@
         android:padding="10dp"
         android:scrollbars="none"
         android:background="@drawable/half_alpha_bg"
+        android:visibility="gone"
          >
         <LinearLayout
             android:id="@+id/picregion"

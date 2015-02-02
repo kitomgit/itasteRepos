@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">傻瓜地图</string>
+    <string name="app_name">小地主</string>
     <string name="action_settings">设置</string>
     <string name="hello_world">欢迎!</string>
     <string name="_keyword">关键字</string>
@@ -57,5 +57,6 @@
     <string name="_register">注册</string>
     <string name="_mmpwd">记住密码</string>
     <string name="_usernameoremail">用户名或邮箱</string>
+    <string name="_passwordhint">安全密码</string>
 
 </resources>

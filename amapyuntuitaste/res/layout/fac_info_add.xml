@@ -14,8 +14,10 @@
      <LinearLayout
          	android:layout_height="100dp"
             android:layout_width="match_parent"
-            android:orientation="vertical" >
+            android:orientation="vertical" 
+            >
     <HorizontalScrollView
+        android:visibility="gone"
         android:id="@+id/imageshowscroll"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -62,7 +64,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         style="@style/textblock"
-        android:text="sdfsdfsdfsdfsdf"
         android:ems="8" />
 
 	</LinearLayout>
@@ -88,7 +89,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         style="@style/textblock"
-        android:text="hahahha231232"
         android:ems="8" />
 
 	</LinearLayout>
@@ -116,7 +116,6 @@
         android:layout_height="wrap_content"
         style="@style/textblock"
         android:phoneNumber="true"
-        android:text="15024157821"
         android:ems="8" />
 
 	</LinearLayout>
@@ -144,7 +143,6 @@
         android:layout_height="wrap_content"
         style="@style/textblock"
         android:inputType="number"
-        android:text="3"
         android:ems="8" />
 
 	</LinearLayout>
@@ -174,7 +172,6 @@
         android:layout_height="wrap_content"
         style="@style/textblock"
         android:inputType="number"
-        android:text="2005"
         android:ems="8" >
     </EditText>
    </LinearLayout>
@@ -201,7 +198,6 @@
         android:layout_height="wrap_content"
         style="@style/textblock"
         android:inputType="number"
-        android:text="200"
         android:ems="8" >
     </EditText>
    </LinearLayout>
@@ -231,7 +227,6 @@
         android:layout_height="wrap_content"
         style="@style/textblock"
         android:inputType="number"
-        android:text="15"
         android:ems="8" />
     </LinearLayout>
     
@@ -395,7 +390,6 @@
         android:layout_height="wrap_content"
         style="@style/textblock"
         android:inputType="number"
-        android:text="1003189234"
         android:ems="8" />
 
 	</LinearLayout>
@@ -421,7 +415,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         style="@style/textblock"
-        android:text="ki_tomsdfsfsdf"
         android:ems="8" />
 
 	</LinearLayout>
