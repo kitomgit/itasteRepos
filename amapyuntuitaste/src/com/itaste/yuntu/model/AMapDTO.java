@@ -90,5 +90,8 @@ public class AMapDTO<T> {
 			this.datas.addAll(dto.getDatas());
 		}
 	}
+	public T getFirstData(){
+		return datas.size()>0?datas.get(0):null;
+	}
 	
 }

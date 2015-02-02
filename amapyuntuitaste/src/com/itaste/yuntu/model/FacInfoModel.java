@@ -75,6 +75,7 @@ public int get_id() {
 public void setId(int _id) {
 	this._id = _id;
 }
+
 public LatLng getLocation() {
 	if (_location!=null&&!_location.trim().equals("")) {
 		try{ 

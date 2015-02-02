@@ -4,4 +4,5 @@
     <color name="black">#ff000000</color>
     <color name="transparent">#38000000</color>
     <color name="white">#FFFFFF</color>
+    <color name="themebg">#F88E30</color>
 </resources>

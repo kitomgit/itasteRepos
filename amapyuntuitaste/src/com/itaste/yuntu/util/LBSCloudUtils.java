@@ -26,17 +26,17 @@ import com.loopj.android.http.RequestParams;
  */
 public class LBSCloudUtils {
 	
-	private final static String TAG = "LBSCloudUtils";
+	public final static String TAG = "LBSCloudUtils";
 	
 	//ÔÆ¼ìË÷API URI
-	private static final String SEARCH_URI_ALL_LIST = "http://yuntuapi.amap.com/datamanage/data/list?";
-	private static final String SEARCH_URI_LOCAL = "http://yuntuapi.amap.com/datasearch/local?";
-	private static final String SEARCH_URI_NEARBY = "http://yuntuapi.amap.com/datasearch/around?";
-	private static final String SEARCH_URI_ID = "http://yuntuapi.amap.com/datasearch/id?";
+	public static final String SEARCH_URI_ALL_LIST = "http://yuntuapi.amap.com/datamanage/data/list?";
+	public static final String SEARCH_URI_LOCAL = "http://yuntuapi.amap.com/datasearch/local?";
+	public static final String SEARCH_URI_NEARBY = "http://yuntuapi.amap.com/datasearch/around?";
+	public static final String SEARCH_URI_ID = "http://yuntuapi.amap.com/datasearch/id?";
 	//ÔÆ´æ´¢API URI
-	private static final String ADD_INFO_URI = "http://yuntuapi.amap.com/datamanage/data/create?";
-	private static final String UPDATE_INFO_URI = "http://yuntuapi.amap.com/datamanage/data/update?";
-	private static final String DELETE_INFO_URI = "http://yuntuapi.amap.com/datamanage/data/delete?";
+	public static final String ADD_INFO_URI = "http://yuntuapi.amap.com/datamanage/data/create?";
+	public static final String UPDATE_INFO_URI = "http://yuntuapi.amap.com/datamanage/data/update?";
+	public static final String DELETE_INFO_URI = "http://yuntuapi.amap.com/datamanage/data/delete?";
 	
 	public static final int SEARCH_TYPE_ALL_LIST = 0;
 	public static final int SEARCH_TYPE_NEARBY = 1;

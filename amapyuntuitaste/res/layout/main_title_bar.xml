@@ -1,108 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<HorizontalScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="50dp"
-    android:id="@+id/scrollmenu"
-    android:scrollbars="none"
-    >
-    <LinearLayout 
+   <RelativeLayout 
+        xmlns:android="http://schemas.android.com/apk/res/android"
+		    android:layout_width="match_parent"
+		    android:layout_height="50dp"
             android:id="@+id/tab_nav"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center_vertical"
+            android:background="@color/themebg"
             >
-		<!--   <Button
-                android:id="@+id/menuBtn"
-                android:layout_width="60dp"
-                android:layout_height="30dp"
-                android:background="@drawable/button_corner"
-                android:textColor="@color/white"
-                android:text="@string/_menu"
-                android:layout_gravity="left|center"
-                android:visibility="gone"
-                /> -->
-                
-            <Spinner
-                android:id="@+id/nearby"
-                android:layout_width="80dp"
-                android:layout_height="40dp"
-                android:padding="0dp"
-                android:gravity="center"
-                android:drawSelectorOnTop="true"
-                android:animationCache="true"
-                style="@style/select_style"
-                 />
-			<RelativeLayout 
-			    android:layout_width="wrap_content"
-			    android:layout_height="match_parent"
-			    android:gravity="center_vertical"
-			    android:layout_marginRight="10dp"
-			    >
-			    <EditText
-                   android:id="@+id/keywords"
-                   android:layout_width="wrap_content"
-                   android:layout_height="40dp"
-                   android:ems="10"
-                   android:layout_marginLeft="10dp"
-                   android:paddingLeft="5dp"
-                   android:textColor="#FFFFFF"
-                   android:background="@drawable/border_corner"
-                   android:visibility="visible"
-                  >
-                <requestFocus />
-            </EditText>
 
-            <ImageView
-                android:id="@+id/zwsearchiv"
-                android:layout_width="25dp"
-                android:layout_height="40dp"
-                android:layout_marginLeft="5dp"
-                android:clickable="true"
-                android:src="@drawable/search_d"
-                android:layout_alignRight="@id/keywords"
-                android:visibility="visible" />
-			    
-			</RelativeLayout>
-			
-			     
-            <Button
-                android:id="@+id/searchBtn"
-                android:layout_width="60dp"
-                android:layout_height="40dp"
-                android:padding="0dp"
-                android:gravity="center"
-                android:animationCache="true"
-                android:textColor="#FFFFFF"
-                android:text="@string/_height_search"
-                android:background="@drawable/orange_jianbian_bg"
-                 />
-         <!-- <TextView 
-             android:id="@+id/nearbysearch"
-              android:layout_width="wrap_content"
-                android:layout_height="30dp"
-                android:textColor="@color/white" 
-                android:textSize="12sp"
-                android:textStyle="bold"
-                android:clickable="true"
-                android:text="附近"
-             />
-         <TextView 
-              android:layout_width="wrap_content"
-                android:layout_height="30dp"
-                android:textSize="22sp"
-                android:textColor="@color/black" 
-                android:text="/"
-             />
-         <TextView 
-              android:id="@+id/heightsearch"
-              android:layout_width="wrap_content"
-                android:layout_height="30dp"
-                android:textSize="20dp"
-                android:textColor="@color/grey" 
-                android:clickable="true"
-                android:text="条件"
-             /> -->
-            
-        </LinearLayout>
-    </HorizontalScrollView>
+		  <ImageView
+		      android:layout_width="wrap_content"
+		      android:layout_height="wrap_content"
+		      android:layout_alignParentLeft="true"
+		      android:layout_alignTop="@+id/menu"
+		      android:layout_marginLeft="20dp"
+		      android:src="@drawable/topbar_icon_menu" />
+     
+    <TextView 
+        android:id="@+id/tv_topbar_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/app_name"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:layout_centerInParent="true"
+        />
+
+   <ImageView
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_alignBottom="@+id/setting"
+       android:layout_alignParentRight="true"
+        android:layout_marginRight="20dp"
+       android:src="@drawable/topbar_icon_setting" />
+
+        </RelativeLayout>

@@ -17,7 +17,7 @@
     >
     <LinearLayout 
     android:layout_width="match_parent"
-    android:layout_height="45dp"
+    android:layout_height="50dp"
     android:gravity="center"
     android:orientation="horizontal"
     android:layout_margin="8dp"
@@ -31,7 +31,7 @@
       <EditText
         android:id="@+id/username"
         android:layout_width="wrap_content"
-        android:layout_height="30dp"
+        android:layout_height="35dp"
         android:background="@drawable/border_rect"
         style="@style/textwhite"
         android:inputType="text"
@@ -39,12 +39,13 @@
         android:textStyle="normal"
         android:textColorHint="@color/white"
         android:textSize="14sp"
-        android:ems="9" />
+        android:paddingLeft="10dp"
+        android:ems="12" />
 
     </LinearLayout>
     <LinearLayout 
     android:layout_width="match_parent"
-    android:layout_height="45dp"
+    android:layout_height="50dp"
     android:gravity="center"
     android:orientation="horizontal"
     android:layout_margin="6dp"
@@ -57,14 +58,16 @@
       <EditText
         android:id="@+id/password"
         android:layout_width="wrap_content"
-        android:layout_height="30dp"
+        android:layout_height="35dp"
         android:background="@drawable/border_rect"
         style="@style/textwhite"
          android:inputType="textPassword"
+         android:hint="@string/_passwordhint"
          android:textStyle="normal"
          android:textColorHint="@color/white"
          android:textSize="14sp"
-        android:ems="9" />
+         android:paddingLeft="10dp"
+        android:ems="12" />
 
     </LinearLayout>
  
@@ -84,6 +87,7 @@
          android:text="@string/_mmpwd"
          style="@style/textwhite"
          android:textSize="12sp"
+         android:checked="true"
           />
 
 	</LinearLayout>

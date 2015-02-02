@@ -13,6 +13,7 @@ import com.itaste.yuntu.LBSFacListActivity;
 import com.itaste.yuntu.LBSFacMapActivity;
 import com.itaste.yuntu.R;
 import com.itaste.yuntu.model.AMapDTO;
+import com.itaste.yuntu.model.DtoUser;
 import com.itaste.yuntu.model.FacInfoModel;
 /**
  * 存放系统的地图查询条件和查询结果
@@ -61,6 +62,8 @@ public class ItasteApplication extends  Application{
 	public final static int ADD_FAC_RESULT_CODE=3;
 	//发出activity 
 	public final static int ADD_FAC_REQUEST_CODE=4;
+	//当前用户
+	public static DtoUser dtoUser;
 	
 	
 	public static ItasteApplication getInstance(){
